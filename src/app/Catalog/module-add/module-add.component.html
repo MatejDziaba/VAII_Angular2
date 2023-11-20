@@ -1,0 +1,47 @@
+<app-b-admin></app-b-admin>
+<div *ngIf="product">
+  <div class="modal show d-flex align-items-center justify-content-center" style="background: rgba(0, 0, 0, 0.5);" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Pridanie produktu, zadaj:</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" (click)="redirectToAnotherPage()" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">Typ </span>
+            <input type="text" class="form-control" [(ngModel)]="product.nameProduct" placeholder="bicykel" aria-label="Username" aria-describedby="basic-addon1">
+          </div>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">Názov </span>
+            <input type="text" class="form-control" placeholder="CTM ROLEBRAKER1" aria-label="Username" aria-describedby="basic-addon1">
+          </div>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">Značka </span>
+            <input type="text" class="form-control" placeholder="CTM" aria-label="Username" aria-describedby="basic-addon1">
+          </div>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">Cena </span>
+            <input type="text" class="form-control" placeholder="765" aria-label="Username" aria-describedby="basic-addon1">
+          </div>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">Zľava% </span>
+            <input type="text" class="form-control" placeholder="5" aria-label="Username" aria-describedby="basic-addon1">
+          </div>
+          <div class="input-group">
+            <input type="file" class="form-control" placeholder="5" aria-label="Username" aria-describedby="basic-addon1">
+          </div>
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Zruš pridanie</button>
+          <button type="button" class="btn btn-primary">Pridaj produkt</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+
+        
+      

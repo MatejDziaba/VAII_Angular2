@@ -1,0 +1,326 @@
+body {
+    font-family: "Rubik",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.43;
+    color: #141518;
+    text-align: left;
+}
+
+
+*, ::before, ::after {
+    box-sizing: border-box;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -10px;
+    margin-left: -10px;
+}
+
+.bordered-categories--shop a {
+    border-color: #e8eaed;
+}
+.bordered-categories a {
+    padding: 2px 10px 0px;
+    height: 88%;
+    text-align: center;
+    border: 2px solid #e2e3ea;
+    margin: 20px;
+    border-radius: 20px;
+    display: block;
+    font-size: 16px;
+    transition: all 150ms ease;
+    color: #141518;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+
+.bordered-categories a span {
+    display: block;
+    line-height: 105px;
+    margin-bottom: 10px;
+}
+
+.bordered-categories a {
+    text-align: center;
+    font-size: 18px;
+    color: #141518;
+    display: table;
+}
+
+.bordered-categories a span img {
+    width: 100%;
+    max-width: 100%;
+    max-height: 135px;
+    height: auto;
+    vertical-align: middle;
+    border-style: none;
+}
+
+a:hover {
+    color: #f7941e;
+    text-decoration: none;
+    background-color: rgba(0,0,0,0);
+}
+
+.bordered-categories--shop a:hover {
+    font-weight: 400;
+    border-color: #f7941e;
+}
+.bordered-categories a:hover {
+    box-shadow: 0px 0px 0px 1px #f7941e;
+    text-decoration: none;
+    color: #f7941e;
+}
+
+@media (min-width: 1520px) {
+    .bordered-categories a span {
+        line-height: 85px;
+        width: 140px;
+        max-height: 105px;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .sidebar {
+        display: none; /* Sidebar nebude zobrazen na šířkách menších než 1200px */
+    }
+}
+
+
+
+
+
+
+
+
+
+
+.align-items-end {
+    align-items: flex-end !important;
+}
+.justify-content-between {
+    justify-content: space-between !important;
+}
+.page-shop h2, .page-shop .h2 {
+    font-size: 20px;
+}
+.btn:not(:disabled):not(.disabled) {
+    cursor: pointer;
+}
+@media (min-width: 768px) {
+    .d-sm-inline-block {
+        display: inline-block !important;
+    }
+}
+.d-none {
+    display: none !important;
+}
+.btn-outline-primary {
+    color: #f7941e;
+    border-color: #f7941e;
+}
+.btn {
+    display: inline-block;
+    font-weight: 500;
+    color: #141518;
+    text-align: center;
+    vertical-align: middle;
+    user-select: none;
+    background-color: rgba(0,0,0,0);
+    border: 1px solid rgba(0,0,0,0);
+    border-top-color: rgba(0, 0, 0, 0);
+    border-right-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
+    border-left-color: rgba(0, 0, 0, 0);
+    padding: .5rem 1.3rem;
+    font-size: 1rem;
+    line-height: 1.43;
+    border-radius: 4px;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+a {
+    color: #f7941e;
+    text-decoration: none;
+    background-color: rgba(0,0,0,0);
+}
+
+@media (min-width: 1200px) {
+    .shop-info-boxes .col {
+        flex: 0 0 33.333333%;
+        max-width: 33.333333%;
+    }
+}
+
+.shop-info-boxes .box-shop-info {
+    height: 100%;
+}
+.align-items-center {
+    align-items: center !important;
+}
+.d-flex {
+    display: flex !important;
+}
+.rounded {
+    border-radius: 4px !important;
+}
+.bg-light {
+    background-color: #f3f4f6 !important;
+}
+
+.box-shop-info img {
+    margin-left: -12px;
+    margin-right: 2px;
+}
+.imgProduct {
+    vertical-align: middle;
+    border: 3px solid lightgray;
+    border-radius: 20px;
+}
+
+.imgProduct:hover
+{
+    border: 3px solid #50adff !important;
+    border-radius: 20px !important;
+}
+
+pb-4, .py-4 {
+    padding-bottom: 20px !important;
+}
+.pt-4, .py-4 {
+    padding-top: 20px !important;
+}
+.pl-3, .px-3 {
+    padding-left: 15px !important;
+}
+.pr-3, .px-3 {
+    padding-right: 15px !important;
+}
+.box-shop-info h4 {
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.box-shop-info p {
+    font-size: 12px;
+    margin: 0;
+}
+.styleButtonProduct:hover
+{
+    background-color: #ee9c4a !important;
+    border-color: #ee9c4a !important;
+}
+
+.d-none.d-sm-inline.shopListDropDown
+{
+    color: #ee9c4a;
+    font-weight: 600;
+}
+
+.pt-2 {
+    padding-top: .5rem !important;
+    font-size: 30px;
+}
+
+.domov
+{
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+.mobile-max {
+    max-height: 350px;
+}
+
+.wrapper-pink-light {
+    background-color: #fff1f1;
+}
+
+.carousel-inner {
+    height: 0vw;
+    min-height: 300px;
+    max-height: 400px;
+    /*padding-bottom: 25%; !* this sets carousel aspect ratio (4:1 here) *!*/
+}
+
+.carousel-item {
+    position: absolute !important; /* Bootstrap is insistent */
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.carousel-item img {
+    height: 100%; /* Bootstrap handles width already */
+    object-fit: cover; /* or 'contain' if you want stretch instead of crop */
+}
+
+.carousel {
+    text-shadow: black 1px 0 10px;
+}
+
+.domov
+{
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+.mobile-max {
+    max-height: 350px;
+}
+
+.wrapper-pink-light {
+    background-color: #fff1f1;
+}
+
+.carousel-inner {
+    height: 0vw;
+    min-height: 300px;
+    max-height: 400px;
+    /*padding-bottom: 25%; !* this sets carousel aspect ratio (4:1 here) *!*/
+}
+
+.carousel-item {
+    position: absolute !important; /* Bootstrap is insistent */
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.carousel-item img {
+    height: 100%; /* Bootstrap handles width already */
+    object-fit: cover; /* or 'contain' if you want stretch instead of crop */
+}
+
+.carousel {
+    text-shadow: black 1px 0 10px;
+}
+
+.breadcrumb_style
+{
+    margin-bottom: 0px !important;
+    margin-left: 10px !important;
+    margin-right: 10px !important;
+    padding-bottom: 0px !important;
+    padding-right: 0px !important;
+    padding-top: 10px !important;
+    padding-left: 0px !important;
+}
+
+.carusselHomeSettings {
+    font-size: 200%;
+}
+
+
+
