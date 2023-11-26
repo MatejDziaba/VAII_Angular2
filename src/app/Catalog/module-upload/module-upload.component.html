@@ -1,44 +1,95 @@
-<app-b-admin></app-b-admin>
-        <div class="modal show d-flex align-items-center justify-content-center" style="background: rgba(0, 0, 0, 0.5);" tabindex="-1" role="dialog">
-          <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title">Pridanie produktu, zadaj:</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" (click)="redirectToAnotherPage()" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                <div class="input-group mb-3">
-                  <span class="input-group-text" id="basic-addon1">Typ: </span>
-                  <input type="text" class="form-control" placeholder="bicykel" aria-label="Username" aria-describedby="basic-addon1">
-                </div>
-                <div class="input-group mb-3">
-                  <span class="input-group-text" id="basic-addon1">Názov: </span>
-                  <input type="text" class="form-control" placeholder="CTM ROLEBRAKER1" aria-label="Username" aria-describedby="basic-addon1">
-                </div>
-                <div class="input-group mb-3">
-                  <span class="input-group-text" id="basic-addon1">Značka </span>
-                  <input type="text" class="form-control" placeholder="CTM" aria-label="Username" aria-describedby="basic-addon1">
-                </div>
-                <div class="input-group mb-3">
-                  <span class="input-group-text" id="basic-addon1">Cena </span>
-                  <input type="text" class="form-control" placeholder="765" aria-label="Username" aria-describedby="basic-addon1">
-                </div>
-                <div class="input-group mb-3">
-                  <span class="input-group-text" id="basic-addon1">Zľava% </span>
-                  <input type="text" class="form-control" placeholder="5" aria-label="Username" aria-describedby="basic-addon1">
-                </div>
-                <div class="input-group">
-                  <input type="file" class="form-control" placeholder="5" aria-label="Username" aria-describedby="basic-addon1">
-                </div>
-                
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Zruš pridanie</button>
-                <button type="button" class="btn btn-primary">Pridaj produkt</button>
-              </div>
-            </div>
-          </div>
+<!-- <app-b-admin></app-b-admin> -->
+
+<!-- <form *ngIf="product" class="">
+  <div class="modal modal-sheet show d-flex align-items-center justify-content-center" style="background: rgba(0, 0, 0, 0.5);" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content rounded-6 shadow">
+        <div class="modal-header border-bottom-0">
+          <h5 class="modal-title fs-5">Uprava produktu, uprav:</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" (click)="redirectToAnotherPage()" aria-label="Close"></button>
         </div>
+        <div class="modal-body">
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <label class="input-group-text" for="inputGroupSelect01">Typ</label>
+            </div>
+            <select class="custom-select" #typInput [(ngModel)]="product.type">
+              <option *ngFor="let typeOfProduct of typeOfProducts">{{ typeOfProduct.value }}</option>
+            </select>
+          </div>
+
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">Názov </span>
+              <input class="form-control" #nameProductInput [(ngModel)]="product.nameProduct" [ngModelOptions]="{standalone: true}" placeholder="CTM ROLEBRAKER1" aria-label="Username" aria-describedby="basic-addon1">
+          </div>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">Značka </span>
+              <input class="form-control" #markUpInput [(ngModel)]="product.markUp" [ngModelOptions]="{standalone: true}" placeholder="CTM" aria-label="Username" aria-describedby="basic-addon1">
+          </div>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">Cena </span>
+              <input class="form-control" #priceProductInput [(ngModel)]="product.price" [ngModelOptions]="{standalone: true}" placeholder="765" aria-label="Username" aria-describedby="basic-addon1">
+          </div>
+          <div class="input-group mb-3">
+              <span class="input-group-text" id="basic-addon1">Zľava% </span>
+              <input class="form-control" #discountInput [(ngModel)]="product.discount" [ngModelOptions]="{standalone: true}" placeholder="5" aria-label="Username" aria-describedby="basic-addon1">
+           </div>
+           <div class="input-group">
+              <input type="file" class="form-control" [(ngModel)]="product.img" [ngModelOptions]="{standalone: true}" (change)="onFileSelected($event)" aria-describedby="basic-addon1">
+          </div>
+          
+          
+        </div>
+        <div class="modal-footer justify-content-between">
+          <button mat-flat-button color="warn" type="button" class="" (click)="redirectToAnotherPage()" data-bs-dismiss="modal">Zruš modifikaciu</button>
+          <button mat-flat-button color="primary" type="submit" class="pridajProdukt" (click)="uploadProduct(product.id, typInput.value, nameProductInput.value, markUpInput.value, priceProductInput.value, discountInput.value)">Uprav produkt</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form> -->
+
+
+<!-- <button type="button" (click)="setHeroAndShow()">Ukaz alebo skry data</button> -->
+<button type="button" routerLink="/b-admin"> Spat</button>
+<!-- <a routerLink="/" class="btn btn-primary align-items-center" style="font-size: 24px !important;"><i class="bi bi-plus fs-3" style="color:white"></i> Spat</a> -->
+
+<div *ngIf="product">
+  <div><span>id: </span>{{product.id}}</div>
+  <div>
+    <label for="hero-name">Hero name: </label>
+    <input id="hero-name" #nameInput [(ngModel)]="this.product.type" placeholder="name"/>
+  </div>
+  <div>
+    <label for="hero-surname">Hero Surname: </label>
+    <input id="hero-surname" #surnameInput [(ngModel)]="this.product.nameProduct" placeholder="name"/>
+  </div>
+  <div>
+    <label for="hero-surname">Hero age: </label>
+    <input id="hero-surname" #markUpInput [(ngModel)]="this.product.markUp" placeholder="name"/>
+  </div>
+  <div>
+    <label for="hero-surname">Hero age: </label>
+    <input id="hero-surname" #priceInput [ngModel]="this.product.price/(1-(this.product.discount/100))" placeholder="name"/>
+  </div>
+  <div>
+    <label for="hero-surname">Hero age: </label>
+    <input id="hero-surname" #discountInput [(ngModel)]="this.product.discount" placeholder="name"/>
+  </div>
+  <div>
+    <label for="hero-surname">Hero img: </label>
+    <input id="hero-surname"#imgProduct [(ngModel)]="this.product.img" placeholder="name"/>
+    <input type="file" [(ngModel)]="this.product.img" class="form-control" (change)="onFileSelected($event)" aria-describedby="basic-addon1">
+  </div>
+  <div>
+    <img [src]="this.imgProduct" alt="Selected Image" *ngIf="this.imgProduct">
+  </div>
+  <button type="button" (click)="uploadProduct(product.id, nameInput.value, surnameInput.value, markUpInput.value, priceInput.value, imgProduct.value ,discountInput.value)">Upload product</button>
+  <!-- <a routerLink="/" (click)="modifyHero(hero.id, nameInput.value, surnameInput.value, ageInput.value)" class="btn btn-primary align-items-center" style="font-size: 24px !important;"><i class="bi bi-plus fs-3" style="color:white"></i>Modify hero</a> -->
+  
+
+  
+        
 
         
       

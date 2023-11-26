@@ -1,0 +1,18 @@
+<app-b-admin></app-b-admin>
+
+<div class="modal modal-sheet show d-flex align-items-center d-block p-4 py-md-5" tabindex="-1" role="dialog" id="modalSheet">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content rounded-6 shadow">
+        <div class="modal-header border-bottom-0">
+          <h1 class="modal-title fs-5" style="color: rgb(226, 76, 76); font-weight: 800;">Pridanie bolo neúspešné</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" (click)="redirectToAnotherPage()" aria-label="Close"></button>
+        </div>
+        <div class="modal-body py-0">
+          <p>Nezadali ste všetky údaje, ktoré su potrebné pre pridanie produktu, prosím zadajte všetky parametre, skúste to znova.</p>
+        </div>
+        <div class="modal-footer flex-column align-items-stretch w-100 gap-2 pb-3 border-top-0">
+          <button type="button" routerLink="/b-admin" class="btn btn-lg btn-primary">OK</button>
+        </div>
+      </div>
+    </div>
+  </div>

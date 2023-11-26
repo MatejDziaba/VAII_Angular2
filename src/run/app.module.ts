@@ -1,5 +1,14 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { MatIconModule} from '@angular/material/icon';
+import {MatInputModule} from '@angular/material/input';
+import {MatSelectModule} from '@angular/material/select';
+import { MatDividerModule} from '@angular/material/divider';
+import { MatButtonModule} from '@angular/material/button';
+import { MatFormFieldModule} from '@angular/material/form-field'; 
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
@@ -14,6 +23,8 @@ import { BicykleComponent } from '../app/Catalog/Bicykle/bicykle/bicykle.compone
 import { CatalogcomponentComponent } from '../app/Catalog/catalogcomponent/catalogcomponent.component';
 import { ModuleAddComponent } from '../app/Catalog/module-add/module-add.component';
 import { ModuleUploadComponent } from '../app/Catalog/module-upload/module-upload.component';
+import { ModuleAddFailureComponent } from '../app/module-add-failure/module-add-failure.component';
+import { ModuleCheckoutComponent } from '../app/module-checkout/module-checkout.component';
 
 @NgModule({
   declarations: [
@@ -27,12 +38,21 @@ import { ModuleUploadComponent } from '../app/Catalog/module-upload/module-uploa
     BicykleComponent,
     CatalogcomponentComponent,
     ModuleAddComponent,
-    ModuleUploadComponent
+    ModuleUploadComponent,
+    ModuleAddFailureComponent,
+    ModuleCheckoutComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule, 
+    MatButtonModule, 
+    MatDividerModule, 
+    MatIconModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

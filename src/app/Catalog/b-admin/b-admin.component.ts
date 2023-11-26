@@ -1,7 +1,9 @@
-import { Component, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+
 import { Product } from '../../../product';
 import { ProductService } from '../../../service/product.service';
+import { ProductStateService } from '../../product-state.service';
 
 @Component({
   selector: 'app-b-admin',
@@ -11,8 +13,11 @@ import { ProductService } from '../../../service/product.service';
 export class BAdminComponent {
   isIconHidden: boolean = false;
   colorIntensity: number = 100;
+  
+  selectedProduct?: Product;
+  products: Product[] = [];
 
-  constructor(private router: Router, private productService: ProductService) {}
+  constructor(private router: Router, private productService: ProductService, private productStateService: ProductStateService) {}
 
   redirectToAnotherPage() {
     this.router.navigate(['/b-admin']);
@@ -30,21 +35,34 @@ export class BAdminComponent {
     }
   }
 
-  @Input() product: Product | undefined;
-  @Input() newProductType: string | undefined;
-  @Input() newProductName: string | undefined;
-  @Input() newProductMarkUp: string | undefined;
-  @Input() newProductPrice: number | undefined;
-  @Input() newProductImg: string | undefined;
-  @Input() newProductDiscount: number | undefined;
-
-  addProduct() 
+  ngOnInit(): void 
   {
-    if (this.newProductType && this.newProductName && this.newProductMarkUp && this.newProductPrice && this.newProductImg && this.newProductDiscount) 
-    {
-      this.productService.addProduct(this.newProductType, this.newProductName, this.newProductMarkUp, this.newProductPrice, this.newProductImg, this.newProductDiscount);
-    }
+    this.productService.getProducts().subscribe(products => {
+      this.products = products;
+    });
+
+    this.productService.productUpdated.subscribe(updatedProducts => {
+      this.products = updatedProducts;
+    })
+
+    console.log(this.products);
+  } 
+  
+  onSelect(product: Product): void 
+  {
+    this.selectedProduct = product;
   }
 
+  getProducts(): void {
+    this.productService.getProducts().subscribe(products => this.products = products);
+  }
+
+  setProduct(selectedProduct: Product): void 
+  {
+    this.selectedProduct = selectedProduct;
+    this.productService.product = selectedProduct;
+    this.productStateService.setSelectedProduct(this.selectedProduct);
+  }
+  
 }
 
