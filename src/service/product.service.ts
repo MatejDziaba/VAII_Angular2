@@ -33,39 +33,47 @@ export class ProductService {
         this.storedProducts = localStorage.getItem(this.storageKey);
         this.products = this.storedProducts ? JSON.parse(this.storedProducts) : PRODUCTS;
 
-        const newIndex = this.products[this.products.length - 1].id + 1;
-        const newProduct: Product = { id: newIndex, type, nameProduct, markUp, price, img, discount};
+        let newIndex = 1;
+        if (this.products.length > 0) 
+        {
+            newIndex = this.products[this.products.length - 1].id + 1;
+        }
 
-        this.products.push(newProduct);
+        this.products.push({ id: newIndex, type, nameProduct, markUp, price, img, discount});
 
         localStorage.setItem(this.storageKey, JSON.stringify(this.products));
 
         this.productUpdated.emit(this.products);
 
-        return of(this.products); // Vrátí aktualizovaný seznam hrdinů
+        return of(this.products);
     }
 
     uploadProduct(id: number, type: TYPEPRODUCT, nameProduct: string, markUp: string, price: number, img: string, discount: number) {
         this.storedProducts = localStorage.getItem(this.storageKey);
         let products: Product[] = this.storedProducts ? JSON.parse(this.storedProducts) : PRODUCTS;
       
-        console.log("POMOC");
         products.forEach((product, index) => {
-            console.log(index);
-          if (product.id === id) {
-            // Nájdeme hrdinu podľa mena a priezviska
-            // Upravíme hodnoty atribútov
+          if (product.id === id) 
+          {
             products[index] = { id, type, nameProduct, markUp, price, img, discount};
-
-            console.log("upraveny Produkt:", products[index]);
-      
-            // Uložíme aktualizovaný zoznam hrdinov do localStorage
             localStorage.setItem(this.storageKey, JSON.stringify(products));
-      
-            // Emitujeme udalosť s aktualizovaným zoznamom hrdinov
             this.productUpdated.emit(products);
           }
         });
       }
 
+      deleteProduct(nameProduct: string): void {
+        this.storedProducts = localStorage.getItem(this.storageKey);
+      
+        if (this.storedProducts) {
+          let products: Product[] = JSON.parse(this.storedProducts);
+          const index = products.findIndex(product => product.nameProduct === nameProduct);
+      
+          if (index !== -1) {
+            products.splice(index, 1);
+            localStorage.setItem(this.storageKey, JSON.stringify(products));
+            this.productUpdated.emit(products);
+          }
+        } 
+      }
 }

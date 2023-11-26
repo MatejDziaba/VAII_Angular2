@@ -25,6 +25,7 @@ import { ModuleAddComponent } from '../app/Catalog/module-add/module-add.compone
 import { ModuleUploadComponent } from '../app/Catalog/module-upload/module-upload.component';
 import { ModuleAddFailureComponent } from '../app/module-add-failure/module-add-failure.component';
 import { ModuleCheckoutComponent } from '../app/module-checkout/module-checkout.component';
+import { ModuleDeleteComponent } from '../app/Catalog/module-delete/module-delete.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { ModuleCheckoutComponent } from '../app/module-checkout/module-checkout.
     ModuleAddComponent,
     ModuleUploadComponent,
     ModuleAddFailureComponent,
-    ModuleCheckoutComponent
+    ModuleCheckoutComponent,
+    ModuleDeleteComponent
   ],
   imports: [
     BrowserModule,

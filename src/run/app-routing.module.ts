@@ -7,6 +7,7 @@ import { ModuleAddComponent } from '../app/Catalog/module-add/module-add.compone
 import { ModuleAddFailureComponent } from '../app/module-add-failure/module-add-failure.component';
 import { ModuleCheckoutComponent } from '../app/module-checkout/module-checkout.component';
 import { ModuleUploadComponent } from '../app/Catalog/module-upload/module-upload.component';
+import { ModuleDeleteComponent } from '../app/Catalog/module-delete/module-delete.component';
 
 const routes: Routes = [
   {path: '', component: HomecomponentComponent},
@@ -16,7 +17,8 @@ const routes: Routes = [
   {path: 'module-add', component: ModuleAddComponent},
   {path: 'module-upload', component: ModuleUploadComponent},
   {path: 'module-add-failure', component: ModuleAddFailureComponent},
-  {path: 'module-checkout', component: ModuleCheckoutComponent}
+  {path: 'module-checkout', component: ModuleCheckoutComponent},
+  {path: 'module-delete', component: ModuleDeleteComponent}
 ];
 
 @NgModule({
