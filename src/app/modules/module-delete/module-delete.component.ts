@@ -1,8 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { Product, TYPEPRODUCT } from '../../../product';
+import { Product, TYPEPRODUCT } from '../../../Intefaces/product';
 import { ProductService } from '../../../service/product.service';
-import { ProductStateService } from '../../product-state.service';
+import { ProductStateService } from '../../../service/product-state.service';
 
 @Component({
   selector: 'app-module-delete',
@@ -29,8 +29,13 @@ export class ModuleDeleteComponent
   ngOnInit(): void 
   {
     this.product = this.productStateService.selectedProduct;
-    console.log(this.product);
+    //console.log(this.product);
   } 
+
+  ngOnDestroy() 
+  {
+    this.product;
+  }
 
   deleteProduct(nameProduct: string) 
   {

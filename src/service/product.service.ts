@@ -3,8 +3,8 @@ import { EventEmitter } from '@angular/core';
 
 import { Observable, of } from 'rxjs';
 
-import { Product, TYPEPRODUCT } from '../product';
-import { PRODUCTS } from '../mock-product';
+import { Product, TYPEPRODUCT } from '../Intefaces/product';
+import { PRODUCTS } from '../Intefaces/mock-product';
 
 @Injectable({
   providedIn: 'root',

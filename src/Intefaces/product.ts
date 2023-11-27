@@ -10,9 +10,19 @@ export interface Product
 }
 
 export enum TYPEPRODUCT {
+  // bicykle
     Bicycle = 'bicykel',
     ElectroBicycle = 'electroBicykel',
-    // Další prvky podle potřeby
+    HorskyBicycle = 'horskyBicykel',
+    CestnyBicycle = 'cestnyBicykel',
+    KrosovyBicycle = 'krosovyBicykel',
+    MestkyBicycle = 'mestkyBicykel',
+    TrekingBicycle = 'trekingBicykel',
+    GravelCyklotrosBicycle = 'gravelCyklotrosBicykel',
+    DetskyBicycle = 'detskyBicykel',
+    DirtBMXBicycle = 'dirtBMXBicykel'
+
+    // 
   }
   
   // Přidání nové hodnoty do enumu

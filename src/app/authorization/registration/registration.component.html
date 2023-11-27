@@ -1,0 +1,103 @@
+<div class="container d-flex justify-content-center align-items-center wrapper">
+    <div class="card">
+        <div class="row">
+            <button type="button" class="btn-close" data-bs-dismiss="modal" (click)="redirectToBack()" aria-label="Close" style="margin-left: 95%;"></button>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form needs-validation was-validated" novalidate="">
+                    <h2>Registrácia uživateľa</h2>
+                    <div class="col-mt-3">
+                        <label for="validationCustom01" class="form-label">Meno</label>
+                        <input type="text" class="form-control" id="validationCustom01" placeholder="Meno" required="" wfd-id="id0">
+                        <div class="valid-feedback">
+                          Výborne!
+                        </div>
+                      </div>
+                      <div class="col-mt-3">
+                        <label for="validationCustom02" class="form-label">Priezvisko</label>
+                        <input type="text" class="form-control" id="validationCustom02" placeholder="Priezvisko" required="" wfd-id="id1">
+                        <div class="valid-feedback">
+                            Výborne!
+                        </div>
+                      </div>
+                      <div class="col-mt-3">
+                        <label for="validationCustomUsername" class="form-label">email</label>
+                        <div class="input-group has-validation">
+                          <span class="input-group-text" id="inputGroupPrepend">&commat;</span>
+                          <input type="text" class="form-control" id="validationCustomUsername" placeholder="jankohrasko@gmail.com" aria-describedby="inputGroupPrepend" required="" wfd-id="id2">
+                          <div class="invalid-feedback">
+                            Prosím vložte email.
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-mt-3">
+                        <label for="validationCustom03" class="form-label">Mesto</label>
+                        <input type="text" class="form-control" id="validationCustom03" placeholder="Mesto" required="" wfd-id="id3">
+                        <div class="invalid-feedback">
+                          Prosím vložte mesto.
+                        </div>
+                      </div>
+
+                      <div class="col-mt-3">
+                        <label for="validationCustom04" class="form-label" value="Slovensko">Štát</label>
+                        <select class="form-select" id="validationCustom04" required="">
+                          <option selected="" disabled="" value="">Vyberte...</option>
+                          <option>Slovensko</option>
+                        </select>
+                        <div class="invalid-feedback">
+                          Prosím vložte validné mesto.
+                        </div>
+                      </div>
+
+                      <div class="col-mt-3">
+                        <label for="validationCustom05" class="form-label">PSČ</label>
+                        <input type="text" class="form-control" placeholder="06712" id="validationCustom05" required="" wfd-id="id4">
+                        <div class="invalid-feedback">
+                          Prosím vložte validné PSČ
+                        </div>
+                      </div>
+
+                      <div class="col-mt-3">
+                        <label for="validationCustom05" class="form-label">Nové heslo</label>
+                        <input type="text" class="form-control" placeholder="NoveHeslo1.!" id="validationCustom05" required="" wfd-id="id4">
+                        <div class="invalid-feedback">
+                          Heslo musí byť zadané.
+                        </div>
+                      </div>
+
+                      <div class="col-mt-3">
+                        <label for="validationCustom05" class="form-label">Zopakujte vloženie hesla</label>
+                        <input type="text" class="form-control" placeholder="NoveHeslo1.!" id="validationCustom05" required="" wfd-id="id4">
+                        <div class="invalid-feedback">
+                          Opakované vloženie hesla musí byť zadané.
+                        </div>
+                      </div>
+
+                      <div class="col-12">
+                        <div class="form-check" style="margin-top: 10px;">
+                          <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required="" wfd-id="id5">
+                          <label class="form-check-label" for="invalidCheck">
+                            Súhlasim s obchodnými a právnymi podmienkami
+                          </label>
+                          <div class="invalid-feedback">
+                            Musíte suhlasiť s podmienkami
+                          </div>
+                        </div>
+                      </div>
+                    
+                      <div class="col-12" style="margin-top: 10px;">
+                        <button mat-flat-button color="warn" type="submit" class="" data-bs-dismiss="modal">Registrovať sa</button>
+                      </div>
+                      <div class="col-12" style="margin-top: 10px;">
+                        <button mat-flat-button color="primary" type="button" class="" (click)="redirectToAnotherPage()" data-bs-dismiss="modal">Som registrovaný, prihlásiť sa</button>
+                      </div>
+                   
+                    </div>
+            </div>
+            <div class="col-md-6">
+                <div class="text-center mt-5"> <img src="https://i.imgur.com/98GXnDD.png" width="340"> </div>
+            </div>
+        </div>
+    </div>
+</div>

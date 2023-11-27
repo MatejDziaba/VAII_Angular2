@@ -1,0 +1,39 @@
+<div class="container d-flex justify-content-center align-items-center wrapper">
+    <div class="card">
+        <div class="row">
+            <div class="row">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" (click)="redirectToBack()" aria-label="Close" style="margin-left: 95%;"></button>
+            </div>
+            <div class="col-md-6">
+                <div class="form needs-validation was-validated" novalidate="">
+                    <h2>Prihlásenie uživateľa</h2>
+                      <div class="col-mt-3">
+                        <label for="validationCustomUsername" class="form-label">email&commat;</label>
+                        <div class="input-group has-validation">
+                          <input type="text" class="form-control" id="validationCustomUsername" placeholder="jankohrasko@gmail.com" aria-describedby="inputGroupPrepend" required="" wfd-id="id2">
+                          <div class="invalid-feedback">
+                            Prosím vložte email.
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-mt-3">
+                        <label for="validationCustom05" class="form-label">Nové heslo</label>
+                        <input type="text" class="form-control" placeholder="NoveHeslo1.!" id="validationCustom05" required="" wfd-id="id4">
+                        <div class="invalid-feedback">
+                          Heslo musí byť zadané.
+                        </div>
+                      </div>
+                    
+                      <div class="col-12" style="margin-top: 10px;">
+                        <button mat-flat-button color="primary" type="button" class="" (click)="redirectToAnotherPage()" data-bs-dismiss="modal">Prihlásiť sa</button>
+                      </div>
+                   
+                    </div>
+            </div>
+            <div class="col-md-6">
+                <div class="text-center mt-5"> <img src="https://i.imgur.com/98GXnDD.png" width="340"> </div>
+            </div>
+        </div>
+    </div>
+</div>

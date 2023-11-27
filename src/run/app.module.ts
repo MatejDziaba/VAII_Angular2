@@ -18,14 +18,16 @@ import { NavbarcomponentComponent } from '../app/baseComponents/navbarcomponent/
 import { FootercomponentComponent } from '../app/baseComponents/footercomponent/footercomponent.component';
 import { NavbarAdminComponent } from '../app/baseComponents/navbar-admin/navbar-admin.component';
 import { SideBarcomponentComponent } from '../app/baseComponents/side-barcomponent/side-barcomponent.component';
-import { BAdminComponent } from '../app/Catalog/b-admin/b-admin.component';
+import { BAdminComponent } from '../app/Catalog/Bicykle/b-admin/b-admin.component';
 import { BicykleComponent } from '../app/Catalog/Bicykle/bicykle/bicykle.component';
 import { CatalogcomponentComponent } from '../app/Catalog/catalogcomponent/catalogcomponent.component';
-import { ModuleAddComponent } from '../app/Catalog/module-add/module-add.component';
-import { ModuleUploadComponent } from '../app/Catalog/module-upload/module-upload.component';
-import { ModuleAddFailureComponent } from '../app/module-add-failure/module-add-failure.component';
-import { ModuleCheckoutComponent } from '../app/module-checkout/module-checkout.component';
-import { ModuleDeleteComponent } from '../app/Catalog/module-delete/module-delete.component';
+import { ModuleAddComponent } from '../app/modules/module-add/module-add.component';
+import { ModuleUploadComponent } from '../app/modules/module-upload/module-upload.component';
+import { ModuleAddFailureComponent } from '../app/modules/module-add-failure/module-add-failure.component';
+import { ModuleCheckoutComponent } from '../app/modules/module-checkout/module-checkout.component';
+import { ModuleDeleteComponent } from '../app/modules/module-delete/module-delete.component';
+import { RegistrationComponent } from '../app/authorization/registration/registration.component'; 
+import { SignUpComponent } from '../app/authorization/sign-up/sign-up.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,9 @@ import { ModuleDeleteComponent } from '../app/Catalog/module-delete/module-delet
     ModuleUploadComponent,
     ModuleAddFailureComponent,
     ModuleCheckoutComponent,
-    ModuleDeleteComponent
+    ModuleDeleteComponent,
+    RegistrationComponent,
+    SignUpComponent
   ],
   imports: [
     BrowserModule,

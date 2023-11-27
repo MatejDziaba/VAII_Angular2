@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { Product, TYPEPRODUCT } from '../../../product';
+import { Product, TYPEPRODUCT } from '../../../Intefaces/product';
 import { ProductService } from '../../../service/product.service';
 
 
@@ -16,11 +16,18 @@ export class ModuleAddComponent {
   routerLinkPath: string = '/b-admin';
   pomTypProduct: TYPEPRODUCT = TYPEPRODUCT.Bicycle;
 
-  selectedValue: string = "bla";
+  selectedValue: string = "mock_value";
 
   typeOfProducts = [
     { value: TYPEPRODUCT.Bicycle },
-    { value: TYPEPRODUCT.ElectroBicycle }
+    { value: TYPEPRODUCT.ElectroBicycle },
+    { value: TYPEPRODUCT.CestnyBicycle },
+    { value: TYPEPRODUCT.KrosovyBicycle },
+    { value: TYPEPRODUCT.MestkyBicycle },
+    { value: TYPEPRODUCT.TrekingBicycle },
+    { value: TYPEPRODUCT.GravelCyklotrosBicycle },
+    { value: TYPEPRODUCT.DetskyBicycle },
+    { value: TYPEPRODUCT.DirtBMXBicycle }
   ];
 
   @Input() product: Product = {
@@ -35,22 +42,27 @@ export class ModuleAddComponent {
 
   constructor(private productService: ProductService, private router: Router) {}
 
-  ngOnInit(): void 
-  {
-      // Fetch all the forms we want to apply custom Bootstrap validation styles to
-      var forms = document.getElementsByClassName('needs-validation');
+  private submitEventListener = (form: HTMLFormElement) => (event: Event) => {
+    if ((<HTMLFormElement>event.target).checkValidity() === false) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+    form.classList.add('was-validated');
+  };
+  
+  ngOnInit(): void {
+    // Loop over them and prevent submission
+    Array.prototype.filter.call(document.getElementsByClassName('needs-validation'), (form: HTMLFormElement) => {
+      form.addEventListener('submit', this.submitEventListener(form), false);
+    });
+  }
 
-      // Loop over them and prevent submission
-      Array.prototype.filter.call(forms, (form: HTMLFormElement) => {
-        form.addEventListener('submit', (event: Event) => {
-          if ((<HTMLFormElement>event.target).checkValidity() === false) {
-            event.preventDefault();
-            event.stopPropagation();
-          }
-          form.classList.add('was-validated');
-        }, false);
-      });
-  } 
+  ngOnDestroy(): void {
+    // Odstránenie event listeneru
+    Array.prototype.filter.call(document.getElementsByClassName('needs-validation'), (form: HTMLFormElement) => {
+      form.removeEventListener('submit', this.submitEventListener(form), false);
+    });
+  }
 
   onFileSelected(event: any): void {
     const file: File = event.target.files[0];
