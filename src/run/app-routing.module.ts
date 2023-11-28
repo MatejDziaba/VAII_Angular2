@@ -10,6 +10,7 @@ import { ModuleUploadComponent } from '../app/modules/module-upload/module-uploa
 import { ModuleDeleteComponent } from '../app/modules/module-delete/module-delete.component';
 import { RegistrationComponent } from '../app/authorization/registration/registration.component';
 import { SignUpComponent } from '../app/authorization/sign-up/sign-up.component';
+import { UserTableComponent } from '../app/tables/user-table/user-table.component';
 
 const routes: Routes = [
   {path: '', component: HomecomponentComponent},
@@ -22,7 +23,8 @@ const routes: Routes = [
   {path: 'module-checkout', component: ModuleCheckoutComponent},
   {path: 'module-delete', component: ModuleDeleteComponent},
   {path: 'registration', component: RegistrationComponent},
-  {path: 'sign-up', component: SignUpComponent}
+  {path: 'sign-up', component: SignUpComponent},
+  {path: 'user-table', component: UserTableComponent}
 ];
 
 @NgModule({

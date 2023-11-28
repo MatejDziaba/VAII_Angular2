@@ -28,6 +28,10 @@ import { ModuleCheckoutComponent } from '../app/modules/module-checkout/module-c
 import { ModuleDeleteComponent } from '../app/modules/module-delete/module-delete.component';
 import { RegistrationComponent } from '../app/authorization/registration/registration.component'; 
 import { SignUpComponent } from '../app/authorization/sign-up/sign-up.component';
+import { UserTableComponent } from '../app/tables/user-table/user-table.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -46,7 +50,8 @@ import { SignUpComponent } from '../app/authorization/sign-up/sign-up.component'
     ModuleCheckoutComponent,
     ModuleDeleteComponent,
     RegistrationComponent,
-    SignUpComponent
+    SignUpComponent,
+    UserTableComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +63,10 @@ import { SignUpComponent } from '../app/authorization/sign-up/sign-up.component'
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatTableModule,
+    MatSortModule,
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

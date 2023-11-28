@@ -28,7 +28,13 @@ export class ProductService {
         return of(this.products);
     }
 
-    addProduct(type: TYPEPRODUCT, nameProduct: string, markUp: string, price: number, img: string, discount: number): Observable<Product[]>
+    ngOnDestroy() 
+    {
+        this.productUpdated;
+    }
+
+    addProduct(type: TYPEPRODUCT, nameProduct: string, markUp: string, 
+               price: number,     img: string,         discount: number)
     {
         this.storedProducts = localStorage.getItem(this.storageKey);
         this.products = this.storedProducts ? JSON.parse(this.storedProducts) : PRODUCTS;
@@ -39,13 +45,11 @@ export class ProductService {
             newIndex = this.products[this.products.length - 1].id + 1;
         }
 
-        this.products.push({ id: newIndex, type, nameProduct, markUp, price, img, discount});
+        this.products.push({ id: newIndex, type, nameProduct, markUp, price, img, discount });
 
         localStorage.setItem(this.storageKey, JSON.stringify(this.products));
 
         this.productUpdated.emit(this.products);
-
-        return of(this.products);
     }
 
     uploadProduct(id: number, type: TYPEPRODUCT, nameProduct: string, markUp: string, price: number, img: string, discount: number) {

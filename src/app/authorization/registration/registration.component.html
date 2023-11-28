@@ -5,18 +5,19 @@
         </div>
         <div class="row">
             <div class="col-md-6">
+              
                 <div class="form needs-validation was-validated" novalidate="">
                     <h2>Registrácia uživateľa</h2>
                     <div class="col-mt-3">
                         <label for="validationCustom01" class="form-label">Meno</label>
-                        <input type="text" class="form-control" id="validationCustom01" placeholder="Meno" required="" wfd-id="id0">
+                        <input type="text" class="form-control" #inputName id="validationCustom01" placeholder="Meno" required="" wfd-id="id0">
                         <div class="valid-feedback">
                           Výborne!
                         </div>
                       </div>
                       <div class="col-mt-3">
                         <label for="validationCustom02" class="form-label">Priezvisko</label>
-                        <input type="text" class="form-control" id="validationCustom02" placeholder="Priezvisko" required="" wfd-id="id1">
+                        <input type="text" class="form-control" #inputSurname id="validationCustom02" placeholder="Priezvisko" required="" wfd-id="id1">
                         <div class="valid-feedback">
                             Výborne!
                         </div>
@@ -25,34 +26,43 @@
                         <label for="validationCustomUsername" class="form-label">email</label>
                         <div class="input-group has-validation">
                           <span class="input-group-text" id="inputGroupPrepend">&commat;</span>
-                          <input type="text" class="form-control" id="validationCustomUsername" placeholder="jankohrasko@gmail.com" aria-describedby="inputGroupPrepend" required="" wfd-id="id2">
+                          <input type="text" class="form-control" #inputEmail id="validationCustomUsername" placeholder="jankohrasko@gmail.com" aria-describedby="inputGroupPrepend" required="" wfd-id="id2">
                           <div class="invalid-feedback">
                             Prosím vložte email.
                           </div>
                         </div>
                       </div>
+
                       <div class="col-mt-3">
                         <label for="validationCustom03" class="form-label">Mesto</label>
-                        <input type="text" class="form-control" id="validationCustom03" placeholder="Mesto" required="" wfd-id="id3">
+                        <input type="text" class="form-control" #inputCity id="validationCustom03" placeholder="Mesto" required="" wfd-id="id3">
                         <div class="invalid-feedback">
                           Prosím vložte mesto.
                         </div>
                       </div>
 
                       <div class="col-mt-3">
+                        <label for="validationCustom03" class="form-label">Ulica</label>
+                        <input type="text" class="form-control" #inputUlica id="validationCustom03" placeholder="TDH 462/19" required="" wfd-id="id3">
+                        <div class="invalid-feedback">
+                          Prosím vložte ulicu.
+                        </div>
+                      </div>
+
+                      <div class="col-mt-3">
                         <label for="validationCustom04" class="form-label" value="Slovensko">Štát</label>
-                        <select class="form-select" id="validationCustom04" required="">
+                        <select class="form-select" #inputState id="validationCustom04" required="">
                           <option selected="" disabled="" value="">Vyberte...</option>
                           <option>Slovensko</option>
                         </select>
                         <div class="invalid-feedback">
-                          Prosím vložte validné mesto.
+                          Prosím vložte validne údaje.
                         </div>
                       </div>
 
                       <div class="col-mt-3">
                         <label for="validationCustom05" class="form-label">PSČ</label>
-                        <input type="text" class="form-control" placeholder="06712" id="validationCustom05" required="" wfd-id="id4">
+                        <input type="text" #inputPSC class="form-control" placeholder="06712" id="validationCustom05" required="" wfd-id="id4">
                         <div class="invalid-feedback">
                           Prosím vložte validné PSČ
                         </div>
@@ -60,7 +70,7 @@
 
                       <div class="col-mt-3">
                         <label for="validationCustom05" class="form-label">Nové heslo</label>
-                        <input type="text" class="form-control" placeholder="NoveHeslo1.!" id="validationCustom05" required="" wfd-id="id4">
+                        <input type="text" #inputPassword1 class="form-control" placeholder="NoveHeslo1.!" id="validationCustom05" required="" wfd-id="id4">
                         <div class="invalid-feedback">
                           Heslo musí byť zadané.
                         </div>
@@ -68,7 +78,7 @@
 
                       <div class="col-mt-3">
                         <label for="validationCustom05" class="form-label">Zopakujte vloženie hesla</label>
-                        <input type="text" class="form-control" placeholder="NoveHeslo1.!" id="validationCustom05" required="" wfd-id="id4">
+                        <input type="text form-control" #inputPassword2 class="form-control" placeholder="NoveHeslo1.!" id="validationCustom05" required="" wfd-id="id4">
                         <div class="invalid-feedback">
                           Opakované vloženie hesla musí byť zadané.
                         </div>
@@ -76,7 +86,7 @@
 
                       <div class="col-12">
                         <div class="form-check" style="margin-top: 10px;">
-                          <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required="" wfd-id="id5">
+                          <input class="form-check-input" #inputAgree type="checkbox" value="" id="invalidCheck" required="" wfd-id="id5">
                           <label class="form-check-label" for="invalidCheck">
                             Súhlasim s obchodnými a právnymi podmienkami
                           </label>
@@ -85,15 +95,20 @@
                           </div>
                         </div>
                       </div>
-                    
-                      <div class="col-12" style="margin-top: 10px;">
-                        <button mat-flat-button color="warn" type="submit" class="" data-bs-dismiss="modal">Registrovať sa</button>
-                      </div>
-                      <div class="col-12" style="margin-top: 10px;">
-                        <button mat-flat-button color="primary" type="button" class="" (click)="redirectToAnotherPage()" data-bs-dismiss="modal">Som registrovaný, prihlásiť sa</button>
-                      </div>
-                   
+
                     </div>
+
+                    <div class="col-12" style="margin-top: 10px;">
+                      <button mat-flat-button color="warn" type="submit" class="" 
+                      (click)="addUser(inputName.value, inputSurname.value, inputEmail.value,
+                                       inputCity.value, inputUlica.value, inputState.value, 
+                                       inputPSC.value, inputPassword1.value, inputPassword2.value, inputAgree.value)" 
+                      data-bs-dismiss="modal">Registrovať sa</button>
+                    </div>
+                    <div class="col-12" style="margin-top: 10px;">
+                      <button mat-flat-button color="primary" type="button" class="" (click)="setRouterOnSignUp()" data-bs-dismiss="modal">Som registrovaný, prihlásiť sa</button>
+                    </div>
+                    
             </div>
             <div class="col-md-6">
                 <div class="text-center mt-5"> <img src="https://i.imgur.com/98GXnDD.png" width="340"> </div>
