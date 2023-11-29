@@ -22,11 +22,11 @@ import { USERS } from '../Intefaces/mock-user';
 
     constructor() {}
 
-    getUsers(): Observable<User[]>
+    getUsers(): User[]
     {
         this.storedUsers = localStorage.getItem(this.storageKey);
         this.users = this.storedUsers ? JSON.parse(this.storedUsers) : USERS;
-        return of(this.users);
+        return this.users;
     }
 
     ngOnDestroy() 
@@ -55,7 +55,7 @@ import { USERS } from '../Intefaces/mock-user';
             admin = true;
         }
 
-        this.users.push({ id: this.index, name, surname, email, city, ulica, state, psc, password, agreeMarketConditions, admin });
+        this.users.push({ id: this.index, name, surname, email, city, ulica, state, psc, password, agreeMarketConditions, admin, isActive: false });
         localStorage.setItem(this.storageKey, JSON.stringify(this.users));
         this.usersUpdated.emit(this.users);
     }
@@ -66,17 +66,32 @@ import { USERS } from '../Intefaces/mock-user';
     {
         this.storedUsers = localStorage.getItem(this.storageKey);
         let users: User[] = this.storedUsers ? JSON.parse(this.storedUsers) : USERS;
-
         users.forEach((user, index) => {
             if (user.id === id) 
             {
-                users[index] = { id, name, surname, email, city, ulica, state, psc, password, agreeMarketConditions, admin };
+                users[index] = { id, name, surname, email, city, ulica, state, psc, password, agreeMarketConditions, admin, isActive: false };
                 localStorage.setItem(this.storageKey, JSON.stringify(users));
                 this.usersUpdated.emit(users);
             }
         });
     }
-
+    
+    uploadUserState(id: number, name: string, surname: string, email: string, 
+        city: string, ulica: string, state: string, 
+        psc: string, password: string, agreeMarketConditions: boolean, admin: boolean, isActive: boolean) 
+    {
+        this.storedUsers = localStorage.getItem(this.storageKey);
+        let users: User[] = this.storedUsers ? JSON.parse(this.storedUsers) : USERS;
+        users.forEach((user, index) => {
+            if (user.id === id) 
+            {
+                users[index] = { id, name, surname, email, city, ulica, state, psc, password, agreeMarketConditions, admin, isActive };
+                localStorage.setItem(this.storageKey, JSON.stringify(users));
+                this.usersUpdated.emit(users);
+            }
+        });
+    }
+    
     deleteUser(emailUser: string) 
     {
         this.storedUsers = localStorage.getItem(this.storageKey);

@@ -86,7 +86,7 @@
 
                       <div class="col-12">
                         <div class="form-check" style="margin-top: 10px;">
-                          <input class="form-check-input" #inputAgree type="checkbox" value="" id="invalidCheck" required="" wfd-id="id5">
+                          <input class="form-check-input" type="checkbox" (change)="setAgree($event)" value="" id="invalidCheck" required="" wfd-id="id5">
                           <label class="form-check-label" for="invalidCheck">
                             Súhlasim s obchodnými a právnymi podmienkami
                           </label>
@@ -102,7 +102,7 @@
                       <button mat-flat-button color="warn" type="submit" class="" 
                       (click)="addUser(inputName.value, inputSurname.value, inputEmail.value,
                                        inputCity.value, inputUlica.value, inputState.value, 
-                                       inputPSC.value, inputPassword1.value, inputPassword2.value, inputAgree.value)" 
+                                       inputPSC.value, inputPassword1.value, inputPassword2.value, 'pomoc')" 
                       data-bs-dismiss="modal">Registrovať sa</button>
                     </div>
                     <div class="col-12" style="margin-top: 10px;">

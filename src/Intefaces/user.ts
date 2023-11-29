@@ -11,4 +11,5 @@ export interface User
     password: string;
     agreeMarketConditions: boolean;
     admin: boolean;
+    isActive: boolean;
 }

@@ -32,6 +32,7 @@ import { UserTableComponent } from '../app/tables/user-table/user-table.componen
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { LogOutComponent } from '../app/authorization/log-out/log-out.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     ModuleDeleteComponent,
     RegistrationComponent,
     SignUpComponent,
-    UserTableComponent
+    UserTableComponent,
+    LogOutComponent
   ],
   imports: [
     BrowserModule,

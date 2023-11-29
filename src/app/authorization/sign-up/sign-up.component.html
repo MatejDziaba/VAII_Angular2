@@ -8,9 +8,9 @@
                 <div class="form needs-validation was-validated" novalidate="">
                     <h2>Prihlásenie uživateľa</h2>
                       <div class="col-mt-3">
-                        <label for="validationCustomUsername" class="form-label">email&commat;</label>
+                        <label for="validationCustomUsername" class="form-label">Email&commat;</label>
                         <div class="input-group has-validation">
-                          <input type="text" class="form-control" id="validationCustomUsername" placeholder="jankohrasko@gmail.com" aria-describedby="inputGroupPrepend" required="" wfd-id="id2">
+                          <input type="text" class="form-control" #inputEmail id="validationCustomUsername" placeholder="jankohrasko@gmail.com" aria-describedby="inputGroupPrepend" required="" wfd-id="id2">
                           <div class="invalid-feedback">
                             Prosím vložte email.
                           </div>
@@ -18,21 +18,23 @@
                       </div>
 
                       <div class="col-mt-3">
-                        <label for="validationCustom05" class="form-label">Nové heslo</label>
-                        <input type="text" class="form-control" placeholder="NoveHeslo1.!" id="validationCustom05" required="" wfd-id="id4">
+                        <label for="validationCustom05" class="form-label">Heslo</label>
+                        <input type="text" class="form-control" #inputPassword placeholder="NoveHeslo1.!" id="validationCustom05" required="" wfd-id="id4">
                         <div class="invalid-feedback">
                           Heslo musí byť zadané.
                         </div>
                       </div>
                     
                       <div class="col-12" style="margin-top: 10px;">
-                        <button mat-flat-button color="primary" type="button" class="" (click)="redirectToAnotherPage()" data-bs-dismiss="modal">Prihlásiť sa</button>
+                        <button mat-flat-button color="primary" type="button" class="" (click)="signUpUser(inputEmail.value, inputPassword.value)" data-bs-dismiss="modal">Prihlásiť sa</button>
                       </div>
-                   
                     </div>
             </div>
             <div class="col-md-6">
                 <div class="text-center mt-5"> <img src="https://i.imgur.com/98GXnDD.png" width="340"> </div>
+            </div>
+            <div class="col-md-6" style="margin-top: 60px; margin-left: 500px;">
+              <button mat-flat-button color="warn" (click)="routerToRegistration()" type="submit" class="" data-bs-dismiss="modal">Registrovať sa</button>
             </div>
         </div>
     </div>

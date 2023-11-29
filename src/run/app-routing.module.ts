@@ -11,6 +11,7 @@ import { ModuleDeleteComponent } from '../app/modules/module-delete/module-delet
 import { RegistrationComponent } from '../app/authorization/registration/registration.component';
 import { SignUpComponent } from '../app/authorization/sign-up/sign-up.component';
 import { UserTableComponent } from '../app/tables/user-table/user-table.component';
+import { LogOutComponent } from '../app/authorization/log-out/log-out.component';
 
 const routes: Routes = [
   {path: '', component: HomecomponentComponent},
@@ -24,7 +25,8 @@ const routes: Routes = [
   {path: 'module-delete', component: ModuleDeleteComponent},
   {path: 'registration', component: RegistrationComponent},
   {path: 'sign-up', component: SignUpComponent},
-  {path: 'user-table', component: UserTableComponent}
+  {path: 'user-table', component: UserTableComponent}, 
+  {path: 'log-out', component: LogOutComponent}
 ];
 
 @NgModule({

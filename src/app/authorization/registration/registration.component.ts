@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from '../../../service/user.service';
+import { UserStateService } from '../../../service/user-state.service';
 
 @Component({
   selector: 'app-registration',
@@ -10,8 +11,9 @@ import { UserService } from '../../../service/user.service';
 export class RegistrationComponent 
 {
   routerLinkPath: string = '/';
+  agree: boolean = false;
 
-  constructor(private router: Router, private userService: UserService) {}
+  constructor(private router: Router, private userService: UserService, private userStateService: UserStateService) {}
 
    private submitEventListener = (form: HTMLFormElement) => (event: Event) => {
     if ((<HTMLFormElement>event.target).checkValidity() === false) {
@@ -22,7 +24,7 @@ export class RegistrationComponent
   };
   
   ngOnInit(): void {
-    console.log(this.userService);
+    console.log(this.userService.getUsers());
     // Loop over them and prevent submission
     Array.prototype.filter.call(document.getElementsByClassName('needs-validation'), (form: HTMLFormElement) => {
       form.addEventListener('submit', this.submitEventListener(form), false);
@@ -47,12 +49,20 @@ export class RegistrationComponent
 
   setRouterOnSignUp() 
   {
-    this.router.navigate(['/sign-up']);
+    console.log(this.userStateService.getActualUser());
+    if (this.userStateService.getActualUser() === null) 
+    {
+      this.router.navigate(['/sign-up']);
+    } else 
+    {
+      this.router.navigate(['/log-out']);
+    }
+    
   }
 
   addUser(name: string, surname: string, email: string, 
     city: string, ulica: string, state: string, 
-    psc: string, password1: string, password2: string, agreeMarketConditions: boolean) 
+    psc: string, password1: string, password2: string, agreeMarketConditions: string) 
   {
     console.log(agreeMarketConditions)
     let succesfullAdded = false;
@@ -60,9 +70,12 @@ export class RegistrationComponent
     {
       if (password1 === password2) 
       {
-        this.userService.addUser(name, surname, email, city, ulica, state, psc, password1, agreeMarketConditions);
-        this.routerLinkPath = '/sign-up';
-        succesfullAdded = true;
+        if (this.agree === true) 
+        {
+          this.userService.addUser(name, surname, email, city, ulica, state, psc, password1, this.agree);
+          this.routerLinkPath = '/sign-up';
+          succesfullAdded = true;
+        }
       }
     }
 
@@ -70,5 +83,19 @@ export class RegistrationComponent
     {
       this.redirectToAnotherPage();
     }
+  }
+
+  setAgree(event: any): void 
+  {
+    if (this.agree === false) 
+    {
+      console.log('setAgree: true');
+      this.agree = true;
+    } else 
+    {
+      console.log('setAgree: false');
+      this.agree = false;
+    }
+
   }
 }
