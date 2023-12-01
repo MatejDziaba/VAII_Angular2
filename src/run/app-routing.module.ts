@@ -12,11 +12,13 @@ import { RegistrationComponent } from '../app/authorization/registration/registr
 import { SignUpComponent } from '../app/authorization/sign-up/sign-up.component';
 import { UserTableComponent } from '../app/tables/user-table/user-table.component';
 import { LogOutComponent } from '../app/authorization/log-out/log-out.component';
+import { BicykleComponent } from '../app/Catalog/Bicykle/bicykle/bicykle.component';
 
 const routes: Routes = [
   {path: '', component: HomecomponentComponent},
   {path: 'homecomponent', component: HomecomponentComponent},
   {path: 'catalogcomponent', component: CatalogcomponentComponent},
+  {path: 'bicykle', component: BicykleComponent},
   {path: 'b-admin', component: BAdminComponent},
   {path: 'module-add', component: ModuleAddComponent},
   {path: 'module-upload', component: ModuleUploadComponent},

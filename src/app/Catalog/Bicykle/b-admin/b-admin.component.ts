@@ -11,10 +11,8 @@ import { ProductStateService } from '../../../../service/product-state.service';
   templateUrl: './b-admin.component.html',
   styleUrl: './b-admin.component.css'
 })
-export class BAdminComponent {
-  isIconHidden: boolean = false;
-  colorIntensity: number = 100;
-  
+export class BAdminComponent 
+{
   selectedProduct?: Product;
   products: Product[] = [];
 

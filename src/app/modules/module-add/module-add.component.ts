@@ -102,6 +102,30 @@ export class ModuleAddComponent {
     if (typProduct === TYPEPRODUCT.ElectroBicycle) {
       this.pomTypProduct = TYPEPRODUCT.ElectroBicycle;
     }
+    if (typProduct === TYPEPRODUCT.HorskyBicycle) {
+      this.pomTypProduct = TYPEPRODUCT.HorskyBicycle;
+    }
+    if (typProduct === TYPEPRODUCT.CestnyBicycle) {
+      this.pomTypProduct = TYPEPRODUCT.CestnyBicycle;
+    }
+    if (typProduct === TYPEPRODUCT.KrosovyBicycle) {
+      this.pomTypProduct = TYPEPRODUCT.KrosovyBicycle;
+    }
+    if (typProduct === TYPEPRODUCT.MestkyBicycle) {
+      this.pomTypProduct = TYPEPRODUCT.MestkyBicycle;
+    }
+    if (typProduct === TYPEPRODUCT.TrekingBicycle) {
+      this.pomTypProduct = TYPEPRODUCT.TrekingBicycle;
+    }
+    if (typProduct === TYPEPRODUCT.GravelCyklotrosBicycle) {
+      this.pomTypProduct = TYPEPRODUCT.GravelCyklotrosBicycle;
+    }
+    if (typProduct === TYPEPRODUCT.DetskyBicycle) {
+      this.pomTypProduct = TYPEPRODUCT.DetskyBicycle;
+    }
+    if (typProduct === TYPEPRODUCT.DirtBMXBicycle) {
+      this.pomTypProduct = TYPEPRODUCT.DirtBMXBicycle;
+    }
   }
 
   redirectToAnotherPage() {

@@ -19,7 +19,14 @@ export class ModuleUploadComponent
 
   typeOfProducts = [
     { value: TYPEPRODUCT.Bicycle },
-    { value: TYPEPRODUCT.ElectroBicycle }
+    { value: TYPEPRODUCT.ElectroBicycle },
+    { value: TYPEPRODUCT.CestnyBicycle },
+    { value: TYPEPRODUCT.KrosovyBicycle },
+    { value: TYPEPRODUCT.MestkyBicycle },
+    { value: TYPEPRODUCT.TrekingBicycle },
+    { value: TYPEPRODUCT.GravelCyklotrosBicycle },
+    { value: TYPEPRODUCT.DetskyBicycle },
+    { value: TYPEPRODUCT.DirtBMXBicycle }
   ];
 
   @Input() product: Product | undefined;
@@ -78,6 +85,30 @@ export class ModuleUploadComponent
     }
     if (typProduct === TYPEPRODUCT.ElectroBicycle) {
       this.pomTypProduct = TYPEPRODUCT.ElectroBicycle;
+    }
+    if (typProduct === TYPEPRODUCT.HorskyBicycle) {
+      this.pomTypProduct = TYPEPRODUCT.HorskyBicycle;
+    }
+    if (typProduct === TYPEPRODUCT.CestnyBicycle) {
+      this.pomTypProduct = TYPEPRODUCT.CestnyBicycle;
+    }
+    if (typProduct === TYPEPRODUCT.KrosovyBicycle) {
+      this.pomTypProduct = TYPEPRODUCT.KrosovyBicycle;
+    }
+    if (typProduct === TYPEPRODUCT.MestkyBicycle) {
+      this.pomTypProduct = TYPEPRODUCT.MestkyBicycle;
+    }
+    if (typProduct === TYPEPRODUCT.TrekingBicycle) {
+      this.pomTypProduct = TYPEPRODUCT.TrekingBicycle;
+    }
+    if (typProduct === TYPEPRODUCT.GravelCyklotrosBicycle) {
+      this.pomTypProduct = TYPEPRODUCT.GravelCyklotrosBicycle;
+    }
+    if (typProduct === TYPEPRODUCT.DetskyBicycle) {
+      this.pomTypProduct = TYPEPRODUCT.DetskyBicycle;
+    }
+    if (typProduct === TYPEPRODUCT.DirtBMXBicycle) {
+      this.pomTypProduct = TYPEPRODUCT.DirtBMXBicycle;
     }
   }
 

@@ -15,15 +15,18 @@ export class NavbarcomponentComponent
 
   ngOnInit(): void 
   {
+    this.autorization();
+  }
+
+  private autorization() 
+  {
     let actualUser = this.userStateService.getActualUser();
-    if (actualUser !== null) 
-    {
+    if (actualUser !== null) {
       this.userName = actualUser.name;
-      if (actualUser.admin == true) 
-      {
+      if (actualUser.admin == true) {
         this.userAdmin = 'admin';
-      } else 
-      {
+      }
+      else {
         this.userAdmin = 'customer';
       }
     }

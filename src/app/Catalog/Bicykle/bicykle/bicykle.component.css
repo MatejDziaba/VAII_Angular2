@@ -208,10 +208,17 @@ pb-4, .py-4 {
     font-size: 12px;
     margin: 0;
 }
+
 .styleButtonProduct:hover
 {
     background-color: #ee9c4a !important;
     border-color: #ee9c4a !important;
+}
+
+.styleButton_Add_Product:hover
+{
+    background-color: #cf0046 !important;
+    border-color: #cf0046 !important;
 }
 
 .d-none.d-sm-inline.shopListDropDown
@@ -372,7 +379,24 @@ pb-4, .py-4 {
     text-align: center;
     width: 8rem;
     border-radius: 200px;
-    background-color: #0d6efd;
+    color: white;
+}
+
+.center {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
+
+.styleButton_Add_Product
+{
+    text-align: center;
+    width: 20rem;
+    border-radius: 150px;
+    background-color: #ff4081;
     color: white;
 }
 
@@ -428,6 +452,10 @@ pb-4, .py-4 {
     color: white!important;
 }
 
+.btn.btn-primary.styleButton_Add_Product.buttColorAdd {
+    color: white!important;
+}
+
 .pt-2 {
     font-size: 30px;
 }
@@ -442,6 +470,23 @@ pb-4, .py-4 {
     padding-top: 10px !important;
     padding-left: 0px !important;
 }
+
+.discounted-price {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+.old-price {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 6px;
+    color: #cf0046;
+    font-weight: 700;
+    font-size: 1rem;
+}
+
 
 
 

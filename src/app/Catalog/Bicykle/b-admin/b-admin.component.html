@@ -1,4 +1,4 @@
-<app-navbar-admin></app-navbar-admin>
+<app-navbarcomponent></app-navbarcomponent>
 
 <ol class="breadcrumb breadcrumb-chevron p-3 breadcrumb_style justify-content-sm-center">
     <li class="breadcrumb-item">
@@ -120,7 +120,9 @@
           <div class="container">
             <div class="row">
               <ng-container *ngFor="let product of products; let i = index">
-                <div *ngIf="product.type == 'bicykel' || 'elektroBicykel'" class="col-lg-4 col-sm-6 d-flex flex-column align-items-center justify-content-center product-item my-3" [style.opacity]="colorIntensity / 100">
+                <div *ngIf="product.type == 'bicykel' || 'elektroBicykel' || 'horskyBicykel' || 'cestnyBicykel' || 
+                       'krosovyBicykel' || 'mestkyBicykel' || 'trekingBicykel' || 'gravelCyklotrosBicykel' || 'detskyBicykel' || 'dirtBMXBicykel' "
+                       class="col-lg-4 col-sm-6 d-flex flex-column align-items-center justify-content-center product-item my-3">
                   <div class="product">
                     <img class="imgProduct" src={{product.img}} alt="">
                   </div>
