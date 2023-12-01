@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" href="../../../css/productsNext.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="../../../css/index.css">
+  <link rel="stylesheet" href="../../../css/breadCrumb.css">
+  <link rel="stylesheet" href="../../../css/mainNavBar.css">
+  <link rel="stylesheet" href="../../../css/indexShop.css">
+  <link rel="stylesheet" href="../../../css/indexCatalog.css">
+</head>
+<body>
+
+<div id="shared-content1"></div>
+<script>
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', '../../../html/baseContainer/navBar.html', true);
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4 && xhr.status === 200) {
+      document.getElementById('shared-content1').innerHTML = xhr.responseText;
+    }
+  };
+  xhr.send();
+</script>
+
+<ol class="breadcrumb breadcrumb-chevron p-3 breadcrumb_style justify-content-sm-center">
+  <li class="breadcrumb-item">
+    <a class="link-body-emphasis" href="../../indexHome.html">
+      <i class="bi bi-house-door-fill"></i>
+      <span class="visually-hidden">Domov</span>
+    </a>
+  </li>
+  <li class="breadcrumb-item">
+    <a class="link-body-emphasis fw-semibold text-decoration-none" href="../indexCatalog.html">Obchod</a>
+  </li>
+  <li class="breadcrumb-item">
+    <a class="link-body-emphasis fw-semibold text-decoration-none" href="../../Catalog/Bicykle/indexBicykle.html">Bicykle</a>
+  </li>
+  <li class="breadcrumb-item">
+    <a class="link-body-emphasis fw-semibold text-decoration-none" href="../../../html/Catalog/Bicykle/indexKrosoveBicykle.html">Krosové bicykle</a>
+  </li>
+</ol>
+
+<div class="container p-3 centerOnMobile">
+  <div class="row align-items-right">
+    <div class="col-sm-3 d-flex flex-column flex-shrink-0 p-3 bg-light">
+      <div id="shared-content3"></div>
+      <script>
+        var xhr3 = new XMLHttpRequest();
+        xhr3.open('GET', '../../../html/baseContainer/sideBar.html', true);
+        xhr3.onreadystatechange = function () {
+          if (xhr3.readyState === 4 && xhr3.status === 200) {
+            document.getElementById('shared-content3').innerHTML = xhr3.responseText;
+          }
+        };
+        xhr3.send();
+      </script>
+    </div>
+
+    <div class="col-sm-9" style="padding-left: 40px;">
+
+      <div class="shop-list-top d-flex justify-content-between align-items-center mb-2">
+        <div id="shop-breadcrumbs-mobile" class="d-sm-none"></div>
+        <h2 class="m-0 d-none d-sm-block">Produkty <span class="text-muted num-products-total">(678)</span></h2>
+
+
+        <div id="shop-sorting" class="dropdown dropdown-plain ml-3 ml-sm-5">
+          <span class="d-none d-sm-inline-block align-middle">Zoradenie:</span>
+          <a href="#" class="nav-link link-dark dropdown-toggle dropdown-toggle-no-arrow-mobile d-inline-block align-middle" data-bs-toggle="dropdown" aria-expanded="false">
+            <span class="d-none d-sm-inline shopListDropDown">Od najobľúbenejších                                                                                                                                                                                                                                                                                                                          </span>
+            <i class="material-icons big d-sm-none">sort</i>
+          </a>
+          <ul class="dropdown-menu text-small shadow">
+            <li><a class="dropdown-item" href="#">Od najobľubenejších</a></li>
+            <li><a class="dropdown-item" href="#">Od najdrahších</a></li>
+            <li><a class="dropdown-item" href="#">Od najlacnejších</a></li>
+            <li><a class="dropdown-item" href="#">Podľa názvu A-Z</a></li>
+            <li><a class="dropdown-item" href="#">Od najnovších</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="wrapper-pink-light">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-4 col-sm-6 d-flex flex-column align-items-center justify-content-center product-item my-3">
+              <div class="product">
+                <img class="imgProduct" src="../../../img/catalog/Bussiness/bicykle/gravel_A_Cyklokros/CTM1.webp" alt="">
+              </div>
+              <div class="tag bg-red"><i class="bi bi-percent"></i> Akcia</div>
+              <div class="title pt-4 pb-1">CTM 1</div>
+              <div class="price">1580&euro;</div>
+              <a href="#" class="btn  btn-primary styleButtonProduct"><i class="bi bi-bag-fill"></i> Kúpiť</a>
+            </div>
+            <div class="col-lg-4 col-sm-6 d-flex flex-column align-items-center justify-content-center product-item my-3">
+              <div class="product">
+                <img class="imgProduct" src="../../../img/catalog/Bussiness/bicykle/gravel_A_Cyklokros/GHOST1.webp" alt="">
+              </div>
+              <div class="tag bg-red"><i class="bi bi-percent"></i> Akcia</div>
+              <div class="title pt-4 pb-1">GHOST 1 </div>
+              <div class="price">870&euro;</div>
+              <a href="#" class="btn  btn-primary styleButtonProduct"><i class="bi bi-bag-fill"></i> Kúpiť</a>
+            </div>
+            <div class="col-lg-4 col-sm-6 d-flex flex-column align-items-center justify-content-center product-item my-3">
+              <div class="product">
+                <img class="imgProduct" src="../../../img/catalog/Bussiness/bicykle/gravel_A_Cyklokros/GHOST2.webp" alt="">
+              </div>
+              <div class="title pt-4 pb-1">GHOST 2</div>
+              <div class="price">940&euro;</div>
+              <a href="#" class="btn  btn-primary styleButtonProduct"><i class="bi bi-bag-fill"></i> Kúpiť</a>
+            </div>
+            <div class="col-lg-4 col-sm-6 d-flex flex-column align-items-center justify-content-center product-item my-3">
+              <div class="product">
+                <img class="imgProduct" src="../../../img/catalog/Bussiness/bicykle/gravel_A_Cyklokros/KELLYS1.webp" alt="">
+              </div>
+              <div class="title pt-4 pb-1">KELLYS 1</div>
+              <div class="price">760&euro;</div>
+              <a href="#" class="btn  btn-primary styleButtonProduct"><i class="bi bi-bag-fill"></i> Kúpiť</a>
+            </div>
+            <div class="col-lg-4 col-sm-6 d-flex flex-column align-items-center justify-content-center product-item my-3">
+              <div class="product">
+                <img class="imgProduct" src="../../../img/catalog/Bussiness/bicykle/gravel_A_Cyklokros/KELLYS2.webp" alt="">
+              </div>
+              <div class="title pt-4 pb-1">KELLYS 2</div>
+              <div class="price">630&euro;</div>
+              <a href="#" class="btn  btn-primary styleButtonProduct"><i class="bi bi-bag-fill"></i> Kúpiť</a>
+            </div>
+            <div class="col-lg-4 col-sm-6 d-flex flex-column align-items-center justify-content-center product-item my-3">
+              <div class="product">
+                <img class="imgProduct" src="../../../img/catalog/Bussiness/bicykle/gravel_A_Cyklokros/KELLYS3.webp" alt="">
+              </div>
+              <div class="title pt-4 pb-1">KELLYS 3</div>
+              <div class="price">900&euro;</div>
+              <a href="#" class="btn  btn-primary styleButtonProduct"><i class="bi bi-bag-fill"></i> Kúpiť</a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="d-flex justify-content-sm-between my-4 my-sm-5">
+        <div class="polozka d-none d-sm-block">
+          1800 položiek
+        </div>
+        <a href="" class="btn btn-primary btn-mobile-full-width mb-2 mb-sm-0 paginationButton">
+          Načítať ďalšie
+        </a>
+        <div class="pagination">
+          <a class="" href="">
+            <i class="bi bi-arrow-left"></i>
+          </a>
+          <span class="pagination span">1</span>
+          <a class="pagination a" href="">2</a>
+          <a class="pagination a" href="">3</a>
+          <span>…</span>
+          <a class="pagination a" href="">38</a>
+          <a class="" href="">
+            <i class="bi bi-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+<div id="shared-content2"></div>
+<script>
+  var xhr2 = new XMLHttpRequest();
+  xhr2.open('GET', '../../../html/baseContainer/footer.html', true);
+  xhr2.onreadystatechange = function () {
+    if (xhr2.readyState === 4 && xhr2.status === 200) {
+      document.getElementById('shared-content2').innerHTML = xhr2.responseText;
+    }
+  };
+  xhr2.send();
+</script>
+</body>
+</html>

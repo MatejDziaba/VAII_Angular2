@@ -1,0 +1,85 @@
+<app-b-admin></app-b-admin>
+
+<form class="needs-validation" novalidate>
+  <div class="modal modal-sheet show d-flex align-items-center justify-content-center" style="background: rgba(0, 0, 0, 0.5);" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content rounded-6 shadow">
+        <div class="modal-header border-bottom-0">
+          <h5 class="modal-title fs-5">Pridanie produktu, zadaj:</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" (click)="redirectToAnotherPage()" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <label class="input-group-text" for="inputGroupSelect01">Typ</label>
+            </div>
+            <select class="custom-select" #typInput>
+              <option *ngFor="let typeOfProduct of typeOfProducts">{{ typeOfProduct.value }}</option>
+            </select>
+          </div>
+
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">Názov </span>
+              <input class="form-control" #nameProductInput placeholder="CTM ROLEBRAKER1" aria-label="Username" aria-describedby="basic-addon1" required>
+              <div class="invalid-feedback">
+                Názov produktu musí byť zadaný.
+              </div>
+          </div>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">Značka </span>
+              <input class="form-control" #markUpInput placeholder="CTM" aria-label="Username" aria-describedby="basic-addon1" required>
+              <div class="invalid-feedback">
+                Značka produktu musí byť zadaná.
+              </div>
+          </div>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">Cena </span>
+              <input class="form-control" #priceProductInput placeholder="765" aria-label="Username" aria-describedby="basic-addon1" required>
+              <div class="invalid-feedback">
+                Cena produktu musí byť zadaná.
+              </div>
+          </div>
+          <div class="input-group mb-3">
+              <span class="input-group-text" id="basic-addon1">Zľava% </span>
+              <input class="form-control" #discountInput placeholder="5" aria-label="Username" aria-describedby="basic-addon1" required>
+              <div class="invalid-feedback">
+                Akcia produktu musí byť zadaná.
+              </div>
+           </div>
+           <div class="input-group">
+              <input type="file" class="form-control" (change)="onFileSelected($event)"  aria-describedby="basic-addon1" required>
+              <div class="invalid-feedback">
+                Fotka produktu musí byť zadaná.
+              </div>
+          </div>
+          
+          
+        </div>
+        <div class="modal-footer justify-content-between">
+          <button mat-flat-button color="warn" type="button" class="" (click)="redirectToAnotherPage()" data-bs-dismiss="modal">Zruš pridanie</button>
+          <button mat-flat-button color="primary" type="submit" class="pridajProdukt" (click)="addProduct(typInput.value, nameProductInput.value, markUpInput.value, priceProductInput.value, discountInput.value)">Pridaj produkt</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+<!-- <form>
+  <h4>mat-select</h4>
+  <mat-form-field>
+    <mat-label>Favorite food</mat-label>
+    <mat-select [(ngModel)]="selectedValue" name="food">
+      <mat-option *ngFor="let food of foods" [value]="food.viewValue">{{ food.viewValue }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</form> -->
+
+
+
+
+
+  
+        
+
+        
+      

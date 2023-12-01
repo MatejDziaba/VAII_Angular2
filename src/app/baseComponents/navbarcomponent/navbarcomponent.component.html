@@ -1,0 +1,58 @@
+<div class="superNav border-bottom py-2 bg-light">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 centerOnMobile">
+          <select  class="me-3 border-0 bg-light">
+            <option value="sk">SK</option>
+          </select>
+          <span class="d-none d-lg-inline-block d-md-inline-block d-sm-inline-block d-xs-none me-3"><strong>infoBestBike&#64;gmail.com</strong></span>
+          <span class="me-3"><i class="fa-solid fa-phone me-1 text-warning"></i> <strong>+421 948 230 145</strong></span>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 d-none d-lg-block d-md-block-d-sm-block d-xs-none text-end">
+          <span class="me-3"><i class="fa-solid fa-file  text-muted me-2"></i><a class="text-muted" href="#">Policy</a></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <nav class="navbar navbar-expand-lg bg-white navbar-light p-3 shadow-sm">
+    <div class="container">
+      <a class="navbar-brand" routerLink="/homecomponent"><i class="fa-solid fa-shop me-2"></i><i class="bi bi-gear mainNavBarMarkUp"></i><strong>BIKE SHOP</strong></a>
+      <div class="mx-auto my-3 d-lg-none d-sm-block d-xs-block">
+        <div class="input-group">
+          <a class="nav-link mx-2 text-uppercase" href="#"><i class="fa-solid fa-cart-shopping me-1"></i><i class="bi bi-bag-plus-fill"></i></a>
+        </div>
+      </div>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class=" collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ms-auto ">
+          <li class="nav-item">
+            <a *ngIf=" this.userAdmin === 'none' " class="nav-link mx-2 text-uppercase" routerLink="/sign-up"><svg xmlns="http://www.w3.org/2000/svg" height="16" width="20" viewBox="0 0 640 512"><!--!Font Awesome Free 6.5.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.--><path d="M96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM0 482.3C0 383.8 79.8 304 178.3 304h91.4C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7H29.7C13.3 512 0 498.7 0 482.3zM504 312V248H440c-13.3 0-24-10.7-24-24s10.7-24 24-24h64V136c0-13.3 10.7-24 24-24s24 10.7 24 24v64h64c13.3 0 24 10.7 24 24s-10.7 24-24 24H552v64c0 13.3-10.7 24-24 24s-24-10.7-24-24z"/></svg></a>
+            <a *ngIf=" this.userAdmin === 'customer' " class="nav-link mx-2 text-uppercase" routerLink="/log-out"><i class="bi bi-person-circle" style="color: rgb(43, 43, 219);"></i> {{this.userName}}</a>
+            <a *ngIf=" this.userAdmin === 'admin' " class="nav-link mx-2 text-uppercase" routerLink="/log-out"><i class="bi bi-person-fill-gear" style="color: rgb(43, 43, 219);"></i> {{this.userName}}</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link mx-2 text-uppercase" routerLink="/catalogcomponent">Obchod</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link mx-2 text-uppercase" routerLink="/sign-up">Bazár</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link mx-2 text-uppercase" href="/user-table">Komunita</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link mx-2 text-uppercase" href="../shoppingPack/indexShoppingCart.html"><i class="fa-solid fa-cart-shopping me-1"></i><i class="bi bi-bag-plus-fill"></i></a>
+          </li>
+        </ul>
+        <div class="ms-auto d-none d-lg-block">
+          <div class="input-group">
+            <span class="border-warning input-group-text bg-warning text-white"><i class="fa-solid fa-magnifying-glass"></i></span>
+            <input type="text" class="form-control" style="color:#7a7a7a">
+            <button class="btn btn-warning text-white">Hľadaj</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>

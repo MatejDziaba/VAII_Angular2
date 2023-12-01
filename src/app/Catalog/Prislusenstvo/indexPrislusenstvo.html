@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../../../css/index.css">
+    <link rel="stylesheet" href="../../../css/breadCrumb.css">
+    <link rel="stylesheet" href="../../../css/mainNavBar.css">
+    <link rel="stylesheet" href="../../../css/indexShop.css">
+    <link rel="stylesheet" href="../../../css/indexCatalog.css">
+
+</head>
+<body>
+
+<div id="shared-content1"></div>
+<script>
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', '../../../html/baseContainer/navBar.html', true);
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            document.getElementById('shared-content1').innerHTML = xhr.responseText;
+        }
+    };
+    xhr.send();
+</script>
+
+<ol class="breadcrumb breadcrumb-chevron p-3 breadcrumb_style justify-content-sm-center">
+    <li class="breadcrumb-item">
+        <a class="link-body-emphasis" href="../../indexHome.html">
+            <i class="bi bi-house-door-fill"></i>
+            <span class="visually-hidden">Domov</span>
+        </a>
+    </li>
+    <li class="breadcrumb-item">
+        <a class="link-body-emphasis fw-semibold text-decoration-none" href="../indexCatalog.html">Obchod</a>
+    </li>
+    <li class="breadcrumb-item">
+        <a class="link-body-emphasis fw-semibold text-decoration-none" href="indexPrislusenstvo.html">Príslušenstvo</a>
+    </li>
+</ol>
+
+<div class="container p-3 centerOnMobile">
+    <div class="row align-items-right">
+        <div class="col-sm-3 d-flex flex-column flex-shrink-0 p-3 bg-light">
+            <div id="shared-content3"></div>
+            <script>
+                var xhr3 = new XMLHttpRequest();
+                xhr3.open('GET', '../../../html/baseContainer/sideBar.html', true);
+                xhr3.onreadystatechange = function () {
+                    if (xhr3.readyState === 4 && xhr3.status === 200) {
+                        document.getElementById('shared-content3').innerHTML = xhr3.responseText;
+                    }
+                };
+                xhr3.send();
+            </script>
+        </div>
+
+        <div class="col-sm-9" style="padding-left: 40px;">
+
+            <h2 class="pt-2">Kategórie produktov</h2>
+            <div class="bordered-categories bordered-categories--shop row pb-4">
+                <div class="col-6 col-sm-4 col-lg-3 py-1 py-sm-2 px-1 px-sm-2">
+                    <a href="../Bicykle/indexBicykle.html">
+                        <span><img src="../../../img/catalog/UVOD/kategoria_produktov/Prislusenstvo/cyklopocitaceAgps.webp" alt="" loading="lazy"></span>
+                        Cyklopočítače a GPS    </a>
+
+                </div>
+                <div class="col-6 col-sm-4 col-lg-3 py-1 py-sm-2 px-1 px-sm-2">
+                    <a href="../Elektrobicykle/indexElektroBicykle.html">
+                        <span><img src="../../../img/catalog/UVOD/kategoria_produktov/Prislusenstvo/sportoveHodinky.webp" alt="" loading="lazy"></span>
+                        Športové hodinky    </a>
+
+                </div>
+                <div class="col-6 col-sm-4 col-lg-3 py-1 py-sm-2 px-1 px-sm-2">
+                    <a href="../Komponenty/indexKomponenty.html">
+                        <span><img src="../../../img/catalog/UVOD/kategoria_produktov/Prislusenstvo/svetla.webp" alt="" loading="lazy"></span>
+                        Svetlá    </a>
+
+                </div>
+                <div class="col-6 col-sm-4 col-lg-3 py-1 py-sm-2 px-1 px-sm-2">
+                    <a href="../PlasteADuse/indexPlasteADuse.html">
+                        <span><img src="../../../img/catalog/UVOD/kategoria_produktov/Prislusenstvo/drziakyBicyklov.webp" alt="" loading="lazy"></span>
+                        Držiaky bicyklov    </a>
+
+                </div>
+                <div class="col-6 col-sm-4 col-lg-3 py-1 py-sm-2 px-1 px-sm-2">
+                    <a href="../KolesaARafiky/indexKolesaARafiky.html">
+                        <span><img src="../../../img/catalog/UVOD/kategoria_produktov/Prislusenstvo/nosiceNaAuto.webp" alt="" loading="lazy"></span>
+                        Nosiče na auto    </a>
+
+                </div>
+                <div class="col-6 col-sm-4 col-lg-3 py-1 py-sm-2 px-1 px-sm-2">
+                    <a href="../TretryAObuv/indexTretryAObuv.html">
+                        <span><img src="../../../img/catalog/UVOD/kategoria_produktov/Prislusenstvo/flase.png" alt="" loading="lazy"></span>
+                        Fľaše    </a>
+
+                </div>
+                <div class="col-6 col-sm-4 col-lg-3 py-1 py-sm-2 px-1 px-sm-2">
+                    <a href="../OblecenieABatohy/indexOblecenieABatohy.html">
+                        <span><img src="../../../img/catalog/UVOD/kategoria_produktov/Prislusenstvo/kosiky.webp" alt="" loading="lazy"></span>
+                        Košíky    </a>
+
+                </div>
+                <div class="col-6 col-sm-4 col-lg-3 py-1 py-sm-2 px-1 px-sm-2">
+                    <a href="../../indexShop.html">
+                        <span><img src="../../../img/catalog/UVOD/kategoria_produktov/Prislusenstvo/blatniky.webp" alt="" loading="lazy"></span>
+                        Blatníky    </a>
+
+                </div>
+                <div class="col-6 col-sm-4 col-lg-3 py-1 py-sm-2 px-1 px-sm-2">
+                    <a href="../../indexShop.html">
+                        <span><img src="../../../img/catalog/UVOD/kategoria_produktov/Prislusenstvo/zvonceky.webp" alt="" loading="lazy"></span>
+                        Zvončeky    </a>
+
+                </div>
+                <div class="col-6 col-sm-4 col-lg-3 py-1 py-sm-2 px-1 px-sm-2">
+                    <a href="../../indexShop.html">
+                        <span><img src="../../../img/catalog/UVOD/kategoria_produktov/Prislusenstvo/drziakyNaTelefonAKameru.webp" alt="" loading="lazy"></span>
+                        Držiaky na telefón a kameru    </a>
+
+                </div>
+                <div class="col-6 col-sm-4 col-lg-3 py-1 py-sm-2 px-1 px-sm-2">
+                    <a href="../../indexShop.html">
+                        <span><img src="../../../img/catalog/UVOD/kategoria_produktov/Prislusenstvo/ochranaRamu.webp" alt="" loading="lazy"></span>
+                        Ochrana rámu    </a>
+
+                </div>
+                <div class="col-6 col-sm-4 col-lg-3 py-1 py-sm-2 px-1 px-sm-2">
+                    <a href="../../indexShop.html">
+                        <span><img src="../../../img/catalog/UVOD/kategoria_produktov/Prislusenstvo/zamky.webp" alt="" loading="lazy"></span>
+                        Zámky    </a>
+
+                </div>
+                <div class="col-6 col-sm-4 col-lg-3 py-1 py-sm-2 px-1 px-sm-2">
+                    <a href="../../indexShop.html">
+                        <span><img src="../../../img/catalog/UVOD/kategoria_produktov/Prislusenstvo/stojanyNaBicykel.webp" alt="" loading="lazy"></span>
+                        Stojany na bicykel    </a>
+
+                </div>
+                <div class="col-6 col-sm-4 col-lg-3 py-1 py-sm-2 px-1 px-sm-2">
+                    <a href="../../indexShop.html">
+                        <span><img src="../../../img/catalog/UVOD/kategoria_produktov/Prislusenstvo/taskyPuzdraAObaly.webp" alt="" loading="lazy"></span>
+                        Tašky, puzdrá a obaly    </a>
+
+                </div>
+                <div class="col-6 col-sm-4 col-lg-3 py-1 py-sm-2 px-1 px-sm-2">
+                    <a href="../../indexShop.html">
+                        <span><img src="../../../img/catalog/UVOD/kategoria_produktov/Prislusenstvo/nosiceAkose.webp" alt="" loading="lazy"></span>
+                        Nosiče a koše    </a>
+
+                </div>
+                <div class="col-6 col-sm-4 col-lg-3 py-1 py-sm-2 px-1 px-sm-2">
+                    <a href="../../indexShop.html">
+                        <span><img src="../../../img/catalog/UVOD/kategoria_produktov/Prislusenstvo/detskeSedackyAVoziky.webp" alt="" loading="lazy"></span>
+                        Detské sedačky a vozíky    </a>
+
+                </div>
+                <div class="col-6 col-sm-4 col-lg-3 py-1 py-sm-2 px-1 px-sm-2">
+                    <a href="../../indexShop.html">
+                        <span><img src="../../../img/catalog/UVOD/kategoria_produktov/Prislusenstvo/detskePrislusenstvo.webp" alt="" loading="lazy"></span>
+                        Detské príslušenstvo   </a>
+
+                </div>
+                <div class="col-6 col-sm-4 col-lg-3 py-1 py-sm-2 px-1 px-sm-2">
+                    <a href="../../indexShop.html">
+                        <span><img src="../../../img/catalog/UVOD/kategoria_produktov/Prislusenstvo/baterky.webp" alt="" loading="lazy"></span>
+                        Baterky    </a>
+
+                </div>
+                <div class="col-6 col-sm-4 col-lg-3 py-1 py-sm-2 px-1 px-sm-2">
+                    <a href="../../indexShop.html">
+                        <span><img src="../../../img/catalog/UVOD/kategoria_produktov/Prislusenstvo/tlacHryAVideo.webp" alt="" loading="lazy"></span>
+                        Tlač, hry a video   </a>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="container">
+    <div id="carouselExampleCaptions" class="carousel slide">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="../../../img/home/uvod/14.jpg" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <h1><strong>Perfektná torzná pevnosť</strong></h1>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="../../../img/home/uvod/5.jpeg" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <h1><strong>Žiadne šmejdy</strong></h1>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="../../../img/home/uvod/17.jpeg" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <h1><strong>Prekonavaj prekážky s nami</strong></h1>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</div>
+
+<div id="shared-content2"></div>
+<script>
+    var xhr2 = new XMLHttpRequest();
+    xhr2.open('GET', '../../../html/baseContainer/footer.html', true);
+    xhr2.onreadystatechange = function () {
+        if (xhr2.readyState === 4 && xhr2.status === 200) {
+            document.getElementById('shared-content2').innerHTML = xhr2.responseText;
+        }
+    };
+    xhr2.send();
+</script>
+</body>
+</html>
