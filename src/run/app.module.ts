@@ -10,6 +10,7 @@ import { MatButtonModule} from '@angular/material/button';
 import { MatFormFieldModule} from '@angular/material/form-field'; 
 
 
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from '../app/app.component';
@@ -56,6 +57,7 @@ import { LogOutComponent } from '../app/authorization/log-out/log-out.component'
     LogOutComponent
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule, 
