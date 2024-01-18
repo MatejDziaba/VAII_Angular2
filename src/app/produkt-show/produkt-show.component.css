@@ -105,9 +105,6 @@ b, strong {
     opacity: 1;
     color: #babdc2;
   }
-  .no-input-arrows input[type="number"] {
-    -moz-appearance: textfield;
-  }
   .input-cart-amount .form-control {
     max-width: 50px;
     font-weight: 500;
