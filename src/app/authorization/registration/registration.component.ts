@@ -73,8 +73,14 @@ export class RegistrationComponent
         if (this.agree === true) 
         {
           this.userService.addUser(name, surname, email, city, ulica, state, psc, password1, this.agree);
-          this.routerLinkPath = '/sign-up';
-          succesfullAdded = true;
+          if (this.userService.existUser()) 
+          {
+            this.router.navigate(['/sign-up-failure']);
+          } else 
+          {
+            this.routerLinkPath = '/sign-up';
+            succesfullAdded = true;
+          }
         }
       }
     }

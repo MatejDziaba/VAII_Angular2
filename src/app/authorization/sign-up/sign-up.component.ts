@@ -47,30 +47,48 @@ export class SignUpComponent
     this.router.navigate(['/']);
   }
 
-  signUpUser(email: string, password: string) 
-  {
-    if (this.userStateService.getActualUser() === null) 
-    {
-      const users = this.userService.getUsers();
-    
-      users.forEach((user) => {
-        if (user.email === email && user.password === password) 
-        {
-          user.isActive = true;
-          this.userStateService.setActualUser(user);
-          console.log('signUpUser: ', user);
-          this.userService.uploadUserState(user.id, user.name, user.surname, user.email,
-                                          user.city, user.ulica, user.state, user.psc, 
-                                          user.password, user.agreeMarketConditions,user.admin, true);
-          console.log('user state: ', this.userStateService.userActiveState);
-          this.router.navigate(['/']);
+  signUpUser(email: string, password: string) {
+    let userWasFound = false;
+    if (this.userStateService.getActualUser() === null) {
+      const subscription = this.userService.getUsers().subscribe({
+        next: (users: User[]) => {
+          users.forEach((user: User) => {
+            if (user.email === email && user.password === password) {
+              userWasFound = true;
+              user.isActive = true;
+              this.userStateService.setActualUser(user);
+              console.log('signUpUser: ', user.name);
+              this.userService.uploadUserState(user.id, user.name, user.surname, user.email,
+                user.city, user.ulica, user.state, user.psc,
+                user.password, user.agreeMarketConditions, user.admin, true);
+              console.log('user state: ', this.userStateService.userActiveState);
+              this.router.navigate(['/']);
+            }
+          });
+
+          // Po dokončení iterácie
+          if (!userWasFound) {
+            // Vypísať okno alebo vyvolať inú akciu, pretože používateľ nebol nájdený
+            console.log('Dany uzivatel neexistuje!');
+            this.userService.setUserInformationHeader("Prihlásenie bolo neúspešné");
+            this.userService.setUserInformationResult("Daný užívateľ neexistuje!");
+            this.router.navigate(['/sign-up-failure']);
+          }
+        },
+        error: (error: any) => {
+          console.error('Chyba pri získavaní používateľov:', error);
+          // Riešte chybu podľa potreby
+        },
+        complete: () => {
+          // Vykona sa niečo, keď sa observable dokončí, ak je to potrebné
         }
       });
-    } else 
-    {
-      console.log('Uz ste prihlaseny: ', this.userStateService.actualUser);
+    } else {
+      console.log('Už ste prihlásený: ', this.userStateService.actualUser);
     }
-  }
+}
+
+
 
   routerToRegistration() 
   {

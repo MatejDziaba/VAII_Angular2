@@ -117,7 +117,7 @@
                        'krosovyBicykel' || 'mestkyBicykel' || 'trekingBicykel' || 'gravelCyklotrosBicykel' || 'detskyBicykel' || 'dirtBMXBicykel' "
                        class="col-lg-4 col-sm-6 d-flex flex-column align-items-center justify-content-center product-item my-3">
                 <div class="product">
-                  <img class="imgProduct" src={{product.img}} alt="">
+                  <img class="imgProduct" src={{product.img}} (click)="setProduct(product)" alt="">
                 </div>
                 <div *ngIf="product.discount > 0" class="tag bg-red">{{product.discount}}<i class="bi bi-percent payingBack"></i> Akcia</div>
                 <div class="title pt-4 pb-1">{{product.nameProduct}}</div>                  

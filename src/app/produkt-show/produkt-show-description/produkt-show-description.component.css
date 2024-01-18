@@ -1,0 +1,19 @@
+.justify-content-between {
+    justify-content: space-between !important;
+  }
+  .d-flex {
+    display: flex !important;
+  }
+  .mt-2, .my-2 {
+    margin-top: 10px !important;
+  }
+  .container, .container-fluid, .container-xl, .container-lg, .container-md, .container-sm {
+    width: 100%;
+    padding-right: 10px;
+    padding-left: 10px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  .align-items-center {
+    align-items: center !important;
+  }

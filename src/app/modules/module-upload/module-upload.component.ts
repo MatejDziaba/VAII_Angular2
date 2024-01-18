@@ -62,6 +62,8 @@ export class ModuleUploadComponent
   uploadProduct(id: number, typProduct: string, nameProduct: string, markUpProduct: string, priceProduct: string, imgProduct: string, discountProduct: string) 
   {
     let succesModify = false;
+    let errorMessage = "";
+
     if (this.actionSetImg) 
     {
       this.newProductImg = imgProduct;
@@ -71,43 +73,39 @@ export class ModuleUploadComponent
       this.setTypeProduct(typProduct);
       this.productService.uploadProduct(id, this.pomTypProduct, nameProduct, markUpProduct, (parseInt(priceProduct) - (parseInt(priceProduct)*(parseInt(discountProduct)/100))), this.newProductImg, parseInt(discountProduct));
       succesModify = true;
+    } else {
+      errorMessage = "Please fill in all required fields.";
     }
 
     if (succesModify) 
     {
-      this.redirectToAnotherPage();
+      this.router.navigate(['/b-admin']);
+    } else 
+    {
+      alert("Please fill in all required fields."); // You can also update an HTML element with the error message.
     }
   }
 
   private setTypeProduct(typProduct: string) {
     if (typProduct === TYPEPRODUCT.Bicycle) {
       this.pomTypProduct = TYPEPRODUCT.Bicycle;
-    }
-    if (typProduct === TYPEPRODUCT.ElectroBicycle) {
+    } else if (typProduct === TYPEPRODUCT.ElectroBicycle) {
       this.pomTypProduct = TYPEPRODUCT.ElectroBicycle;
-    }
-    if (typProduct === TYPEPRODUCT.HorskyBicycle) {
+    } else if (typProduct === TYPEPRODUCT.HorskyBicycle) {
       this.pomTypProduct = TYPEPRODUCT.HorskyBicycle;
-    }
-    if (typProduct === TYPEPRODUCT.CestnyBicycle) {
+    } else if (typProduct === TYPEPRODUCT.CestnyBicycle) {
       this.pomTypProduct = TYPEPRODUCT.CestnyBicycle;
-    }
-    if (typProduct === TYPEPRODUCT.KrosovyBicycle) {
+    } else if (typProduct === TYPEPRODUCT.KrosovyBicycle) {
       this.pomTypProduct = TYPEPRODUCT.KrosovyBicycle;
-    }
-    if (typProduct === TYPEPRODUCT.MestkyBicycle) {
+    } else if (typProduct === TYPEPRODUCT.MestkyBicycle) {
       this.pomTypProduct = TYPEPRODUCT.MestkyBicycle;
-    }
-    if (typProduct === TYPEPRODUCT.TrekingBicycle) {
+    } else if (typProduct === TYPEPRODUCT.TrekingBicycle) {
       this.pomTypProduct = TYPEPRODUCT.TrekingBicycle;
-    }
-    if (typProduct === TYPEPRODUCT.GravelCyklotrosBicycle) {
+    } else if (typProduct === TYPEPRODUCT.GravelCyklotrosBicycle) {
       this.pomTypProduct = TYPEPRODUCT.GravelCyklotrosBicycle;
-    }
-    if (typProduct === TYPEPRODUCT.DetskyBicycle) {
+    } else if (typProduct === TYPEPRODUCT.DetskyBicycle) {
       this.pomTypProduct = TYPEPRODUCT.DetskyBicycle;
-    }
-    if (typProduct === TYPEPRODUCT.DirtBMXBicycle) {
+    } else if (typProduct === TYPEPRODUCT.DirtBMXBicycle) {
       this.pomTypProduct = TYPEPRODUCT.DirtBMXBicycle;
     }
   }

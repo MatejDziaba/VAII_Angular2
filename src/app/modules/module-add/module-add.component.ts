@@ -8,7 +8,6 @@ import { ProductService } from '../../../service/product.service';
   selector: 'app-module-add',
   templateUrl: './module-add.component.html',
   styleUrl: './module-add.component.css'
-  
 })
 export class ModuleAddComponent {
 

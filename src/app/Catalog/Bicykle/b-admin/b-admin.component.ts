@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 import { Product } from '../../../../Intefaces/product';
@@ -22,6 +22,13 @@ export class BAdminComponent
 
   ngOnInit(): void 
   {
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        if (event.url === '/b-admin') {
+          window.location.reload();
+        }
+      }
+    });
     this.productsSubscription = this.productService.getProducts().subscribe(products => {
       this.products = products;
     });

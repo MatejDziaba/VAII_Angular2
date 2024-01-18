@@ -13,6 +13,11 @@ import { SignUpComponent } from '../app/authorization/sign-up/sign-up.component'
 import { UserTableComponent } from '../app/tables/user-table/user-table.component';
 import { LogOutComponent } from '../app/authorization/log-out/log-out.component';
 import { BicykleComponent } from '../app/Catalog/Bicykle/bicykle/bicykle.component';
+import { ModuleSignupFailureComponent } from '../app/modules/module-signup-failure/module-signup-failure.component';
+import { ProduktShowComponent } from '../app/produkt-show/produkt-show.component';
+import { ProduktShowDescriptionComponent } from '../app/produkt-show/produkt-show-description/produkt-show-description.component';
+import { ProduktShowTableSizeComponent } from '../app/produkt-show/produkt-show-table-size/produkt-show-table-size.component';
+import { ProduktShowExpeditionComponent } from '../app/produkt-show/produkt-show-expedition/produkt-show-expedition.component';
 
 const routes: Routes = [
   {path: '', component: HomecomponentComponent},
@@ -28,7 +33,12 @@ const routes: Routes = [
   {path: 'registration', component: RegistrationComponent},
   {path: 'sign-up', component: SignUpComponent},
   {path: 'user-table', component: UserTableComponent}, 
-  {path: 'log-out', component: LogOutComponent}
+  {path: 'log-out', component: LogOutComponent},
+  {path: 'sign-up-failure', component: ModuleSignupFailureComponent},
+  {path: 'produkt-show', component: ProduktShowComponent},
+  {path: 'produkt-show-description', component: ProduktShowDescriptionComponent},
+  {path: 'produkt-show-table-size', component: ProduktShowTableSizeComponent},
+  {path: 'produkt-show-expedition', component: ProduktShowExpeditionComponent}
 ];
 
 @NgModule({

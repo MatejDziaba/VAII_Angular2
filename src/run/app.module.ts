@@ -17,7 +17,6 @@ import { AppComponent } from '../app/app.component';
 import { HomecomponentComponent } from '../app/homecomponent/homecomponent.component';
 import { NavbarcomponentComponent } from '../app/baseComponents/navbarcomponent/navbarcomponent.component';
 import { FootercomponentComponent } from '../app/baseComponents/footercomponent/footercomponent.component';
-import { NavbarAdminComponent } from '../app/baseComponents/navbar-admin/navbar-admin.component';
 import { SideBarcomponentComponent } from '../app/baseComponents/side-barcomponent/side-barcomponent.component';
 import { BAdminComponent } from '../app/Catalog/Bicykle/b-admin/b-admin.component';
 import { BicykleComponent } from '../app/Catalog/Bicykle/bicykle/bicykle.component';
@@ -34,6 +33,12 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { LogOutComponent } from '../app/authorization/log-out/log-out.component';
+import { ModuleSignupFailureComponent } from '../app/modules/module-signup-failure/module-signup-failure.component';
+import { ProduktShowComponent } from '../app/produkt-show/produkt-show.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { ProduktShowDescriptionComponent } from '../app/produkt-show/produkt-show-description/produkt-show-description.component';
+import { ProduktShowTableSizeComponent } from '../app/produkt-show/produkt-show-table-size/produkt-show-table-size.component';
+import { ProduktShowExpeditionComponent } from '../app/produkt-show/produkt-show-expedition/produkt-show-expedition.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +46,6 @@ import { LogOutComponent } from '../app/authorization/log-out/log-out.component'
     HomecomponentComponent,
     NavbarcomponentComponent,
     FootercomponentComponent,
-    NavbarAdminComponent,
     SideBarcomponentComponent,
     BAdminComponent,
     BicykleComponent,
@@ -54,7 +58,12 @@ import { LogOutComponent } from '../app/authorization/log-out/log-out.component'
     RegistrationComponent,
     SignUpComponent,
     UserTableComponent,
-    LogOutComponent
+    LogOutComponent,
+    ModuleSignupFailureComponent,
+    ProduktShowComponent,
+    ProduktShowDescriptionComponent,
+    ProduktShowTableSizeComponent,
+    ProduktShowExpeditionComponent
   ],
   imports: [
     HttpClientModule,
@@ -70,7 +79,8 @@ import { LogOutComponent } from '../app/authorization/log-out/log-out.component'
     BrowserAnimationsModule,
     MatTableModule,
     MatSortModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatTooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent]

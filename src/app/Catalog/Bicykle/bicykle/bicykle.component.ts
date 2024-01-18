@@ -44,5 +44,8 @@ export class BicykleComponent
   {
     this.selectedProduct = selectedProduct;
     this.productStateService.setSelectedProduct(this.selectedProduct);
+    console.log(this.productStateService.getSelectedProduct());
+    this.router.navigate(['/produkt-show']);
   }
+  
 }
