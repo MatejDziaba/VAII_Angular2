@@ -16,7 +16,7 @@ export class ProductStateService {
     this.selectedProduct = storedProduct ? JSON.parse(storedProduct) : undefined;
   }
 
-  setSelectedProduct(product: BazarProduct): void {
+  setSelectedProduct(product: Product): void {
     if (product) {
       this.selectedProduct = product;
       localStorage.setItem(this.storageKey, JSON.stringify(product));
