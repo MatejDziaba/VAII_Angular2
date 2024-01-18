@@ -39,6 +39,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { ProduktShowDescriptionComponent } from '../app/produkt-show/produkt-show-description/produkt-show-description.component';
 import { ProduktShowTableSizeComponent } from '../app/produkt-show/produkt-show-table-size/produkt-show-table-size.component';
 import { ProduktShowExpeditionComponent } from '../app/produkt-show/produkt-show-expedition/produkt-show-expedition.component';
+import { BazarComponent } from '../app/bazar/bazar.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,8 @@ import { ProduktShowExpeditionComponent } from '../app/produkt-show/produkt-show
     ProduktShowComponent,
     ProduktShowDescriptionComponent,
     ProduktShowTableSizeComponent,
-    ProduktShowExpeditionComponent
+    ProduktShowExpeditionComponent,
+    BazarComponent
   ],
   imports: [
     HttpClientModule,

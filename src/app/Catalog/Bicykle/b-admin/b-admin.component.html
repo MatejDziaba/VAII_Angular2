@@ -84,22 +84,21 @@
               <div class="col-md-12">
                 <div class="row">
                   <div class="col-md-3">
-                    <h2 style="font-size: 30px;">Produkty<span class="text-muted num-products-total">({{products.length}})</span></h2>
+                    <h2 style="font-size: 30px;">Produkty<span class="text-muted num-products-total">({{products_To_See.length}})</span></h2>
                   </div>
                   <div class="col-md-5">
                   </div>
                   <div class="col-md-4">
                     <div class="dropdown">
                       <a href="#" class="nav-link link-dark dropdown-toggle dropdown-toggle-no-arrow-mobile d-inline-block align-middle" data-bs-toggle="dropdown" aria-expanded="false">
-                        <span>Zoradenie: Od najobľúbenejších</span>
-                      </a>
-                      <ul class="dropdown-menu text-small shadow">
-                        <li><a class="dropdown-item" href="#">Od najobľubenejších</a></li>
-                        <li><a class="dropdown-item" href="#">Od najdrahších</a></li>
-                        <li><a class="dropdown-item" href="#">Od najlacnejších</a></li>
-                        <li><a class="dropdown-item" href="#">Podľa názvu A-Z</a></li>
-                        <li><a class="dropdown-item" href="#">Od najnovších</a></li>
-                      </ul>
+                        <span>Zoradenie: {{this.popisVyberuZoradenia}}</span>
+                    </a>
+                    <ul class="dropdown-menu text-small shadow">
+                      <li><a class="dropdown-item" (click)="sortProductsByPrice('highToLow')">Od najdrahších</a></li>
+                        <li><a class="dropdown-item" (click)="sortProductsByPrice('lowToHigh')">Od najlacnejších</a></li>
+                        <li><a class="dropdown-item" (click)="sortProductsByName('A-Z')">Podľa názvu A-Z</a></li>
+                        <li><a class="dropdown-item" (click)="sortProductsByName('Z-A')">Podľa názvu Z-A</a></li>
+                    </ul>
                     </div>
                   </div>
                 </div>
@@ -119,7 +118,7 @@
         <div class="wrapper-pink-light">
           <div class="container">
             <div class="row">
-              <ng-container *ngFor="let product of products; let i = index">
+              <ng-container *ngFor="let product of products_To_See; let i = index">
                 <div *ngIf="product.type == 'bicykel' || 'elektroBicykel' || 'horskyBicykel' || 'cestnyBicykel' || 
                        'krosovyBicykel' || 'mestkyBicykel' || 'trekingBicykel' || 'gravelCyklotrosBicykel' || 'detskyBicykel' || 'dirtBMXBicykel' "
                        class="col-lg-4 col-sm-6 d-flex flex-column align-items-center justify-content-center product-item my-3">
@@ -154,25 +153,22 @@
   
         
         <div class="d-flex justify-content-sm-between my-4 my-sm-5">
-          <div class="polozka d-none d-sm-block">
-            1800 položiek
-          </div>
           <div>
-            <a href="" class="btn btn-primary btn-mobile-full-width mb-2 mb-sm-0 paginationButton">
+            <a class="btn btn-primary btn-mobile-full-width mb-2 mb-sm-0 paginationButton" (click)="increaseItemsToSee()">
                 Načítať ďalšie
               </a>
           </div>
           
           <div class="pagination">
-            <a class="" href="">
+            <a class="">
               <i class="bi bi-arrow-left"></i>
             </a>
-            <span class="pagination span">1</span>
-            <a class="pagination a" href="">2</a>
-            <a class="pagination a" href="">3</a>
-            <span>…</span>
-            <a class="pagination a" href="">38</a>
-            <a class="" href="">
+            <ng-container *ngFor="let page of pages; let i = index">
+              <a *ngIf="page <= 5" class="pagination a" (click)="setProductsToSee_Page(page)">{{page}}</a>
+              <span *ngIf="page > 5">…</span>
+              <a *ngIf="page > 5" class="pagination a" (click)="setProductsToSee_Page(this.pages.length)">{{this.pages.length}}</a>
+            </ng-container>
+            <a class="">
               <i class="bi bi-arrow-right"></i>
             </a>
           </div>

@@ -18,6 +18,7 @@ import { ProduktShowComponent } from '../app/produkt-show/produkt-show.component
 import { ProduktShowDescriptionComponent } from '../app/produkt-show/produkt-show-description/produkt-show-description.component';
 import { ProduktShowTableSizeComponent } from '../app/produkt-show/produkt-show-table-size/produkt-show-table-size.component';
 import { ProduktShowExpeditionComponent } from '../app/produkt-show/produkt-show-expedition/produkt-show-expedition.component';
+import { BazarComponent } from '../app/bazar/bazar.component';
 
 const routes: Routes = [
   {path: '', component: HomecomponentComponent},
@@ -38,7 +39,8 @@ const routes: Routes = [
   {path: 'produkt-show', component: ProduktShowComponent},
   {path: 'produkt-show-description', component: ProduktShowDescriptionComponent},
   {path: 'produkt-show-table-size', component: ProduktShowTableSizeComponent},
-  {path: 'produkt-show-expedition', component: ProduktShowExpeditionComponent}
+  {path: 'produkt-show-expedition', component: ProduktShowExpeditionComponent},
+  {path: 'bazar', component: BazarComponent}
 ];
 
 @NgModule({
