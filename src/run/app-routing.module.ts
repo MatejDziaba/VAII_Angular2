@@ -29,21 +29,23 @@ import { SideBarComponent } from '../app/shoppingPack/side-bar/side-bar.componen
 import { EmptyComponent } from '../app/shoppingPack/empty/empty.component';
 import { NotEmptyComponent } from '../app/shoppingPack/not-empty/not-empty.component';
 import { ModuleToShoppingPackComponent } from '../app/modules/module-to-shopping-pack/module-to-shopping-pack.component';
+import { AuthGuard_FOR_ADMIN } from '../app/guard/authForAdmin.guard';
+import { AuthGuard_FOR_USER } from '../app/guard/authForUser.guard';
 
 const routes: Routes = [
   {path: '', component: HomecomponentComponent},
   {path: 'homecomponent', component: HomecomponentComponent},
   {path: 'catalogcomponent', component: CatalogcomponentComponent},
   {path: 'bicykle', component: BicykleComponent},
-  {path: 'b-admin', component: BAdminComponent},
-  {path: 'module-add', component: ModuleAddComponent},
-  {path: 'module-upload', component: ModuleUploadComponent},
+  {path: 'b-admin', component: BAdminComponent, canActivate: [AuthGuard_FOR_ADMIN]},
+  {path: 'module-add', component: ModuleAddComponent, canActivate: [AuthGuard_FOR_ADMIN]},
+  {path: 'module-upload', component: ModuleUploadComponent, canActivate: [AuthGuard_FOR_ADMIN]},
   {path: 'module-add-failure', component: ModuleAddFailureComponent},
   {path: 'module-checkout', component: ModuleCheckoutComponent},
-  {path: 'module-delete', component: ModuleDeleteComponent},
+  {path: 'module-delete', component: ModuleDeleteComponent, canActivate: [AuthGuard_FOR_ADMIN]},
   {path: 'registration', component: RegistrationComponent},
   {path: 'sign-up', component: SignUpComponent},
-  {path: 'user-table', component: UserTableComponent}, 
+  {path: 'user-table', component: UserTableComponent, canActivate: [AuthGuard_FOR_ADMIN]}, 
   {path: 'log-out', component: LogOutComponent},
   {path: 'sign-up-failure', component: ModuleSignupFailureComponent},
   {path: 'produkt-show', component: ProduktShowComponent},
@@ -52,10 +54,10 @@ const routes: Routes = [
   {path: 'produkt-show-expedition', component: ProduktShowExpeditionComponent},
   {path: 'bazar', component: BazarComponent},
   {path: 'search', component: SearchComponent},
-  {path: 'module-add-bazar-product', component: ModuleAddBazarProductComponent},
+  {path: 'module-add-bazar-product', component: ModuleAddBazarProductComponent, canActivate: [AuthGuard_FOR_USER]},
   {path: 'komunita', component: KomunitaComponent},
-  {path: 'module-add-komunita', component: ModuleAddKomunitaComponent},
-  {path: 'module-delete-komunita', component: ModuleDeleteKomunitaComponent},
+  {path: 'module-add-komunita', component: ModuleAddKomunitaComponent, canActivate: [AuthGuard_FOR_USER]},
+  {path: 'module-delete-komunita', component: ModuleDeleteKomunitaComponent, canActivate: [AuthGuard_FOR_USER]},
   {path: 'shopping-pack', component: ShoppingPackComponent},
   {path: 'shopping-sidebar', component: SideBarComponent},
   {path: 'emptyShoppingPack', component: EmptyComponent},
