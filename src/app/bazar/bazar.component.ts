@@ -4,6 +4,9 @@ import { ProductService } from '../../service/product.service';
 import { NavigationEnd, Router } from '@angular/router';
 import { ProductStateService } from '../../service/product-state.service';
 import { BazarProduct } from '../../Intefaces/bazar-product';
+import { UserStateService } from '../../service/user-state.service';
+import { ShoppingPackService } from '../../service/shoping-pack.service';
+import { Product } from '../../Intefaces/product';
 
 @Component({
   selector: 'app-bazar',
@@ -24,12 +27,16 @@ export class BazarComponent {
   pageCount: number = 0;
   pages: number[] = [];
 
+  userName: string = 'Prihlás sa';
+  userAdmin: string = 'none';
+
   private productsSubscription: Subscription | undefined;
 
-  constructor(private router: Router, private productService: ProductService, private productStateService: ProductStateService) {}
+  constructor(private router: Router, private productService: ProductService, private productStateService: ProductStateService, private userStateService: UserStateService, private shoppingPackService: ShoppingPackService) {}
 
   ngOnInit(): void 
   {
+    this.autorization();
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         if (event.url === '/bazar') {
@@ -49,6 +56,20 @@ export class BazarComponent {
 
     console.log(this.products);
   } 
+
+  private autorization() 
+  {
+    let actualUser = this.userStateService.getActualUser();
+    if (actualUser !== null) {
+      this.userName = actualUser.name;
+      if (actualUser.admin == true) {
+        this.userAdmin = 'admin';
+      }
+      else {
+        this.userAdmin = 'customer';
+      }
+    }
+  }
 
   setProductsToSee() 
   {
@@ -146,5 +167,11 @@ export class BazarComponent {
   {
     this.selectedProduct = selectedProduct;
     this.productStateService.setSelectedBazarProduct(this.selectedProduct);
+  }
+
+  sendProductAndWebsiteLinkToShoppingPackService(product: (Product | BazarProduct), link: string) 
+  {
+    this.shoppingPackService.setActualWebsiteLink(link);
+    this.shoppingPackService.addProduct(product);
   }
 }

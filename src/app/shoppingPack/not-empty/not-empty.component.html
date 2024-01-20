@@ -1,0 +1,69 @@
+<div class="d-sm-flex justify-content-between align-items-center">
+    <h1 class="font-weight-bolder text-uppercase m-0 py-3 py-sm-5 ">
+        Nákupný košík                         
+    </h1>             
+</div>
+<ng-container *ngFor="let shoppingProduct of shoppingProducts; let i = index">
+    <div class="mb-md-4">              
+        <h3 class="mb-4 d-none d-md-block">Produkty v košíku</h3>
+        <table class="table table-cart text-body alternative-badges mb-0 mb-md-2">
+            <tbody class="mb-sm-3 px-sm-3 js-product-row" data-key="217914:YToxOntpOjE7czo2OiI1Mjk5MTAiO30=" data-original-quantity="1">
+                <tr id="product-217914YToxOntpOjE7czo2OiI1Mjk5MTAiO30" class="table-cart-available border-bottom-0">
+                    <td class="table-cart-image text-center align-middle" width="130">
+                        <a class="product-img"><span><img src={{shoppingProduct.product.img}} alt=""></span></a>
+                    </td>
+                    <td class="table-cart-info align-middle">   
+                        <div class="mb-1">
+                            <a class="text-body link-hover-primary"><strong>{{shoppingProduct.product.nameProduct}}</strong></a>
+                        </div>
+                        <div class="table-cart-badges">
+                            <span class="badge with-tooltip-close badge-success">Skladom &gt; 1 ks</span>                            
+                            <span class="badge badge-secondary">
+                                <i class="material-icons" style="color: red; font-size: 12px;">inventory_2</i>
+                            </span>
+                        </div>
+                    </td>
+        
+                    <td class="table-cart-quantity align-middle" width="130">
+                        <div class="input-group no-input-arrows input-cart-amount text-nowrap">
+                            <div class="input-group-prepend">
+                                <button *ngIf="shoppingProduct.countOfProduct > 1" (click)="this.decreaseProductCount_InShoppingPack(shoppingProduct)" class="btn btn-outline-secondary border-right-0 btn-cart-amount-minus" type="button">-</button>
+                                <button *ngIf="shoppingProduct.countOfProduct == 1" class="btn btn-outline-secondary border-right-0 btn-cart-amount-minus" type="button" disabled="">-</button>
+                            </div>
+                            <input class="form-control text-center font-weight-bold" required="" value={{shoppingProduct.countOfProduct}} maxlength="3" wfd-id="id5"> 
+                            <div class="input-group-append">
+                                <button (click)="increaseProductCount_InShoppingPack(shoppingProduct)" class="btn btn-outline-secondary border-left-0 btn-cart-amount-plus" type="button">+</button>
+                            </div>
+                        </div>
+                    </td>
+
+                    <td class="table-cart-price d-lg-block"> 
+                        <strong  style="color: black!important; font-size: 22px;">{{shoppingProduct.product.price * shoppingProduct.countOfProduct}} €</strong>
+                    </td> 
+                    
+                    <td class="table-cart-actions">
+                        <a (click)="this.deleteShoppingPack(shoppingProduct)" class="remove-from-cart" title="" style="margin-bottom: 60px!important;"><i class="material-icons">clear</i></a>   
+                    </td>
+                </tr>
+                <tr class="table-cart-available border-bottom-0">
+                    <td class="table-cart-infobox pt-0 border-top-0" colspan="6">   
+                        <div class="bg-light rounded p-2 px-sm-4 py-sm-3 d-flex justify-content-start align-items-center">
+                        <div><i class="material-icons text-primary big mr-2" style="margin-right: 10px;">business</i></div>
+                        <div><strong>Chceš si bicykel pred kúpou nezáväzne vyskúšať? </strong> <span class="text-secondary">Zvoľ si <strong>osobný odber</strong> a rozhodni sa na mieste.</span></div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>                    
+        </table>
+    </div>
+</ng-container>
+                                        
+                    
+
+        
+        
+                    
+    
+    
+                
+            

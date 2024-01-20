@@ -5,6 +5,8 @@ import { Subscription } from 'rxjs';
 import { Product } from '../../../../Intefaces/product';
 import { ProductService } from '../../../../service/product.service';
 import { ProductStateService } from '../../../../service/product-state.service';
+import { ShoppingPackService } from '../../../../service/shoping-pack.service';
+import { BazarProduct } from '../../../../Intefaces/bazar-product';
 
 @Component({
   selector: 'app-bicykle',
@@ -28,7 +30,7 @@ export class BicykleComponent
 
   private productsSubscription: Subscription | undefined;
 
-  constructor(private router: Router, private productService: ProductService, private productStateService: ProductStateService) {}
+  constructor(private router: Router, private productService: ProductService, private productStateService: ProductStateService, private shoppingPackService: ShoppingPackService) {}
 
   ngOnInit(): void 
   {
@@ -143,5 +145,11 @@ export class BicykleComponent
       this.products_To_See.sort((a, b) => b.nameProduct.localeCompare(a.nameProduct));
       this.popisVyberuZoradenia = 'Podľa názvu Z-A';
     }
+  }
+
+  sendProductAndWebsiteLinkToShoppingPackService(product: (Product | BazarProduct), link: string) 
+  {
+    this.shoppingPackService.setActualWebsiteLink(link);
+    this.shoppingPackService.addProduct(product);
   }
 }

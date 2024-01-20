@@ -11,7 +11,7 @@
       <a class="link-body-emphasis fw-semibold text-decoration-none" routerLink="/catalogcomponent">Obchod</a>
     </li>
     <li class="breadcrumb-item">
-      <a class="link-body-emphasis fw-semibold text-decoration-none" routerLink="/bazar">Bazár</a>
+      <a class="link-body-emphasis fw-semibold text-decoration-none" routerLink="/komunita">Komunita</a>
     </li>
   </ol>
   
@@ -32,7 +32,7 @@
               <div class="col-md-12">
                 <div class="row">
                   <div class="col-md-3">
-                    <h2 style="font-size: 30px;">Produkty<span class="text-muted num-products-total">({{products_To_See.length}})</span></h2>
+                    <h2 style="font-size: 30px;">Príspevky<span class="text-muted num-products-total">({{products_To_See.length}})</span></h2>
                   </div>
                   <div class="col-md-5">
                   </div>
@@ -42,8 +42,6 @@
                         <span>Zoradenie: {{this.popisVyberuZoradenia}}</span>
                       </a>
                       <ul class="dropdown-menu text-small shadow">
-                        <li><a class="dropdown-item" (click)="sortProductsByPrice('Od najdrahších')">Od najdrahších</a></li>
-                        <li><a class="dropdown-item" (click)="sortProductsByPrice('Od najlacnejších')">Od najlacnejších</a></li>
                         <li><a class="dropdown-item" (click)="sortProductsByName('Podľa názvu A-Z')">Podľa názvu A-Z</a></li>
                         <li><a class="dropdown-item" (click)="sortProductsByName('Podľa názvu Z-A')">Podľa názvu Z-A</a></li>
                       </ul>
@@ -57,7 +55,7 @@
         <div class="container-fluid">
           <div class="row">
             <div class="col-md-12 d-flex justify-content-center ">
-              <a *ngIf=" this.userAdmin === 'customer' "  routerLink="/module-add-bazar-product"  class="btn btn-primary styleButton_Add_Product buttColorAdd align-items-center" style="font-size: 24px !important;"><i class="bi bi-plus fs-3" style="color:white"></i> Pridaj produkt</a>
+              <a *ngIf=" this.userAdmin === 'customer' "  routerLink="/module-add-komunita"  class="btn btn-primary styleButton_Add_Product buttColorAdd align-items-center" style="font-size: 24px !important;"><i class="bi bi-plus fs-3" style="color:white"></i> Pridaj príspevok</a>
             </div>
           </div>
         </div>
@@ -66,23 +64,26 @@
         <div class="wrapper-pink-light">
           <div class="container">
             <div class="row">
-              <ng-container *ngFor="let product of products_To_See;">
-                <div *ngIf="product"
-                       class="col-lg-3 col-sm-6 d-flex flex-column align-items-center justify-content-center product-item my-3">
+              <ng-container *ngFor="let prispevok of products_To_See;">
+                <div *ngIf="prispevok"
+                       class="col-lg-5 col-sm-6 d-flex flex-column align-items-center justify-content-center product-item my-3">
+                  <div class="title pt-4 pb-1" ><h1>{{prispevok.problemName}}</h1></div> 
                   <div class="product">
-                    <img class="imgProduct" src={{product.img}} alt="">
+                    <img class="imgProduct" src={{prispevok.img}} alt="">
                   </div>
-                  <div class="title pt-4 pb-1">{{product.nameProduct}}</div> 
-                    <div class="price-container d-flex justify-content-center">
-                      <div class="discounted-price">{{product.price}}&euro;</div>
-                    </div>                 
+                  <p style="margin-top: 0.3rem;">Príspevok od registrovaného uživateľa.</p>
                   <div class="container-fluid">
                     <div class="row">
-                        <div class="col-md-12 d-flex justify-content-center text-center">
-                            <button routerLink="/module-to-shopping-pack" (click)="sendProductAndWebsiteLinkToShoppingPackService(product, '/bazar')" class="btn btn-primary styleButtonProduct buttColor" style="background-color: blue;"><i class="bi bi-bag-fill payingBack"></i> Kúpiť</button>
-                        </div>
+                      <div class="col-md-12 d-flex justify-content-center text-center">
+                        <button *ngIf="this.getActualUserEmail() == prispevok.email" routerLink="/module-delete-komunita" (click)="setPrispevok(prispevok)" class="btn btn-primary styleButtonProduct buttColor" style="background-color: red;"><i class="bi bi-x-square-fill" style="color: white;"></i></button>
+                      </div>
                     </div>
                   </div>
+                </div>
+                <div *ngIf="prispevok"
+                       class="col-lg-7 col-sm-6 d-flex flex-column justify-content-center product-item my-3">
+                  <h3 class="align-items-center">{{prispevok.info}}</h3>
+                  <h5 style="text-align: left;">Môžete mu pomôcť zaslaním správy na <strong>email: {{prispevok.email}}</strong></h5>
                 </div>
               </ng-container>
             </div>
@@ -93,22 +94,6 @@
 
   <div class="row pt-0 pt-sm-5 mb-sm-5">
     <div class="col-12 col-sm-8" style="margin-left: 100px;margin-right: 100px;">
-        <div>
-            <a href="#shipping-bikes" class="with-icon-expand collapsed collapse-heading d-sm-none">Ako expedujeme bicykle</a>      
-            <div id="shipping-bikes" class="tab-pane fade wysiwyg-content active show" role="tabpanel" aria-labelledby="shipping-bikes-tab">
-
-                <p>Všetky bicykle ponúkané na shope BIKESHOP bazár sú <strong>jazdené</strong>, bez <strong>záruky</strong>.</p>
-                <div class="h3 mt-5 mb-4">Náš postup expedície <strong>jazdených</strong> bicyklov je nasledovný:</div>
-                <ol>
-                <li>Bicykel je vybratý z krabice od dodaváteľa.</li>
-                <li>Bicykel je skontrolovaný a nastavený (prehadzovač, prešmykač, tlmič, vidlica, kolesá...)</li>
-                <li>Bicykel je opatrne zabalený naspäť do krabice a odoslaný</li>
-                <li>Ak si bicykel objednáš na osobný odber alebo dovoz domov, bicykel Ťa bude čakať</li>
-                </ol>
-               
-            </div> 
-    </div>
-
     <div class="d-flex justify-content-sm-between my-4 my-sm-5">
         <div>
           <a class="btn btn-primary btn-mobile-full-width mb-2 mb-sm-0 paginationButton" (click)="increaseItemsToSee()">
@@ -128,7 +113,8 @@
           </a>
         </div>
       </div>
-</div>
+    </div>
+  </div>
 
 <app-footercomponent></app-footercomponent>
 

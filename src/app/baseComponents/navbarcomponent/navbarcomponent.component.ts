@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { UserStateService } from '../../../service/user-state.service';
+import { ProductService } from '../../../service/product.service';
 
 @Component({
   selector: 'app-navbarcomponent',
@@ -11,7 +12,7 @@ export class NavbarcomponentComponent
   userName: string = 'Prihlás sa';
   userAdmin: string = 'none';
 
-  constructor(private userStateService: UserStateService) {}
+  constructor(private userStateService: UserStateService, private productService: ProductService) {}
 
   ngOnInit(): void 
   {
@@ -31,4 +32,19 @@ export class NavbarcomponentComponent
       }
     }
   }
+
+  setSearchTerm(term: String) 
+  {
+    if (this.productService.getSearchTerm() == "") 
+    {
+      this.productService.setSearchTerm(term);
+      this.productService.setRefreshSeachSite_false();
+    }
+    else 
+    {
+      this.productService.setSearchTerm(term);
+      this.productService.setRefreshSeachSite_true();
+    }
+  }
+
 }

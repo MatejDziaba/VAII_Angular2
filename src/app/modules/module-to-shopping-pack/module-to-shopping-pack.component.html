@@ -1,0 +1,25 @@
+<div #ACTUALSITE></div>
+
+<form>
+  <div class="modal modal-sheet show d-flex align-items-center justify-content-center" style="background: rgba(0, 0, 0, 0.5);" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content rounded-6 shadow">
+        <div class="modal-header border-bottom-1">
+          <h1 class="modal-title fs-5" style="font-weight: 500;">Úspešne ste vložili produkt do košíka</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" (click)="redirectToActualSite()" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <h3>Chcete pokračovať v nákupe?</h3>
+        </div>
+        <div class="modal-footer justify-content-between">
+          <button mat-flat-button color="warn" type="button" class="" (click)="redirectToAnotherPage('/shopping-pack')" data-bs-dismiss="modal">Chcem ísť do košíka</button>
+          <button mat-flat-button color="primary" type="submit" class="modifikuj produkt" (click)="redirectToActualSite()">Áno, chcem nákupovať</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+        
+
+        
+      

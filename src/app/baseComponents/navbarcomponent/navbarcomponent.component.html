@@ -40,20 +40,20 @@
             <a class="nav-link mx-2 text-uppercase" routerLink="/bazar">Bazár</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link mx-2 text-uppercase" href="/user-table">Komunita</a>
+            <a class="nav-link mx-2 text-uppercase" href="/komunita">Komunita</a>
           </li>
           <li *ngIf=" this.userAdmin === 'admin'" class="nav-item">
             <a class="nav-link mx-2 text-uppercase" href="/user-table">Uživatelia</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link mx-2 text-uppercase" href="../shoppingPack/indexShoppingCart.html"><i class="fa-solid fa-cart-shopping me-1"></i><i class="bi bi-bag-plus-fill"></i></a>
+            <a class="nav-link mx-2 text-uppercase" href="/shopping-pack"><i class="fa-solid fa-cart-shopping me-1"></i><i class="bi bi-bag-plus-fill"></i></a>
           </li>
         </ul>
         <div class="ms-auto d-none d-lg-block">
           <div class="input-group">
             <span class="border-warning input-group-text bg-warning text-white"><i class="fa-solid fa-magnifying-glass"></i></span>
-            <input type="text" class="form-control" style="color:#7a7a7a">
-            <button class="btn btn-warning text-white">Hľadaj</button>
+            <input type="text" #inputTerm class="form-control" style="color:#7a7a7a">
+            <button class="btn btn-warning text-white" routerLink="/search" (click)="this.setSearchTerm(inputTerm.value)" >Hľadaj</button>
           </div>
         </div>
       </div>

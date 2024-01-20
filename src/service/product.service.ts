@@ -20,11 +20,13 @@ export class ProductService {
 
     product: Product | undefined;
 
-    storedProducts = localStorage.getItem(this.storageKey)
-    storedProducts_bazar = localStorage.getItem(this.storageKey_bazar)
-    products =  this.storedProducts ? JSON.parse(this.storedProducts) : PRODUCTS
-    products_bazar =  this.storedProducts_bazar ? JSON.parse(this.storedProducts_bazar) : undefined
-    baseUrl = "http://localhost:3008/bicykle"
+    storedProducts = localStorage.getItem(this.storageKey);
+    storedProducts_bazar = localStorage.getItem(this.storageKey_bazar);
+    products =  this.storedProducts ? JSON.parse(this.storedProducts) : PRODUCTS;
+    products_bazar =  this.storedProducts_bazar ? JSON.parse(this.storedProducts_bazar) : undefined;
+
+    searchTerm: String = "";
+    refreshSeachSite: boolean = false;
 
     constructor(private http: HttpClient) {}
 
@@ -67,6 +69,27 @@ export class ProductService {
         }
     });
     }
+    
+    addBazarProduct(nameProduct: string, price: number, img: string, infoProduct: string) 
+    {
+      axios.post<BazarProduct>("http://localhost:3008/module-add-bazar-product", { nameProduct, price, img, infoProduct })
+      .then(response => {
+        console.log(response.data); 
+      })
+      .catch(error => {
+        if (error.response && error.response.status === 400) 
+        {
+          const errorMessage = 'Error: Produck s rovnakym menom existuje.';
+          const userAcknowledged = window.confirm(errorMessage);
+        } else 
+        {
+          const errorMessage = 'Error: Unable to add the product.';
+          const userAcknowledged = window.confirm(errorMessage);
+          console.error(error); 
+        }
+    });
+    }
+
       uploadProduct(_id: number, type: TYPEPRODUCT, nameProduct: string, markUp: string, price: number, img: string, discount: number) {
         console.log(_id, nameProduct);
         axios.post("http://localhost:3008/module-upload", { _id, type, nameProduct, markUp, price, img, discount });
@@ -78,5 +101,29 @@ export class ProductService {
         //window.location.reload();
       }
 
+      setSearchTerm(searchTerm: String) 
+      {
+        this.searchTerm = searchTerm;
+      }
+
+      getSearchTerm(): String 
+      {
+        return this.searchTerm;
+      }
       
+      setRefreshSeachSite_true() 
+      {
+        this.refreshSeachSite = true;
+      }
+
+      setRefreshSeachSite_false() 
+      {
+        this.refreshSeachSite = false;
+      }
+
+      getRefreshSeachSite(): boolean 
+      {
+        return this.refreshSeachSite;
+      }
+
 }

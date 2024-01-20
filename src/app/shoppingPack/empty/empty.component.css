@@ -1,0 +1,20 @@
+.font-weight-bold
+{
+    font-weight: 600;
+}
+
+.text-sm-left
+{
+    text-align: left!important;
+    font-weight: 600!important;
+}
+
+.font-weight-bolder
+{
+    font-weight: 900;
+}
+
+.cart-summary h3 {
+    font-size: 18px;
+    font-weight: 600;
+}

@@ -1,0 +1,39 @@
+<div class="cart-summary-col bg-light h-100 mx-n2 mx-sm-0 px-2 px-sm-0">
+    <div class="" style="position: relative;">
+        <div class="d-md-flex flex-column justify-content-between h-100 px-sm-5 pb-sm-5 pr-md-3 pt-md-4 pb-md-4 pl-md-4 pt-lg-5 pl-lg-5">
+            <div class="cart-summary mb-4 mb-sm-0">
+                <div class="d-sm-flex justify-content-between mb-2 mb-sm-4">
+                    <h3 class="cart-summary mb-0 mt-sm-4 mt-md-0" style="font-size: 18px!important;">Zhrnutie</h3>
+                </div>
+                <div class="d-md-flex justify-content-between border-bottom py-2">
+                    <div class="text-black pr-2" style="font-weight: 500;">Produktov v košíku</div>
+                    <div>{{this.getAllProductsInShoppingPack()}}</div>
+                </div>
+                <div class="py-2 cart-summary-totals">
+                    <div class="d-flex align-items-center justify-content-between pb-1 text-smaller">
+                        <div class="">Spolu bez DPH</div>
+                        <div class="">{{this.getSumPriceWithoutDPH().toFixed(2)}} €</div>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-between pb-1 text-smaller">
+                        <div class="">DPH</div>
+                        <div class="">{{this.getDPH().toFixed(2)}} €</div>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-between pb-1 font-weight-bold">
+                        <div class="">Celkom s DPH</div>
+                        <div class="font-weight-bold">{{this.getSumPriceWithDPH().toFixed(2)}} €</div>
+                    </div>
+                </div>
+                <h3 class="mt-2 mb-4 text-center text-sm-left">Vytvoriť objednávku</h3>
+                <a href="/sign-up" class="btn btn-primary w-100" data-target="#loginModal" data-remote="false" data-toggle="modal">Prihlásiť sa do svojho účtu</a>
+                <a href="/registration" class="btn btn-outline-primary w-100 mt-2">Som nový zákazník</a>
+            </div>
+            <div class="d-md-block">
+                <div class="mt-5 pt-4 pb-4">
+                    <div class="payment-cards">
+                        <img src="../../assets/img/logo-platby.png" alt="Logo Visa, MasterCard, Maestro, Google and Apple Pay, VÚB Banka, TatraPay, SporoPay, Ahoj, Quatro, Homecredit" class="img-fluid">
+                    </div>
+                </div>                        
+            </div>
+        </div>
+    </div>
+</div>

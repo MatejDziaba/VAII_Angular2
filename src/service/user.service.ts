@@ -27,13 +27,6 @@ import axios from 'axios';
 
     constructor(private http: HttpClient) {}
 
-    // getUsers(): User[]
-    // {
-    //     this.storedUsers = localStorage.getItem(this.storageKey);
-    //     this.users = this.storedUsers ? JSON.parse(this.storedUsers) : USERS;
-    //     return this.users;
-    // }
-
     getUsers(): Observable<User[]>
     {
         this.storedUsers = localStorage.getItem(this.storageKey);

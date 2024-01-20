@@ -19,6 +19,16 @@ import { ProduktShowDescriptionComponent } from '../app/produkt-show/produkt-sho
 import { ProduktShowTableSizeComponent } from '../app/produkt-show/produkt-show-table-size/produkt-show-table-size.component';
 import { ProduktShowExpeditionComponent } from '../app/produkt-show/produkt-show-expedition/produkt-show-expedition.component';
 import { BazarComponent } from '../app/bazar/bazar.component';
+import { SearchComponent } from '../app/search/search.component';
+import { ModuleAddBazarProductComponent } from '../app/modules/module-add-bazar-product/module-add-bazar-product.component';
+import { KomunitaComponent } from '../app/komunita/komunita.component';
+import { ModuleAddKomunitaComponent } from '../app/modules/module-add-komunita/module-add-komunita.component';
+import { ModuleDeleteKomunitaComponent } from '../app/modules/module-delete-komunita/module-delete-komunita.component';
+import { ShoppingPackComponent } from '../app/shoppingPack/shopping-pack/shopping-pack.component';
+import { SideBarComponent } from '../app/shoppingPack/side-bar/side-bar.component';
+import { EmptyComponent } from '../app/shoppingPack/empty/empty.component';
+import { NotEmptyComponent } from '../app/shoppingPack/not-empty/not-empty.component';
+import { ModuleToShoppingPackComponent } from '../app/modules/module-to-shopping-pack/module-to-shopping-pack.component';
 
 const routes: Routes = [
   {path: '', component: HomecomponentComponent},
@@ -40,7 +50,17 @@ const routes: Routes = [
   {path: 'produkt-show-description', component: ProduktShowDescriptionComponent},
   {path: 'produkt-show-table-size', component: ProduktShowTableSizeComponent},
   {path: 'produkt-show-expedition', component: ProduktShowExpeditionComponent},
-  {path: 'bazar', component: BazarComponent}
+  {path: 'bazar', component: BazarComponent},
+  {path: 'search', component: SearchComponent},
+  {path: 'module-add-bazar-product', component: ModuleAddBazarProductComponent},
+  {path: 'komunita', component: KomunitaComponent},
+  {path: 'module-add-komunita', component: ModuleAddKomunitaComponent},
+  {path: 'module-delete-komunita', component: ModuleDeleteKomunitaComponent},
+  {path: 'shopping-pack', component: ShoppingPackComponent},
+  {path: 'shopping-sidebar', component: SideBarComponent},
+  {path: 'emptyShoppingPack', component: EmptyComponent},
+  {path: 'notEmptyShoppingPack', component: NotEmptyComponent},
+  {path: 'module-to-shopping-pack', component: ModuleToShoppingPackComponent}
 ];
 
 @NgModule({

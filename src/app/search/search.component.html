@@ -8,10 +8,7 @@
       </a>
     </li>
     <li class="breadcrumb-item">
-      <a class="link-body-emphasis fw-semibold text-decoration-none" routerLink="/catalogcomponent">Obchod</a>
-    </li>
-    <li class="breadcrumb-item">
-      <a class="link-body-emphasis fw-semibold text-decoration-none" routerLink="/bazar">Bazár</a>
+      <a class="link-body-emphasis fw-semibold text-decoration-none" routerLink="/search">Hľadané produkty</a>
     </li>
   </ol>
   
@@ -32,7 +29,7 @@
               <div class="col-md-12">
                 <div class="row">
                   <div class="col-md-3">
-                    <h2 style="font-size: 30px;">Produkty<span class="text-muted num-products-total">({{products_To_See.length}})</span></h2>
+                    <h2 style="font-size: 30px;">Hľadané produkty<span class="text-muted num-products-total">({{products_To_See.length}})</span></h2>
                   </div>
                   <div class="col-md-5">
                   </div>
@@ -54,13 +51,6 @@
             </div>
           </div>
         </div>
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-md-12 d-flex justify-content-center ">
-              <a *ngIf=" this.userAdmin === 'customer' "  routerLink="/module-add-bazar-product"  class="btn btn-primary styleButton_Add_Product buttColorAdd align-items-center" style="font-size: 24px !important;"><i class="bi bi-plus fs-3" style="color:white"></i> Pridaj produkt</a>
-            </div>
-          </div>
-        </div>
         
         
         <div class="wrapper-pink-light">
@@ -79,57 +69,19 @@
                   <div class="container-fluid">
                     <div class="row">
                         <div class="col-md-12 d-flex justify-content-center text-center">
-                            <button routerLink="/module-to-shopping-pack" (click)="sendProductAndWebsiteLinkToShoppingPackService(product, '/bazar')" class="btn btn-primary styleButtonProduct buttColor" style="background-color: blue;"><i class="bi bi-bag-fill payingBack"></i> Kúpiť</button>
+                            <button routerLink="/module-to-shopping-pack" (click)="sendProductAndWebsiteLinkToShoppingPackService(product, '/search')" class="btn btn-primary styleButtonProduct buttColor" style="background-color: blue;"><i class="bi bi-bag-fill payingBack"></i> Kúpiť</button>
                         </div>
                     </div>
                   </div>
                 </div>
               </ng-container>
+              <h1 *ngIf="this.products_To_See.length == 0" style="text-align: center;">Ľutujeme ale produkty sa nenašli</h1>
             </div>
           </div>
         </div>
     </div>
   </div>
-
-  <div class="row pt-0 pt-sm-5 mb-sm-5">
-    <div class="col-12 col-sm-8" style="margin-left: 100px;margin-right: 100px;">
-        <div>
-            <a href="#shipping-bikes" class="with-icon-expand collapsed collapse-heading d-sm-none">Ako expedujeme bicykle</a>      
-            <div id="shipping-bikes" class="tab-pane fade wysiwyg-content active show" role="tabpanel" aria-labelledby="shipping-bikes-tab">
-
-                <p>Všetky bicykle ponúkané na shope BIKESHOP bazár sú <strong>jazdené</strong>, bez <strong>záruky</strong>.</p>
-                <div class="h3 mt-5 mb-4">Náš postup expedície <strong>jazdených</strong> bicyklov je nasledovný:</div>
-                <ol>
-                <li>Bicykel je vybratý z krabice od dodaváteľa.</li>
-                <li>Bicykel je skontrolovaný a nastavený (prehadzovač, prešmykač, tlmič, vidlica, kolesá...)</li>
-                <li>Bicykel je opatrne zabalený naspäť do krabice a odoslaný</li>
-                <li>Ak si bicykel objednáš na osobný odber alebo dovoz domov, bicykel Ťa bude čakať</li>
-                </ol>
-               
-            </div> 
-    </div>
-
-    <div class="d-flex justify-content-sm-between my-4 my-sm-5">
-        <div>
-          <a class="btn btn-primary btn-mobile-full-width mb-2 mb-sm-0 paginationButton" (click)="increaseItemsToSee()">
-              Načítať ďalšie
-            </a>
-        </div>
-        
-        <div class="pagination">
-          <a class="" href="">
-          </a>
-          <ng-container *ngFor="let page of pages; let i = index">
-            <a *ngIf="page <= 5" class="pagination a" (click)="setProductsToSee_Page(page)">{{page}}</a>
-            <span *ngIf="page > 5">…</span>
-            <a *ngIf="page > 5" class="pagination a" (click)="setProductsToSee_Page(this.pages.length)">{{this.pages.length}}</a>
-          </ng-container>
-          <a class="">
-          </a>
-        </div>
-      </div>
-</div>
-
 <app-footercomponent></app-footercomponent>
+
 
 
