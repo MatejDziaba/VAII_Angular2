@@ -8,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class HomecomponentComponent {
 
+  ngOnInit() 
+  {
+    window.scrollTo(0, 40);
+  }
+
 }

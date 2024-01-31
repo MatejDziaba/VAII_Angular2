@@ -1,0 +1,39 @@
+<app-komunita></app-komunita>
+
+<form *ngIf="prispevok">
+  <div class="modal modal-sheet show d-flex align-items-center justify-content-center" style="background: rgba(0, 0, 0, 0.5);" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content rounded-6 shadow">
+        <div class="modal-header border-bottom-0">
+          <h5 class="modal-title fs-5">Modifikuj produktu, uprav:</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" (click)="redirectToAnotherPage()" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">Názov problému</span>
+              <input class="form-control" #nameInput [(ngModel)]="this.prispevok.problemName" [ngModelOptions]="{standalone: true}" placeholder="Problem1" aria-label="Username" aria-describedby="basic-addon1" >
+          </div>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">Info </span>
+              <input class="form-control" #infoInput [ngModel]="this.prispevok.info" [ngModelOptions]="{standalone: true}" placeholder="info" aria-label="InfoProduct" aria-describedby="basic-addon1">
+          </div>
+           <div class="input-group">
+              <span class="input-group-text" id="basic-addon1">Aktualný súbor</span>
+              <input class="form-control" id="hero-surname"#imgInput [(ngModel)]="this.prispevok.img" [ngModelOptions]="{standalone: true}" placeholder="fileProduct"/>
+              <input type="file" [(ngModel)]="this.prispevok.img" [ngModelOptions]="{standalone: true}" class="form-control" (change)="onFileSelected($event)"  aria-describedby="basic-addon1">
+          </div>
+          
+        </div>
+        <div class="modal-footer justify-content-between">
+          <button mat-flat-button color="warn" type="button" class="" (click)="redirectToAnotherPage()" data-bs-dismiss="modal">Zruš modifikáciu</button>
+          <button mat-flat-button color="primary" type="submit" class="modifikuj produkt" (click)="uploadPrispevok(prispevok.id, nameInput.value, infoInput.value, imgInput.value)">Modifikuj produkt</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+        
+
+        
+      

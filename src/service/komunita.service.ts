@@ -54,7 +54,7 @@ export class KomunitaService {
     });
     }
 
-    uploadProduct(_id: number, problemName: string, info: string, img: string, email: string) {
+    uploadPrispevok(_id: number, problemName: string, info: string, img: string, email: string) {
         console.log(_id, problemName);
         axios.post("http://localhost:3008/module-upload-komunita", { _id, problemName, info, img, email });
     }
@@ -62,6 +62,9 @@ export class KomunitaService {
     deletePrispevok(problemName: string): void {
         console.log(problemName);
         axios.post("http://localhost:3008/module-delete-komunita", { problemName });
-        //window.location.reload();
+        
+        setTimeout(() => {
+          // pocka na axios, lebo necaka do vykonania
+        }, 3000);
     }
 }

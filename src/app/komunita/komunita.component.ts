@@ -22,7 +22,7 @@ export class KomunitaComponent {
   prispevky: Komunita[] = [];
   popisVyberuZoradenia: string = "Výberte si";
   
-  maxItems_To_See: number = 6;
+  MAX_ITEMS_TO_SEE: number = 6;
   actualIndex_To_See: number = 1;
   actualIndex_To_See_page: number = 1;
   actualIndex: number = 0;
@@ -32,7 +32,7 @@ export class KomunitaComponent {
   pages: number[] = [];
 
   userName: string = 'Prihlás sa';
-  userAdmin: string = 'none';
+  userState: string = 'none';
 
   private prispevkySubscription: Subscription | undefined;
 
@@ -40,10 +40,11 @@ export class KomunitaComponent {
 
   ngOnInit(): void 
   {
+    window.scrollTo(0, 100);
     this.autorization();
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
-        if (event.url === '/bazar') {
+        if (event.url === '/komunita') {
           window.location.reload();
         }
       }
@@ -67,10 +68,10 @@ export class KomunitaComponent {
     if (actualUser !== null) {
       this.userName = actualUser.name;
       if (actualUser.admin == true) {
-        this.userAdmin = 'admin';
+        this.userState = 'admin';
       }
       else {
-        this.userAdmin = 'customer';
+        this.userState = 'customer';
       }
     }
   }
@@ -80,7 +81,7 @@ export class KomunitaComponent {
     let wasBreak = false;
     if (this.products_To_See.length < this.prispevky.length) 
     {
-      for (let i = this.actualIndex; i < (this.actualIndex_To_See*this.maxItems_To_See); i++) 
+      for (let i = this.actualIndex; i < (this.actualIndex_To_See*this.MAX_ITEMS_TO_SEE); i++) 
       {
         if (i < this.prispevky.length) 
         {
@@ -97,24 +98,29 @@ export class KomunitaComponent {
     if (wasBreak)
       this.actualIndex = this.products_To_See.length - 1;
     else
-      this.actualIndex = this.maxItems_To_See;
+      this.actualIndex = this.MAX_ITEMS_TO_SEE;
     
   }
 
   increaseItemsToSee()
   {
-    this.actualIndex_To_See++;
-    this.setPrispevkyToSee();
-    console.log(this.products_To_See);
-    this.sortProductsByName(this.popisVyberuZoradenia);
+    if (this.products_To_See.length < this.prispevky.length && this.actualIndex_To_See < (this.prispevky.length / this.MAX_ITEMS_TO_SEE)) 
+    {
+      window.scrollTo(0, 1000);
+      this.actualIndex_To_See++;
+      this.setPrispevkyToSee();
+      this.sortProductsByName(this.popisVyberuZoradenia);
+    }
+    console.log(this.actualIndex_To_See);
   }
 
   setProductsToSee_Page(page: number) 
   {
+    window.scrollTo(0, 120);
     this.products_To_See = [];
     this.actualIndex_To_See = 1;
-    let startIndex = (page - 1) * this.maxItems_To_See;
-    for (let i = startIndex; i < ((page) * this.maxItems_To_See ); i++) 
+    let startIndex = (page - 1) * this.MAX_ITEMS_TO_SEE;
+    for (let i = startIndex; i < ((page) * this.MAX_ITEMS_TO_SEE ); i++) 
     {
       if (i < this.prispevky.length) 
       {
@@ -131,7 +137,24 @@ export class KomunitaComponent {
 
   setPageCount() 
   {
-    this.pageCount = this.prispevky.length % this.maxItems_To_See;
+    if (this.MAX_ITEMS_TO_SEE != 0) 
+    {
+      let pomNumberCount = this.prispevky.length / this.MAX_ITEMS_TO_SEE;
+      if (Number.isInteger(pomNumberCount))
+      {
+        this.pageCount = pomNumberCount;
+      }
+      else if (!Number.isInteger(pomNumberCount) && this.prispevky.length > this.MAX_ITEMS_TO_SEE) 
+      {
+        this.pageCount = pomNumberCount;
+      } else if (!Number.isInteger(pomNumberCount) && this.prispevky.length <= this.MAX_ITEMS_TO_SEE)
+      {
+        this.pageCount = 1;
+      }
+    }
+    else if (this.MAX_ITEMS_TO_SEE == 0)
+      this.pageCount = 0;
+    
     for (let i = 0; i < this.pageCount; i++) 
     {
       this.pages.push(i + 1);

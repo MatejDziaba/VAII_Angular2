@@ -7,6 +7,7 @@ import axios from 'axios';
 import { Product, TYPEPRODUCT } from '../Intefaces/product';
 import { PRODUCTS } from '../Intefaces/mock-product';
 import { BazarProduct } from '../Intefaces/bazar-product';
+import { UserStateService } from './user-state.service';
 
 @Injectable({
   providedIn: 'root',
@@ -28,7 +29,7 @@ export class ProductService {
     searchTerm: String = "";
     refreshSeachSite: boolean = false;
 
-    constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient, private userServiceState: UserStateService) {}
 
     getProducts(): Observable<Product[]> 
     {
@@ -72,22 +73,27 @@ export class ProductService {
     
     addBazarProduct(nameProduct: string, price: number, img: string, infoProduct: string) 
     {
-      axios.post<BazarProduct>("http://localhost:3008/module-add-bazar-product", { nameProduct, price, img, infoProduct })
-      .then(response => {
-        console.log(response.data); 
-      })
-      .catch(error => {
-        if (error.response && error.response.status === 400) 
-        {
-          const errorMessage = 'Error: Produck s rovnakym menom existuje.';
-          const userAcknowledged = window.confirm(errorMessage);
-        } else 
-        {
-          const errorMessage = 'Error: Unable to add the product.';
-          const userAcknowledged = window.confirm(errorMessage);
-          console.error(error); 
-        }
-    });
+      let user = this.userServiceState.getActualUser();
+      if (user) 
+      {
+        let email = user.email;
+        axios.post<BazarProduct>("http://localhost:3008/module-add-bazar-product", { nameProduct, price, img, infoProduct, email })
+        .then(response => {
+          console.log(response.data); 
+        })
+        .catch(error => {
+          if (error.response && error.response.status === 400) 
+          {
+            const errorMessage = 'Error: Produck s rovnakym menom existuje.';
+            const userAcknowledged = window.confirm(errorMessage);
+          } else 
+          {
+            const errorMessage = 'Error: Unable to add the product.';
+            const userAcknowledged = window.confirm(errorMessage);
+            console.error(error); 
+          }
+        });
+      }
     }
 
       uploadProduct(_id: number, type: TYPEPRODUCT, nameProduct: string, markUp: string, price: number, img: string, discount: number) {
@@ -95,10 +101,29 @@ export class ProductService {
         axios.post("http://localhost:3008/module-upload", { _id, type, nameProduct, markUp, price, img, discount });
       }
 
+      uploadBazarProduct(_id: number, nameProduct: string, price: number, img: string, infoProduct: string) 
+      {
+        console.log(_id, nameProduct);
+        let email = this.userServiceState.getActualUser()?.email;
+        axios.post("http://localhost:3008/module-upload-bazar-product", { _id, nameProduct, price, img, infoProduct, email });
+      }
+
       deleteProduct(nameProduct: string): void {
         console.log(nameProduct);
-        axios.post("http://localhost:3008/module-delete", { nameProduct });
-        //window.location.reload();
+        axios.post("http://localhost:3008/module-delete", { nameProduct })
+
+        setTimeout(() => {
+          // pocka na axios, lebo necaka do vykonania
+        }, 3000);
+      }
+
+      deleteBazarProduct(nameProduct: string): void {
+        console.log(nameProduct);
+        axios.post("http://localhost:3008/module-delete-bazar-product", { nameProduct })
+
+        setTimeout(() => {
+          // pocka na axios, lebo necaka do vykonania
+        }, 3000);
       }
 
       setSearchTerm(searchTerm: String) 
@@ -126,4 +151,23 @@ export class ProductService {
         return this.refreshSeachSite;
       }
 
+      getWaitingTime_GET() 
+      {
+        return 3000;
+      }
+
+      getWaitingTime_ADD() 
+      {
+        return 3000;
+      }
+
+      getWaitingTime_DELETE() 
+      {
+        return 3000;
+      }
+
+      getWaitingTime_UPLOAD() 
+      {
+        return 3000;
+      }
 }

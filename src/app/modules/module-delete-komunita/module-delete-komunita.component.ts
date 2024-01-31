@@ -40,10 +40,12 @@ export class ModuleDeleteKomunitaComponent {
       succesModify = true;
     }
 
-    if (succesModify) 
-    {
-      this.redirectToAnotherPage();
-    }
+    setTimeout(() => {
+      if (succesModify) 
+      {
+        this.redirectToAnotherPage();
+      }
+    }, 3000);
   }
 
   redirectToAnotherPage() {

@@ -31,6 +31,9 @@ import { NotEmptyComponent } from '../app/shoppingPack/not-empty/not-empty.compo
 import { ModuleToShoppingPackComponent } from '../app/modules/module-to-shopping-pack/module-to-shopping-pack.component';
 import { AuthGuard_FOR_ADMIN } from '../app/guard/authForAdmin.guard';
 import { AuthGuard_FOR_USER } from '../app/guard/authForUser.guard';
+import { ModuleUploadBazarProductComponent } from '../app/modules/module-upload-bazar-product/module-upload-bazar-product.component';
+import { ModuleDeleteBazarProductComponent } from '../app/modules/module-delete-bazar-product/module-delete-bazar-product.component';
+import { ModuleUploadKomunitaComponent } from '../app/modules/module-upload-komunita/module-upload-komunita.component';
 
 const routes: Routes = [
   {path: '', component: HomecomponentComponent},
@@ -62,7 +65,10 @@ const routes: Routes = [
   {path: 'shopping-sidebar', component: SideBarComponent},
   {path: 'emptyShoppingPack', component: EmptyComponent},
   {path: 'notEmptyShoppingPack', component: NotEmptyComponent},
-  {path: 'module-to-shopping-pack', component: ModuleToShoppingPackComponent}
+  {path: 'module-to-shopping-pack', component: ModuleToShoppingPackComponent},
+  {path: 'module-upload-bazar-product', component: ModuleUploadBazarProductComponent, canActivate: [AuthGuard_FOR_USER]},
+  {path: 'module-delete-bazar-product', component: ModuleDeleteBazarProductComponent, canActivate: [AuthGuard_FOR_USER]},
+  {path: 'module-upload-komunita', component: ModuleUploadKomunitaComponent}
 ];
 
 @NgModule({

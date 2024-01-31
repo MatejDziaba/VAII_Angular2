@@ -19,6 +19,7 @@ export class ModuleAddComponent {
 
   typeOfProducts = [
     { value: TYPEPRODUCT.Bicycle },
+    { value: TYPEPRODUCT.HorskyBicycle},
     { value: TYPEPRODUCT.ElectroBicycle },
     { value: TYPEPRODUCT.CestnyBicycle },
     { value: TYPEPRODUCT.KrosovyBicycle },

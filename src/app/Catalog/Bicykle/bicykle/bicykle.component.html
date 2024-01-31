@@ -84,7 +84,7 @@
             <div class="col-md-12">
               <div class="row">
                 <div class="col-md-3">
-                  <h2 style="font-size: 30px;">Produkty<span class="text-muted num-products-total">({{products_To_See.length}})</span></h2>
+                  <h2 style="font-size: 30px;">Produkty<span class="text-muted num-products-total">({{this.products.length}})</span></h2>
                 </div>
                 <div class="col-md-5">
                 </div>
@@ -119,10 +119,10 @@
                   <img class="imgProduct" src={{product.img}} (click)="setProduct(product)" alt="">
                 </div>
                 <div *ngIf="product.discount > 0" class="tag bg-red">{{product.discount}}<i class="bi bi-percent payingBack"></i> Akcia</div>
-                <div class="title pt-4 pb-1">{{product.nameProduct}}</div>                  
-                  <div *ngIf="product.discount == 0"class="price ">{{product.price}}&euro;</div>
+                <div class="title pt-4 pb-1">{{product.markUp + " " + product.nameProduct}}</div>                  
+                  <div *ngIf="product.discount == 0"class="price ">{{product.price.toFixed(2)}}&euro;</div>
                   <div *ngIf="product.discount > 0" class="price-container d-flex justify-content-center">
-                    <div class="old-price"><del>{{ product.price/(1-(product.discount/100)) }}&euro;</del></div>
+                    <div class="old-price"><del>{{ (product.price/(1-(product.discount/100))).toFixed(2) }}&euro;</del></div>
                     <div class="discounted-price">{{ product.price}}&euro;</div>
                   </div>                 
                 <div class="container-fluid">

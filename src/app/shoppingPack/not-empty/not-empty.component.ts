@@ -26,6 +26,11 @@ export class NotEmptyComponent {
     console.log(this.shoppingProducts);
   }
 
+  ngOnInit() 
+  {
+    window.scrollTo(0, 100);
+  }
+
   increaseProductCount_InShoppingPack(shoppingProduct: ShoppingProduct) 
   {
     this.shoppingPackService.increaseProductCount_InShoppingPack(shoppingProduct);

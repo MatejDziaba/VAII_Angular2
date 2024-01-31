@@ -5,4 +5,5 @@ export interface BazarProduct
     price: number;
     img: string;
     infoProduct: string;
+    email: string;
 }

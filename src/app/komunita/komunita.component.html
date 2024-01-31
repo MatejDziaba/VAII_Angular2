@@ -17,16 +17,8 @@
   
   <div class="container p-3 centerOnMobile">
     <div class="row align-items-right">
-  
       <div class="col-sm-12" style="padding-left: 40px;">
-  
-        
-  
-        
-  
         <div class="shop-list-top d-flex justify-content-between align-items-center mb-2">
-
-          
           <div class="container-fluid">
             <div class="row">
               <div class="col-md-12">
@@ -55,7 +47,7 @@
         <div class="container-fluid">
           <div class="row">
             <div class="col-md-12 d-flex justify-content-center ">
-              <a *ngIf=" this.userAdmin === 'customer' "  routerLink="/module-add-komunita"  class="btn btn-primary styleButton_Add_Product buttColorAdd align-items-center" style="font-size: 24px !important;"><i class="bi bi-plus fs-3" style="color:white"></i> Pridaj príspevok</a>
+              <a *ngIf=" this.userState === 'customer' "  routerLink="/module-add-komunita"  class="btn btn-primary styleButton_Add_Product buttColorAdd align-items-center" style="font-size: 24px !important;"><i class="bi bi-plus fs-3" style="color:white"></i> Pridaj príspevok</a>
             </div>
           </div>
         </div>
@@ -74,8 +66,13 @@
                   <p style="margin-top: 0.3rem;">Príspevok od registrovaného uživateľa.</p>
                   <div class="container-fluid">
                     <div class="row">
-                      <div class="col-md-12 d-flex justify-content-center text-center">
-                        <button *ngIf="this.getActualUserEmail() == prispevok.email" routerLink="/module-delete-komunita" (click)="setPrispevok(prispevok)" class="btn btn-primary styleButtonProduct buttColor" style="background-color: red;"><i class="bi bi-x-square-fill" style="color: white;"></i></button>
+                      <div *ngIf="this.userState == 'customer' && prispevok.email == this.getActualUserEmail()" class="row">
+                        <div class="col-md-6 d-flex justify-content-center text-center">
+                          <button routerLink="/module-delete-komunita" (click)="setPrispevok(prispevok)" class="btn btn-primary styleButtonProduct buttColor" style="background-color: red;"><i class="bi bi-x-square-fill" style="color: white;"></i></button>
+                        </div>
+                        <div class="col-md-6 d-flex justify-content-center">
+                          <button routerLink="/module-upload-komunita" (click)="setPrispevok(prispevok)" class="btn btn-primary styleButtonProduct buttColor" style="background-color: blue;"><i class="bi bi-arrow-clockwise" style="color: white;"></i></button>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -94,14 +91,11 @@
 
   <div class="row pt-0 pt-sm-5 mb-sm-5">
     <div class="col-12 col-sm-8" style="margin-left: 100px;margin-right: 100px;">
-    <div class="d-flex justify-content-sm-between my-4 my-sm-5">
-        <div>
-          <a class="btn btn-primary btn-mobile-full-width mb-2 mb-sm-0 paginationButton" (click)="increaseItemsToSee()">
-              Načítať ďalšie
-            </a>
-        </div>
-        
-        <div class="pagination">
+      <div class="d-flex justify-content-sm-between my-4 my-sm-5" style="margin-left: 370px; margin-top: 0px!important;">
+        <a class="btn btn-primary btn-mobile-full-width mb-2 mb-sm-0 paginationButton" (click)="increaseItemsToSee()">
+          Načítať ďalšie
+        </a>
+        <div class="col-sm-2 pagination" style="margin-top: 5px;">
           <a class="" href="">
           </a>
           <ng-container *ngFor="let page of pages; let i = index">

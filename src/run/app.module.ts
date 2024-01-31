@@ -50,6 +50,9 @@ import { SideBarComponent } from '../app/shoppingPack/side-bar/side-bar.componen
 import { EmptyComponent } from '../app/shoppingPack/empty/empty.component';
 import { NotEmptyComponent } from '../app/shoppingPack/not-empty/not-empty.component';
 import { ModuleToShoppingPackComponent } from '../app/modules/module-to-shopping-pack/module-to-shopping-pack.component';
+import { ModuleUploadBazarProductComponent } from '../app/modules/module-upload-bazar-product/module-upload-bazar-product.component';
+import { ModuleDeleteBazarProductComponent } from '../app/modules/module-delete-bazar-product/module-delete-bazar-product.component';
+import { ModuleUploadKomunitaComponent } from '../app/modules/module-upload-komunita/module-upload-komunita.component';
 
 @NgModule({
   declarations: [
@@ -85,7 +88,10 @@ import { ModuleToShoppingPackComponent } from '../app/modules/module-to-shopping
     SideBarComponent,
     EmptyComponent,
     NotEmptyComponent,
-    ModuleToShoppingPackComponent
+    ModuleToShoppingPackComponent,
+    ModuleUploadBazarProductComponent,
+    ModuleDeleteBazarProductComponent,
+    ModuleUploadKomunitaComponent
   ],
   imports: [
     HttpClientModule,

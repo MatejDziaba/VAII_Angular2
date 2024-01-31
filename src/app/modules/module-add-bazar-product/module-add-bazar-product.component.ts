@@ -20,7 +20,8 @@ export class ModuleAddBazarProductComponent {
     nameProduct: "this.newProductName",
     price: 0,
     img: "this.newProductImg",
-    infoProduct: "bla"
+    infoProduct: "bla",
+    email: ""
   };
 
   constructor(private productService: ProductService, private router: Router) {}

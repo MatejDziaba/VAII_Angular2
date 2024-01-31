@@ -16,6 +16,7 @@ export class CatalogcomponentComponent
 
   ngOnInit(): void 
   {
+    window.scrollTo(0, 140);
     this.autorization();
   }
 

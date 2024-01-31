@@ -1,4 +1,4 @@
-<app-b-admin></app-b-admin>
+<app-bazar></app-bazar>
 
 <form *ngIf="product">
   <div class="modal modal-sheet show d-flex align-items-center justify-content-center" style="background: rgba(0, 0, 0, 0.5);" tabindex="-1" role="dialog">
@@ -9,41 +9,29 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" (click)="redirectToAnotherPage()" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <label class="input-group-text" for="inputGroupSelect01">Typ</label>
-            </div>
-            <select class="custom-select" #typeInput [(ngModel)]="this.product.type" [ngModelOptions]="{standalone: true}">
-              <option *ngFor="let typeOfProduct of typeOfProducts">{{ typeOfProduct.value }}</option>
-            </select>
-          </div>
 
-          <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon1">Značka </span>
-              <input class="form-control" #markUpInput [(ngModel)]="this.product.markUp" [ngModelOptions]="{standalone: true}" placeholder="CTM" aria-label="Username" aria-describedby="basic-addon1">
-          </div>
           <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon1">Názov </span>
               <input class="form-control" #nameInput [(ngModel)]="this.product.nameProduct" [ngModelOptions]="{standalone: true}" placeholder="CTM ROLEBRAKER1" aria-label="Username" aria-describedby="basic-addon1" >
           </div>
           <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon1">Cena </span>
-              <input class="form-control" #priceInput [ngModel]="this.product.price/(1-(this.product.discount/100))" [ngModelOptions]="{standalone: true}" placeholder="765" aria-label="Username" aria-describedby="basic-addon1">
+              <input class="form-control" #priceInput [ngModel]="this.product.price" [ngModelOptions]="{standalone: true}" placeholder="765" aria-label="Username" aria-describedby="basic-addon1">
           </div>
           <div class="input-group mb-3">
-              <span class="input-group-text" id="basic-addon1">Zľava% </span>
-              <input class="form-control" #discountInput [(ngModel)]="this.product.discount" [ngModelOptions]="{standalone: true}" placeholder="5" aria-label="Username" aria-describedby="basic-addon1">
-           </div>
+            <span class="input-group-text" id="basic-addon1">Info </span>
+              <input class="form-control" #infoInput [ngModel]="this.product.infoProduct" [ngModelOptions]="{standalone: true}" placeholder="info" aria-label="InfoProduct" aria-describedby="basic-addon1">
+          </div>
            <div class="input-group">
               <span class="input-group-text" id="basic-addon1">Aktualný súbor</span>
-              <input class="form-control" id="hero-surname"#imgInput [(ngModel)]="this.product.img" [ngModelOptions]="{standalone: true}" placeholder="name"/>
+              <input class="form-control" id="hero-surname"#imgInput [(ngModel)]="this.product.img" [ngModelOptions]="{standalone: true}" placeholder="fileProduct"/>
               <input type="file" [(ngModel)]="this.product.img" [ngModelOptions]="{standalone: true}" class="form-control" (change)="onFileSelected($event)"  aria-describedby="basic-addon1">
           </div>
           
         </div>
         <div class="modal-footer justify-content-between">
           <button mat-flat-button color="warn" type="button" class="" (click)="redirectToAnotherPage()" data-bs-dismiss="modal">Zruš modifikáciu</button>
-          <button mat-flat-button color="primary" type="submit" class="modifikuj produkt" (click)="uploadProduct(product.id, typeInput.value, nameInput.value, markUpInput.value, priceInput.value, imgInput.value, discountInput.value)">Modifikuj produkt</button>
+          <button mat-flat-button color="primary" type="submit" class="modifikuj produkt" (click)="uploadProduct(product.id, nameInput.value, priceInput.value, imgInput.value, infoInput.value)">Modifikuj produkt</button>
         </div>
       </div>
     </div>

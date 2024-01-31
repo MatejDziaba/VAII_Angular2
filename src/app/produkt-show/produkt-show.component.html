@@ -13,6 +13,9 @@
     <li class="breadcrumb-item">
       <a class="link-body-emphasis fw-semibold text-decoration-none" routerLink="/bicykle">Bicykle</a>
     </li>
+    <li class="breadcrumb-item">
+        <a class="link-body-emphasis fw-semibold text-decoration-none" routerLink="/produkt-show">{{this.selectedProduct?.markUp + " " + this.selectedProduct?.nameProduct}}</a>
+      </li>
 </ol>
 
 
@@ -24,7 +27,7 @@
             </div>
         </div>
         <div class="product-detail col-12 col-md-6">
-            <h1>{{this.selectedProduct?.nameProduct}}</h1>
+            <h1>{{this.selectedProduct?.markUp + " " + this.selectedProduct?.nameProduct}}</h1>
 
             <div id="shop-gallery-mobile">
                 <div class="mb-4 d-flex flex-column flex-sm-row justify-content-between align-items-center">
@@ -45,7 +48,7 @@
                 <button id="button-cart" class="btn btn-primary flex-grow-1 ml-2">
                     <span class=""></span>
                     <i class="material-icons valign-fix mr-1 mr-sm-2" >shopping_cart</i>
-                    <span class="mx-2 mr-1 mr-sm-2 valign-fix" style="font-size: 1.2rem;"><span class="text-default">Vložiť do košíka</span></span>
+                    <span class="mx-2 mr-1 mr-sm-2 valign-fix" routerLink="/module-to-shopping-pack" (click)="sendProductAndWebsiteLinkToShoppingPackService('/bicykle')" style="font-size: 1.2rem;"><span class="text-default">Vložiť do košíka</span></span>
                 </button>
             </div>
 
@@ -100,13 +103,16 @@
                 <div class="container">
                     <ul id="shopTabs" class="nav nav-tabs nav-tabs-simple nav-tabs-alt pl-0 border-0" role="tablist">
                         <li class="nav-item pl-0">
-                            <a class="nav-link active" id="description-tab" data-toggle="tab" role="tab" aria-controls="description" aria-selected="true" (click)="setDescription('popis')">Popis produktu</a>
+                            <a *ngIf="this.popis != 'popis'" class="nav-link" id="description-tab" data-toggle="tab" role="tab" aria-controls="description" aria-selected="true" (click)="setDescription('popis')">Popis produktu</a>
+                            <a *ngIf="this.popis == 'popis'" class="nav-link active" id="description-tab" data-toggle="tab" role="tab" aria-controls="description" aria-selected="true">Popis produktu</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="sizing-chart-tab" data-toggle="tab" role="tab" aria-controls="sizing-chart" aria-selected="false" (click)="setDescription('velkost')">Tabuľka veľkostí</a>
+                            <a *ngIf="this.popis != 'velkost'" class="nav-link" id="sizing-chart-tab" data-toggle="tab" role="tab" aria-controls="sizing-chart" aria-selected="false" (click)="setDescription('velkost')">Tabuľka veľkostí</a>
+                            <a *ngIf="this.popis == 'velkost'" class="nav-link active" id="sizing-chart-tab" data-toggle="tab" role="tab" aria-controls="sizing-chart" aria-selected="false">Tabuľka veľkostí</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="shipping-bikes-tab" data-toggle="tab" role="tab" aria-controls="shipping-bikes" aria-selected="false" (click)="setDescription('expedicia')">Ako expedujeme bicykle</a>
+                            <a *ngIf="this.popis != 'expedicia'" class="nav-link" id="shipping-bikes-tab" data-toggle="tab" role="tab" aria-controls="shipping-bikes" aria-selected="false" (click)="setDescription('expedicia')">Ako expedujeme bicykle</a>
+                            <a *ngIf="this.popis == 'expedicia'" class="nav-link active" id="shipping-bikes-tab" data-toggle="tab" role="tab" aria-controls="shipping-bikes" aria-selected="false">Ako expedujeme bicykle</a>
                         </li>
                     </ul>
                 </div>

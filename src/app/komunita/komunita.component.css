@@ -403,11 +403,12 @@ pb-4, .py-4 {
 .btn.btn-primary.btn-mobile-full-width.mb-2.mb-sm-0.paginationButton
 {
     background-color: white;
+    text-align: center;
     color: #f2820b;
     border-color: #f2820b;
     border-radius: 20px;
-    width: 300%;
-    margin-left: 100%;
+    width: 100%;
+    margin-left: 0rem;
 }
 
 .btn.btn-primary.btn-mobile-full-width.mb-2.mb-sm-0.paginationButton:hover

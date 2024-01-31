@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrl: './empty.component.css'
 })
 export class EmptyComponent {
+  ngOnInit() 
+  {
+    window.scrollTo(0, 100);
+  }
 
 }

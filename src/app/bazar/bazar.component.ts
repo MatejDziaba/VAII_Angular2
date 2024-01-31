@@ -18,7 +18,7 @@ export class BazarComponent {
   products: BazarProduct[] = [];
   popisVyberuZoradenia: string = "Výberte si";
   
-  maxItems_To_See: number = 6;
+  MAX_ITEMS_TO_SEE: number = 8;
   actualIndex_To_See: number = 1;
   actualIndex_To_See_page: number = 1;
   actualIndex: number = 0;
@@ -28,7 +28,7 @@ export class BazarComponent {
   pages: number[] = [];
 
   userName: string = 'Prihlás sa';
-  userAdmin: string = 'none';
+  userState: string = 'none';
 
   private productsSubscription: Subscription | undefined;
 
@@ -36,6 +36,7 @@ export class BazarComponent {
 
   ngOnInit(): void 
   {
+    window.scrollTo(0, 100);
     this.autorization();
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
@@ -63,10 +64,10 @@ export class BazarComponent {
     if (actualUser !== null) {
       this.userName = actualUser.name;
       if (actualUser.admin == true) {
-        this.userAdmin = 'admin';
+        this.userState = 'admin';
       }
       else {
-        this.userAdmin = 'customer';
+        this.userState = 'customer';
       }
     }
   }
@@ -76,11 +77,14 @@ export class BazarComponent {
     let wasBreak = false;
     if (this.products_To_See.length < this.products.length) 
     {
-      for (let i = this.actualIndex; i < (this.actualIndex_To_See*this.maxItems_To_See); i++) 
+      for (let i = this.actualIndex; i < (this.actualIndex_To_See*this.MAX_ITEMS_TO_SEE); i++) 
       {
         if (i < this.products.length) 
         {
-          this.products_To_See.push(this.products[i]);
+          if (!this.products_To_See.find(product => product.nameProduct === this.products[i].nameProduct)) 
+          {
+            this.products_To_See.push(this.products[i]);
+          } 
         } else 
         {
           wasBreak = true;
@@ -88,30 +92,32 @@ export class BazarComponent {
         }
       }
     }
-    
-
     if (wasBreak)
       this.actualIndex = this.products_To_See.length - 1;
     else
-      this.actualIndex = this.maxItems_To_See;
-    
+      this.actualIndex = this.MAX_ITEMS_TO_SEE;
   }
 
   increaseItemsToSee()
   {
-    this.actualIndex_To_See++;
-    this.setProductsToSee();
-    console.log(this.products_To_See);
-    this.sortProductsByName(this.popisVyberuZoradenia);
-    this.sortProductsByPrice(this.popisVyberuZoradenia);
+    if (this.products_To_See.length < this.products.length && this.actualIndex_To_See < (this.products.length / this.MAX_ITEMS_TO_SEE)) 
+    {
+      window.scrollTo(0, 1000);
+      this.actualIndex_To_See++;
+      this.setProductsToSee();
+      this.sortProductsByName(this.popisVyberuZoradenia);
+      this.sortProductsByPrice(this.popisVyberuZoradenia);
+    }
+    console.log(this.actualIndex_To_See);
   }
 
   setProductsToSee_Page(page: number) 
   {
+    window.scrollTo(0, 120);
     this.products_To_See = [];
-    this.actualIndex_To_See = 1;
-    let startIndex = (page - 1) * this.maxItems_To_See;
-    for (let i = startIndex; i < ((page) * this.maxItems_To_See ); i++) 
+    this.actualIndex_To_See = page;
+    let startIndex = (page - 1) * this.MAX_ITEMS_TO_SEE;
+    for (let i = startIndex; i < ((page) * this.MAX_ITEMS_TO_SEE ); i++) 
     {
       if (i < this.products.length) 
       {
@@ -128,17 +134,27 @@ export class BazarComponent {
 
   setPageCount() 
   {
-    this.pageCount = this.products.length % this.maxItems_To_See;
+    if (this.MAX_ITEMS_TO_SEE != 0) 
+    {
+      let pomNumberCount = this.products.length / this.MAX_ITEMS_TO_SEE;
+      if (Number.isInteger(pomNumberCount))
+      {
+        this.pageCount = pomNumberCount;
+      }
+      else if (!Number.isInteger(pomNumberCount) && this.products.length > this.MAX_ITEMS_TO_SEE) 
+      {
+        this.pageCount = pomNumberCount;
+      } else if (!Number.isInteger(pomNumberCount) && this.products.length <= this.MAX_ITEMS_TO_SEE)
+      {
+        this.pageCount = 1;
+      }
+    }
+    else if (this.MAX_ITEMS_TO_SEE == 0)
+      this.pageCount = 0;
+    
     for (let i = 0; i < this.pageCount; i++) 
     {
       this.pages.push(i + 1);
-    }
-  }
-
-  ngOnDestroy(): void {
-    // Zrušenie odberu v ngDestroy
-    if (this.productsSubscription) {
-      this.productsSubscription.unsubscribe();
     }
   }
 
@@ -173,5 +189,10 @@ export class BazarComponent {
   {
     this.shoppingPackService.setActualWebsiteLink(link);
     this.shoppingPackService.addProduct(product);
+  }
+
+  getActualUserEmail() 
+  {
+    return this.userStateService.getActualUser()?.email;
   }
 }

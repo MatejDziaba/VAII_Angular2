@@ -5,6 +5,7 @@ import { FootercomponentComponent } from '../baseComponents/footercomponent/foot
 import { ProduktShowDescriptionComponent } from './produkt-show-description/produkt-show-description.component';
 import { ProduktShowTableSizeComponent } from './produkt-show-table-size/produkt-show-table-size.component';
 import { ProduktShowExpeditionComponent } from './produkt-show-expedition/produkt-show-expedition.component';
+import { ShoppingPackService } from '../../service/shoping-pack.service';
 
 @Component({
   selector: 'app-produkt-show',
@@ -16,9 +17,16 @@ export class ProduktShowComponent {
 
   @ViewChild('DESCRIPTION', { read: ViewContainerRef }) descriptionContainer!: ViewContainerRef;
   description!: ComponentRef<any>;
+  popis: string = "popis";
 
-  constructor(private userStateService: ProductStateService, private resolver: ComponentFactoryResolver) {
+  constructor(private userStateService: ProductStateService, private shoppingPackService: ShoppingPackService, private resolver: ComponentFactoryResolver) {
     this.selectedProduct = this.getSelectedProduct();
+    
+  }
+
+  ngOnInit() 
+  {
+    window.scrollTo(0, 100);
   }
 
   ngAfterViewInit() {
@@ -32,6 +40,7 @@ export class ProduktShowComponent {
   {
     if (popis === "popis") 
     {
+      this.popis = "popis";
       setTimeout(() => {
         const factory = this.resolver.resolveComponentFactory(ProduktShowDescriptionComponent);
         this.descriptionContainer.clear();
@@ -39,6 +48,7 @@ export class ProduktShowComponent {
       });
     } else if (popis === "velkost") 
     {
+      this.popis = "velkost";
       setTimeout(() => {
         const factory = this.resolver.resolveComponentFactory(ProduktShowTableSizeComponent);
         this.descriptionContainer.clear();
@@ -46,6 +56,7 @@ export class ProduktShowComponent {
       });
     } else if (popis === "expedicia") 
     {
+      this.popis = "expedicia";
       setTimeout(() => {
         const factory = this.resolver.resolveComponentFactory(ProduktShowExpeditionComponent);
         this.descriptionContainer.clear();
@@ -73,5 +84,11 @@ export class ProduktShowComponent {
 
   getSelectedProduct(): Product | undefined {
     return this.userStateService.getSelectedProduct();
+  }
+  
+  sendProductAndWebsiteLinkToShoppingPackService(link: string) 
+  {
+    this.shoppingPackService.setActualWebsiteLink(link);
+    this.shoppingPackService.addProduct(this.selectedProduct!);
   }
 }
