@@ -6,6 +6,7 @@ import { HttpClient} from '@angular/common/http';
 import { User } from '../Intefaces/user';
 import { USERS } from '../Intefaces/mock-user';
 import axios from 'axios';
+import { Router } from '@angular/router';
 
 @Injectable({
     providedIn: 'root',
@@ -25,7 +26,7 @@ import axios from 'axios';
     userInformationResult: string = "";
     isUser: boolean = true;
 
-    constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient, private router: Router) {}
 
     getUsers(): Observable<User[]>
     {
@@ -64,32 +65,6 @@ import axios from 'axios';
         return this.isUser;
     }
 
-    // addUser(name: string, surname: string, email: string, 
-    //         city: string, ulica: string, state: string, 
-    //         psc: string, password: string, agreeMarketConditions: boolean) 
-    // {
-    //     this.storedUsers = localStorage.getItem(this.storageKey);
-    //     this.users = this.storedUsers ? JSON.parse(this.storedUsers) : USERS;
-
-    //     console.log(this.users.length);
-
-    //     let usersCount = this.users.length;
-    //     if (usersCount > 0) 
-    //     {
-    //         this.index = usersCount + 1;
-    //     }
-
-    //     let admin = false;
-    //     if (surname == '111' && email == '111' && city == '111' && ulica == '111' && psc == '111') 
-    //     {
-    //         admin = true;
-    //     }
-
-    //     this.users.push({ id: this.index, name, surname, email, city, ulica, state, psc, password, agreeMarketConditions, admin, isActive: false });
-    //     localStorage.setItem(this.storageKey, JSON.stringify(this.users));
-    //     this.usersUpdated.emit(this.users);
-    // }
-
     addUser(name: string, surname: string, email: string, 
         city: string, ulica: string, state: string, 
         psc: string, password: string, agreeMarketConditions: boolean) 
@@ -110,6 +85,15 @@ import axios from 'axios';
     axios.post<User>("http://localhost:3008/users/module-add", { name, surname, email, city, ulica, state, psc, password, agreeMarketConditions, admin, isActive: false })
       .then(response => {
         console.log(response.data); 
+        if (this.existUser()) 
+          {
+            this.router.navigate(['/sign-up-failure']);
+          } else 
+          {
+            this.router.navigate(['/sign-up']);
+            const successMessage = 'User successfully registered!';
+            const userAcknowledged = window.confirm(successMessage); 
+          }
       })
       .catch(error => {
         if (error.response && error.response.status === 400) 

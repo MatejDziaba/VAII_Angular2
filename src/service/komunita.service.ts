@@ -6,7 +6,8 @@ import axios from 'axios';
 import { Product, TYPEPRODUCT } from '../Intefaces/product';
 import { PRODUCTS } from '../Intefaces/mock-product';
 import { BazarProduct } from '../Intefaces/bazar-product';
-import { Komunita } from '../Intefaces/komunita-prispevok';
+import { KomunitaData } from '../Intefaces/komunita-prispevok';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -14,19 +15,19 @@ import { Komunita } from '../Intefaces/komunita-prispevok';
 export class KomunitaService {
 
     private storageKey = 'komunitaPrispevky';
-    komunitaPrispevkyUpdated = new EventEmitter<Komunita[]>();
+    komunitaPrispevkyUpdated = new EventEmitter<KomunitaData[]>();
 
 
     storedKomunitaPrispevky = localStorage.getItem(this.storageKey);
     prispevky =  this.storedKomunitaPrispevky ? JSON.parse(this.storedKomunitaPrispevky) : undefined;
 
-    constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient, private router: Router) {}
 
-    getKomunitaPrispevky(): Observable<Komunita[]> 
+    getKomunitaPrispevky(): Observable<KomunitaData[]> 
     {
         this.storedKomunitaPrispevky = localStorage.getItem(this.storageKey);
         this.prispevky = this.storedKomunitaPrispevky ? JSON.parse(this.storedKomunitaPrispevky) : undefined;
-        return this.http.get<Komunita[]>("http://localhost:3008/komunita");
+        return this.http.get<KomunitaData[]>("http://localhost:3008/komunita");
     }
 
     ngOnDestroy() 
@@ -36,8 +37,9 @@ export class KomunitaService {
 
     addPrispevok(problemName: string, info: string, img: string, email: string) 
     {
-      axios.post<Komunita>("http://localhost:3008/module-add-komunita", { problemName, info, img, email })
+      axios.post<KomunitaData>("http://localhost:3008/module-add-komunita", { problemName, info, img, email })
       .then(response => {
+        this.router.navigate(['/komunita']);
         console.log(response.data); 
       })
       .catch(error => {
@@ -51,20 +53,48 @@ export class KomunitaService {
           const userAcknowledged = window.confirm(errorMessage);
           console.error(error); 
         }
-    });
+      });
     }
 
     uploadPrispevok(_id: number, problemName: string, info: string, img: string, email: string) {
         console.log(_id, problemName);
-        axios.post("http://localhost:3008/module-upload-komunita", { _id, problemName, info, img, email });
+        axios.post("http://localhost:3008/module-upload-komunita", { _id, problemName, info, img, email })
+        .then(response => {
+          this.router.navigate(['/komunita']);
+          console.log(response.data); 
+        })
+        .catch(error => {
+          if (error.response && error.response.status === 400) 
+          {
+            const errorMessage = 'Error: Prispevok s rovnakym menom neexistuje.';
+            const userAcknowledged = window.confirm(errorMessage);
+          } else 
+          {
+            const errorMessage = 'Error: Unable to upload the product.';
+            const userAcknowledged = window.confirm(errorMessage);
+            console.error(error); 
+          }
+        });
     }
 
     deletePrispevok(problemName: string): void {
         console.log(problemName);
-        axios.post("http://localhost:3008/module-delete-komunita", { problemName });
-        
-        setTimeout(() => {
-          // pocka na axios, lebo necaka do vykonania
-        }, 3000);
+        axios.post("http://localhost:3008/module-delete-komunita", { problemName })
+        .then(response => {
+          this.router.navigate(['/komunita']);
+          console.log(response.data); 
+        })
+        .catch(error => {
+          if (error.response && error.response.status === 400) 
+          {
+            const errorMessage = 'Error: Prispevok s rovnakym menom neexistuje.';
+            const userAcknowledged = window.confirm(errorMessage);
+          } else 
+          {
+            const errorMessage = 'Error: Unable to delete the product.';
+            const userAcknowledged = window.confirm(errorMessage);
+            console.error(error); 
+          }
+        });
     }
 }

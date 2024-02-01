@@ -33,20 +33,10 @@ export class ModuleDeleteBazarProductComponent {
 
   deleteProduct(nameProduct: string) 
   {
-    let succesModify = false;
     if (nameProduct)
     {
         this.productService.deleteBazarProduct(nameProduct);
-        succesModify = true;
     }
-
-    setTimeout(() => {
-      if (succesModify) 
-      {
-        this.redirectToAnotherPage();
-      }
-    }, 3000);
-    
   }
 
   redirectToAnotherPage() {

@@ -14,8 +14,22 @@
       <a class="link-body-emphasis fw-semibold text-decoration-none" routerLink="/komunita">Komunita</a>
     </li>
   </ol>
+
+  <div *ngIf="products_To_See.length == 0" class="row">
+    <div class="col-md-12">
+      <div class="row">
+        <div class="col-md-5">
+        </div>
+        <div class="d-flex col-md-2 justify-content-center align-items-center">
+          <mat-spinner style="margin-top: 3rem; margin-bottom: 3rem;"></mat-spinner>
+        </div>
+        <div class="col-md-5">
+        </div>
+      </div>
+    </div>
+  </div>
   
-  <div class="container p-3 centerOnMobile">
+  <div *ngIf="this.products_To_See.length > 0" class="container p-3 centerOnMobile">
     <div class="row align-items-right">
       <div class="col-sm-12" style="padding-left: 40px;">
         <div class="shop-list-top d-flex justify-content-between align-items-center mb-2">
@@ -24,7 +38,7 @@
               <div class="col-md-12">
                 <div class="row">
                   <div class="col-md-3">
-                    <h2 style="font-size: 30px;">Príspevky<span class="text-muted num-products-total">({{products_To_See.length}})</span></h2>
+                    <h2 style="font-size: 30px;">Príspevky<span class="text-muted num-products-total">({{prispevky.length}})</span></h2>
                   </div>
                   <div class="col-md-5">
                   </div>
@@ -89,7 +103,7 @@
     </div>
   </div>
 
-  <div class="row pt-0 pt-sm-5 mb-sm-5">
+  <div *ngIf="this.products_To_See.length > 0" class="row pt-0 pt-sm-5 mb-sm-5">
     <div class="col-12 col-sm-8" style="margin-left: 100px;margin-right: 100px;">
       <div class="d-flex justify-content-sm-between my-4 my-sm-5" style="margin-left: 370px; margin-top: 0px!important;">
         <a class="btn btn-primary btn-mobile-full-width mb-2 mb-sm-0 paginationButton" (click)="increaseItemsToSee()">
@@ -110,6 +124,6 @@
     </div>
   </div>
 
-<app-footercomponent></app-footercomponent>
+<app-footercomponent *ngIf="this.products_To_See.length > 0"></app-footercomponent>
 
 

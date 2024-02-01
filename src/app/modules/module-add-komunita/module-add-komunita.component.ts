@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Komunita } from '../../../Intefaces/komunita-prispevok';
+import { KomunitaData } from '../../../Intefaces/komunita-prispevok';
 import { Router } from '@angular/router';
 import { KomunitaService } from '../../../service/komunita.service';
 import { UserStateService } from '../../../service/user-state.service';
@@ -16,14 +16,6 @@ export class ModuleAddKomunitaComponent {
 
   selectedValue: string = "mock_value";
 
-
-  @Input() bazarProduct: Komunita = {
-    id: 100,
-    problemName: "this.newProductName",
-    info: 0,
-    img: "this.newProductImg",
-    email: "bla"
-  };
 
   constructor(private komunitaService: KomunitaService, private userStateService: UserStateService, private router: Router) {}
 
@@ -66,18 +58,11 @@ export class ModuleAddKomunitaComponent {
 
   addPrispevok(problemName: string, info: string) 
   {
-    let succesfullAdded = false;
-    console.log(this.userStateService.getActualUser());
-    if (problemName && info && this.newProductImg && this.userStateService.getActualUser()) 
+    let user = this.userStateService.getActualUser();
+    console.log(user);
+    if (problemName && info && this.newProductImg && user) 
     {
-      this.komunitaService.addPrispevok(problemName, info, this.newProductImg, this.userStateService.getActualUser()!.email);
-      this.routerLinkPath = '/komunita';
-      succesfullAdded = true;
-    }
-
-    if (succesfullAdded) 
-    {
-      this.redirectToAnotherPage();
+      this.komunitaService.addPrispevok(problemName, info, this.newProductImg, user.email);
     }
   }
 

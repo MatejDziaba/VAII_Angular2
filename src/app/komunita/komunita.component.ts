@@ -6,7 +6,7 @@ import { NavigationEnd, Router } from '@angular/router';
 import { ProductService } from '../../service/product.service';
 import { ProductStateService } from '../../service/product-state.service';
 import { UserStateService } from '../../service/user-state.service';
-import { Komunita } from '../../Intefaces/komunita-prispevok';
+import { KomunitaData } from '../../Intefaces/komunita-prispevok';
 import { KomunitaService } from '../../service/komunita.service';
 import { KomunitaStateService } from '../../service/komunita-state.service';
 import { UserService } from '../../service/user.service';
@@ -18,15 +18,15 @@ import { User } from '../../Intefaces/user';
   styleUrl: './komunita.component.css'
 })
 export class KomunitaComponent {
-  selectedPrispevok?: Komunita;
-  prispevky: Komunita[] = [];
+  selectedPrispevok?: KomunitaData;
+  prispevky: KomunitaData[] = [];
   popisVyberuZoradenia: string = "Výberte si";
   
   MAX_ITEMS_TO_SEE: number = 6;
   actualIndex_To_See: number = 1;
   actualIndex_To_See_page: number = 1;
   actualIndex: number = 0;
-  products_To_See: Komunita[] = [];
+  products_To_See: KomunitaData[] = [];
 
   pageCount: number = 0;
   pages: number[] = [];
@@ -178,7 +178,7 @@ export class KomunitaComponent {
     }
   }
 
-  setPrispevok(selectedPrispevok: Komunita): void 
+  setPrispevok(selectedPrispevok: KomunitaData): void 
   {
     this.selectedPrispevok = selectedPrispevok;
     this.komunitaStateService.setSelectedPrispevok(this.selectedPrispevok);

@@ -1,8 +1,8 @@
-export interface Komunita 
+export interface KomunitaData 
 {
     id: number;
     problemName: string;
-    info: number;
+    info: string;
     img: string;
     email: string;
 }

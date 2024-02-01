@@ -48,9 +48,7 @@ export class ModuleUploadBazarProductComponent {
 
   uploadProduct(id: number, nameProduct: string, priceProduct: string, imgProduct: string, infoProduct: string) 
   {
-    let succesModify = false;
     let errorMessage = "";
-
     if (this.actionSetImg) 
     {
       this.newProductImg = imgProduct;
@@ -58,17 +56,8 @@ export class ModuleUploadBazarProductComponent {
     if (nameProduct && priceProduct && this.newProductImg && infoProduct) 
     {
       this.productService.uploadBazarProduct(id, nameProduct, parseInt(priceProduct), this.newProductImg, infoProduct);
-      succesModify = true;
     } else {
       errorMessage = "Please fill in all required fields.";
-    }
-
-    if (succesModify) 
-    {
-      this.router.navigate(['/bazar']);
-    } else 
-    {
-      alert("Please fill in all required fields."); // You can also update an HTML element with the error message.
     }
   }
 

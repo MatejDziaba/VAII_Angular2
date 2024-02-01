@@ -64,17 +64,9 @@ export class ModuleAddBazarProductComponent {
 
   addProduct(nameProduct: string, priceProduct: string, infoProduct: string) 
   {
-    let succesfullAdded = false;
     if (nameProduct && priceProduct && this.newProductImg && infoProduct) 
     {
       this.productService.addBazarProduct(nameProduct, parseInt(priceProduct), this.newProductImg, infoProduct);
-      this.routerLinkPath = '/bazar';
-      succesfullAdded = true;
-    }
-
-    if (succesfullAdded) 
-    {
-      this.redirectToAnotherPage();
     }
   }
 

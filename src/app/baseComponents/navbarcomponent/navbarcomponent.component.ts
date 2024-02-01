@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { UserStateService } from '../../../service/user-state.service';
 import { ProductService } from '../../../service/product.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbarcomponent',
@@ -12,7 +13,7 @@ export class NavbarcomponentComponent
   userName: string = 'Prihlás sa';
   userAdmin: string = 'none';
 
-  constructor(private userStateService: UserStateService, private productService: ProductService) {}
+  constructor(private userStateService: UserStateService, private productService: ProductService, private router: Router) {}
 
   ngOnInit(): void 
   {
@@ -39,11 +40,13 @@ export class NavbarcomponentComponent
     {
       this.productService.setSearchTerm(term);
       this.productService.setRefreshSeachSite_false();
+      this.router.navigate(['/search']);
     }
     else 
     {
       this.productService.setSearchTerm(term);
       this.productService.setRefreshSeachSite_true();
+      this.router.navigate(['/search']);
     }
   }
 

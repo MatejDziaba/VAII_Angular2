@@ -13,14 +13,8 @@ export class ModuleDeleteComponent
 {
   newProductImg: string | undefined;
   routerLinkPath: string = '/b-admin';
-  pomTypProduct: TYPEPRODUCT = TYPEPRODUCT.Bicycle;
 
   actionSetImg: boolean = true;
-
-  typeOfProducts = [
-    { value: TYPEPRODUCT.Bicycle },
-    { value: TYPEPRODUCT.ElectroBicycle }
-  ];
 
   @Input() product: Product | undefined;
 
@@ -39,20 +33,10 @@ export class ModuleDeleteComponent
 
   deleteProduct(nameProduct: string) 
   {
-    let succesModify = false;
     if (nameProduct)
     {
         this.productService.deleteProduct(nameProduct);
-        succesModify = true;
     }
-
-    setTimeout(() => {
-      if (succesModify) 
-      {
-        this.redirectToAnotherPage();
-      }
-    }, 3000);
-    
   }
 
   redirectToAnotherPage() {

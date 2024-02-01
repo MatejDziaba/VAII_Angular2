@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Komunita } from '../../../Intefaces/komunita-prispevok';
+import { KomunitaData } from '../../../Intefaces/komunita-prispevok';
 import { KomunitaService } from '../../../service/komunita.service';
 import { Router } from '@angular/router';
 import { KomunitaStateService } from '../../../service/komunita-state.service';
@@ -15,7 +15,7 @@ export class ModuleDeleteKomunitaComponent {
 
   actionSetImg: boolean = true;
 
-  @Input() prispevok: Komunita | undefined;
+  @Input() prispevok: KomunitaData | undefined;
 
   constructor(private komunitaService: KomunitaService, private router: Router, private komunitaStateService: KomunitaStateService) {}
 
@@ -32,20 +32,10 @@ export class ModuleDeleteKomunitaComponent {
 
   deletePrispevok(problemName: string) 
   {
-    let succesModify = false;
     if (problemName)
     {
       this.komunitaService.deletePrispevok(problemName);
-      this.routerLinkPath = '/komunita';
-      succesModify = true;
     }
-
-    setTimeout(() => {
-      if (succesModify) 
-      {
-        this.redirectToAnotherPage();
-      }
-    }, 3000);
   }
 
   redirectToAnotherPage() {

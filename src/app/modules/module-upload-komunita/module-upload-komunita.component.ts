@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Komunita } from '../../../Intefaces/komunita-prispevok';
+import { KomunitaData } from '../../../Intefaces/komunita-prispevok';
 import { KomunitaService } from '../../../service/komunita.service';
 import { Router } from '@angular/router';
 import { KomunitaStateService } from '../../../service/komunita-state.service';
@@ -17,7 +17,7 @@ export class ModuleUploadKomunitaComponent {
 
   actionSetImg: boolean = true;
   
-  @Input() prispevok: Komunita | undefined;
+  @Input() prispevok: KomunitaData | undefined;
 
   constructor(private prispevokService: KomunitaService, private router: Router, private prispevokStateService: KomunitaStateService, private userServiceState: UserStateService) {}
 
@@ -49,7 +49,6 @@ export class ModuleUploadKomunitaComponent {
 
   uploadPrispevok(_id: number, problemName: string, info: string, img:string) 
   {
-    let succesModify = false;
     let errorMessage = "";
 
     if (this.actionSetImg) 
@@ -66,17 +65,8 @@ export class ModuleUploadKomunitaComponent {
     if (problemName && this.newProductImg && info && email) 
     {
       this.prispevokService.uploadPrispevok(_id, problemName, info, this.newProductImg, email);
-      succesModify = true;
     } else {
       errorMessage = "Please fill in all required fields.";
-    }
-
-    if (succesModify) 
-    {
-      this.router.navigate(['/komunita']);
-    } else 
-    {
-      alert("Please fill in all required fields."); // You can also update an HTML element with the error message.
     }
   }
 

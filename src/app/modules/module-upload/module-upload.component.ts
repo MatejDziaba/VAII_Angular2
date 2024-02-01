@@ -61,7 +61,6 @@ export class ModuleUploadComponent
 
   uploadProduct(id: number, typProduct: string, nameProduct: string, markUpProduct: string, priceProduct: string, imgProduct: string, discountProduct: string) 
   {
-    let succesModify = false;
     let errorMessage = "";
 
     if (this.actionSetImg) 
@@ -72,17 +71,8 @@ export class ModuleUploadComponent
     {
       this.setTypeProduct(typProduct);
       this.productService.uploadProduct(id, this.pomTypProduct, nameProduct, markUpProduct, (parseInt(priceProduct) - (parseInt(priceProduct)*(parseInt(discountProduct)/100))), this.newProductImg, parseInt(discountProduct));
-      succesModify = true;
     } else {
       errorMessage = "Please fill in all required fields.";
-    }
-
-    if (succesModify) 
-    {
-      this.router.navigate(['/b-admin']);
-    } else 
-    {
-      alert("Please fill in all required fields."); // You can also update an HTML element with the error message.
     }
   }
 

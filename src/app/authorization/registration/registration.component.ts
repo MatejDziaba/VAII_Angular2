@@ -65,7 +65,6 @@ export class RegistrationComponent
     psc: string, password1: string, password2: string, agreeMarketConditions: string) 
   {
     console.log(agreeMarketConditions)
-    let succesfullAdded = false;
     if (name && surname && email && city && ulica && state && psc && password1 && password2 && agreeMarketConditions) 
     {
       if (password1 === password2) 
@@ -73,21 +72,8 @@ export class RegistrationComponent
         if (this.agree === true) 
         {
           this.userService.addUser(name, surname, email, city, ulica, state, psc, password1, this.agree);
-          if (this.userService.existUser()) 
-          {
-            this.router.navigate(['/sign-up-failure']);
-          } else 
-          {
-            this.routerLinkPath = '/sign-up';
-            succesfullAdded = true;
-          }
         }
       }
-    }
-
-    if (succesfullAdded) 
-    {
-      this.redirectToAnotherPage();
     }
   }
 

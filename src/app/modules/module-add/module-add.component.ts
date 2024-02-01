@@ -80,18 +80,10 @@ export class ModuleAddComponent {
 
   addProduct(typProduct: string, nameProduct: string, markUpProduct: string, priceProduct: string, discountProduct: string) 
   {
-    let succesfullAdded = false;
     if (typProduct && nameProduct && markUpProduct && priceProduct && this.newProductImg && discountProduct) 
     {
       this.setTypeProduct(typProduct);
       this.productService.addProduct(this.pomTypProduct, nameProduct, markUpProduct, (parseInt(priceProduct) - (parseInt(priceProduct)*(parseInt(discountProduct)/100))), this.newProductImg, parseInt(discountProduct));
-      this.routerLinkPath = '/b-admin';
-      succesfullAdded = true;
-    }
-
-    if (succesfullAdded) 
-    {
-      this.redirectToAnotherPage();
     }
   }
 

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Komunita } from '../Intefaces/komunita-prispevok';
+import { KomunitaData } from '../Intefaces/komunita-prispevok';
 
 @Injectable({
   providedIn: 'root',
@@ -7,14 +7,14 @@ import { Komunita } from '../Intefaces/komunita-prispevok';
 export class KomunitaStateService {
   private readonly storageKey = 'selectedProduct';
 
-  selectedPrispevok: Komunita | undefined;
+  selectedPrispevok: KomunitaData | undefined;
 
   constructor() {
     const storedPrispevky = localStorage.getItem(this.storageKey);
     this.selectedPrispevok = storedPrispevky ? JSON.parse(storedPrispevky) : undefined;
   }
 
-  setSelectedPrispevok(prispevok: Komunita): void {
+  setSelectedPrispevok(prispevok: KomunitaData): void {
     if (prispevok) {
       this.selectedPrispevok = prispevok;
       localStorage.setItem(this.storageKey, JSON.stringify(prispevok));
@@ -24,7 +24,7 @@ export class KomunitaStateService {
     }
   }
 
-  getSelectedPrispevok(): Komunita | undefined {
+  getSelectedPrispevok(): KomunitaData | undefined {
     return this.selectedPrispevok;
   }
 

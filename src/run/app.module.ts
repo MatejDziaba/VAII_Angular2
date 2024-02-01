@@ -53,6 +53,7 @@ import { ModuleToShoppingPackComponent } from '../app/modules/module-to-shopping
 import { ModuleUploadBazarProductComponent } from '../app/modules/module-upload-bazar-product/module-upload-bazar-product.component';
 import { ModuleDeleteBazarProductComponent } from '../app/modules/module-delete-bazar-product/module-delete-bazar-product.component';
 import { ModuleUploadKomunitaComponent } from '../app/modules/module-upload-komunita/module-upload-komunita.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -108,7 +109,8 @@ import { ModuleUploadKomunitaComponent } from '../app/modules/module-upload-komu
     MatTableModule,
     MatSortModule,
     MatPaginatorModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

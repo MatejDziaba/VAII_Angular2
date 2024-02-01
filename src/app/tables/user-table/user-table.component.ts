@@ -14,7 +14,7 @@ import { UserService } from '../../../service/user.service';
 })
 export class UserTableComponent implements AfterViewInit {
 
-  displayedColumns: string[] = ['id', 'name', 'surname', 'email', 'nieco'];
+  displayedColumns: string[] = ['id', 'name', 'surname', 'email'];
   dataSource: MatTableDataSource<User> | undefined;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
